@@ -3,10 +3,13 @@ import time
 from supabase_client import supabase
 
 SESSION_KEY = "supabase_session"
-MAX_IDLE_SECONDS = 1800  # 30 minutes
+MAX_IDLE_SECONDS = 1800
 
 def restore_session():
     if "user" in st.session_state:
+        return
+
+    if supabase is None:
         return
 
     session = st.session_state.get(SESSION_KEY)
@@ -38,6 +41,10 @@ def track_activity():
     st.session_state["last_active"] = now
 
 def logout():
-    supabase.auth.sign_out()
+    if supabase is not None:
+        try:
+            supabase.auth.sign_out()
+        except Exception:
+            pass
     st.session_state.clear()
-    st.switch_page("pages/0_🔐_Auth.py")
+    st.switch_page("pages/0_🔐_Login.py")

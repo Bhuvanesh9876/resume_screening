@@ -1,7 +1,14 @@
 streamlit
 supabase
 pdfplumber
+pdfminer.six
+PyMuPDF
+python-docx
 sentence-transformers
 faiss-cpu
 numpy
 torch
+rapidfuzz
+pandas
+plotly
+groq

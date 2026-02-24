@@ -10,8 +10,8 @@ IMPORTANT RULES:
 Job Details:
 - Job Title: {job_title}
 - Required Experience: {required_experience} years
-- Must-have Skills: {must_have_skills}
-- Good-to-have Skills: {good_to_have_skills}
+- Required Skills: {must_have_skills}
+- Preferred Qualifications: {good_to_have_skills}
 
 Candidate Evaluation:
 - Matched Skills: {matched_skills}
@@ -32,5 +32,4 @@ Mention missing skills only if they are mandatory.
 FORMAT:
 - Short paragraph
 - Bullet points where helpful
-- Recruiter-friendly language
-"""
+- Recruiter-friendly language"""

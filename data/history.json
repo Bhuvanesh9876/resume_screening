@@ -1,1 +1,757 @@
-[]
+[
+  {
+    "timestamp": "2026-02-24 12:22:37",
+    "job_title": "Java Developer",
+    "qualification": "B.Tech",
+    "required_experience": 0,
+    "must_have_skills": [
+      "Java"
+    ],
+    "good_to_have_skills": [],
+    "job_description": "Choosing Capgemini means choosing a company where you will be empowered to shape your career in the way you\u2019d like, where you\u2019ll be supported and inspired by\u202fa collaborative community of colleagues around the world, and where you\u2019ll be able to reimagine what\u2019s possible. Join us and help the world\u2019s leading organizations\u202funlock the value of technology and build a more sustainable, more inclusive world.\n\nYour Role\n\nA Java Developer is responsible for designing, developing, and maintaining applications using the Java programming language and related technologies. This role involves working across the full software development lifecycle\n\nExperience in deploying spring boot in Micro services\nGood verbal and written communication\nExcellent team player, ability to work in a global team and follow through on deadlines\n\nYour Profile\n\nBuilt MVC based Web Application Using JSP/Struts framework\nHands on experience of OOPS concepts, Hibernate and spring version 3.x 1, Spring Boot\nHands on experience of Application Servers like Tomcat and WebLogic.\nHands on experience of Restful services and Web services\n\nWhat You'll Love About Working Here\n\nYou can shape your career with us. We offer a range of career paths and internal opportunities within Capgemini group. You will also get personalized career guidance from our leaders.\nYou will get comprehensive wellness benefits including health checks, telemedicine, insurance with top-ups, elder care, partner coverage or new parent support via flexible work.\nAt Capgemini, you can work on cutting-edge projects in tech and engineering with industry leaders or create solutions to overcome societal and environmental challenges.\n\nCapgemini is an AI-powered global business and technology transformation partner, delivering tangible business value. We imagine the future of organizations and make it real with AI, technology and people. With our strong heritage of nearly 60 years, we are a responsible and diverse group of 420,000 team members in more than 50 countries. We deliver end-to-end services and solutions with our deep industry expertise and strong partner ecosystem, leveraging our capabilities across strategy, technology, design, engineering and business operations. The Group reported 2024 global revenues of \u20ac22.1 billion",
+    "threshold": 0.8,
+    "shortlisted_count": 7,
+    "candidates": [
+      {
+        "name": "Shaik Shameem",
+        "email": "shameemsk002@gmail.com",
+        "phone": "+91 9381861106",
+        "final_score": 0.817
+      },
+      {
+        "name": "Nadendla Harsha Vardhan",
+        "email": "harshavardhannadendla9@gmail.com",
+        "phone": "+91 8008708670",
+        "final_score": 0.816
+      },
+      {
+        "name": "Yakkaladevi Bhuvanesh",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "final_score": 0.816
+      },
+      {
+        "name": "Yakkaladevi Bhuvanesh",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "final_score": 0.815
+      },
+      {
+        "name": "Yakkaladevi Bhuvanesh",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "final_score": 0.815
+      },
+      {
+        "name": "Shaik Roohi Rehana Begum",
+        "email": "roohi.2204@gmail.com",
+        "phone": "+91 8106432605",
+        "final_score": 0.812
+      },
+      {
+        "name": "Yakkaladevi Bhuvanesh",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "final_score": 0.809
+      }
+    ],
+    "full_results": [
+      {
+        "resume_name": "Yakkaladevi Bhuvanesh",
+        "resume_filename": "BHUVANESH_RESUME.pdf",
+        "resume_text": "Yakkaladevi Bhuvanesh \n Yakkaladevi Bhuvanesh | \n Bhuvanesh98 | \n yakkaladevibhuvanesh@gmail.com | \n +91- 9491962208 \n \nOBJECTIVE \n \nMotivated AI & ML undergraduate with strong analytical ability and hands-on experience in Python, Java, SQL, application \ndevelopment. Skilled in solving complex problems, building user-centric solutions, and working effectively in collaborative \nenvironments \nEXPERIENCE \n \n\u2022 InternPe \nAI ML Intern \n\u25cb Completed 2-month internship on AIML, gaining hands-on experience in developing machine learning models and \nhandling real-time data processing. \n\u2022 VaultOfCodes \nPython Developer Intern \n\u25cb Worked on developing and optimizing Python applications while strengthening problem-solving and \nprogramming skills. \nEDUCATION \n \n\u2022 Bapatla Engineering College                                                                                                                                                                  2022  - 2026 \nBachelors of Technology - AIML \nBapatla \n\u25cb GPA: 9.20/10 \n\u2022 Sri Chaitanya Junior College                                                                                                                                                          2020 - 2022 \nIntermediate - MPC \nVijayawada \n\u25cb Grade: 75.5% \n\u2022 Sri Chaitanya Techno School                                                                                                                                       2019  - 2020 \nSSC \nVijayawada \n\u25cb Grade: 100% \nPROJECTS \n \n\u2022 AI Recruitment Partner: \nTools: [Python, Streamlit, Llama 3, Whisper, Ollama] \n\u25cb Built a web-based recruitment tool that cut candidate screening time by 50 percent for 100+ applicants. Used Llama \n3 and Whisper for skill extraction, tailored questions, and real-time voice response evaluation. \n\u2022 Fake Image Detection : \nTools: [Python, Streamlit, TensorFlow, Matplotlib, OpenCV, Scikit-learn, SQLite] \n\u25cb Designed a fake image detection pipeline using Error Level Analysis, edge detection, and noise filtering to amplify \nforgery artifacts. Built and trained a custom CNN for high-accuracy classification of manipulated images, merging deep \nlearning with image forensics. \n\u2022 Code Genius: [AI Code Generator and Debugger] \nTools: [React-vite, MongoDB, Tailwindcss, openrouter]  \n\u25cb An advanced AI-powered development tool that generates code snippets, debugs errors, and provides intelligent \nsuggestions. Features include multi-language support, real-time error detection, code optimization suggestions, and \ncollaborative debugging sessions. \nSKILLS \n \n\u2022 Programming Languages: Python, C, Java \n\u2022 Web Technologies: HTML, CSS, JavaScript \n\u2022 Database Systems: SQL, DBMS \n\u2022 AI/ML Tools: Transformers, TensorFlow, Keras, Scikit-learn \n\u2022 Version Control: Git, GitHub \nCERTIFICATIONS \n \n\u2022 Oracle certified Foundations Associate - Oracle university \n2025 \n\u2022 AI Fundamentals \u2013 IBM \n2024 \n\u2022 Deep Learning \u2013 IBM Skills Network \n2024 \n\u2022 AWS Flash \u2013 AWS training \n2024 \n\u2022 Cloud Computing , Internet Of Things - NPTEL \n2025 \n ACHIEVEMENTS \n \n\u2022 Participated in Various WorkShops \n\u2022 Pursuing Bachelor\u2019s with Honours (AIML)",
+        "resume_embedding": "[-0.06424041  0.02041847  0.01479112 -0.00750788 -0.00735909  0.0363351\n  0.03410606 -0.04202234 -0.01217695  0.00848787  0.03908133 -0.08291171\n  0.00474911  0.01608343  0.01814242 -0.04791577 -0.00542349  0.08826648\n -0.06742924  0.04018994  0.07476839 -0.04454287 -0.00729574 -0.08817066\n  0.01776263  0.00648733  0.06224397  0.02884979 -0.0914434  -0.18248816\n  0.02480282  0.0120019   0.03600006 -0.03584943  0.05045656 -0.01848195\n -0.01087676  0.06080792  0.05815747  0.03541981 -0.02065543 -0.05167092\n  0.01606294 -0.07144265 -0.01707482 -0.01717428 -0.07827003 -0.03888156\n  0.07593676  0.00377734 -0.06763526 -0.06135405  0.07099342  0.03642391\n  0.04781988  0.02237821  0.0528632   0.06171851  0.06844025  0.07906787\n  0.07808375  0.02873562 -0.11932824  0.11589766  0.05657416  0.03737953\n -0.03406734  0.0019026   0.01439786 -0.00928193 -0.00185177  0.01757883\n  0.00359916  0.01094849 -0.05441815  0.04447915  0.00787846  0.05566096\n -0.00592912 -0.01682592  0.00932852 -0.0356027  -0.01598825  0.0630848\n -0.02300942 -0.00888647  0.02700715 -0.04424383 -0.03108507 -0.06826501\n -0.05922499 -0.01422034  0.00539217 -0.04398244 -0.01342527 -0.04102993\n  0.04417407  0.02243108 -0.07425165  0.06852046  0.0042031  -0.03304609\n -0.03202936 -0.00542646 -0.03412907 -0.05269158 -0.01801405 -0.02451567\n  0.04459104 -0.03397589 -0.03111725 -0.05414806  0.02438955 -0.02430534\n  0.06725439  0.08003186 -0.02503699 -0.05572951 -0.0520224   0.03323922\n  0.03902757  0.00645124  0.02399896 -0.03129084  0.05536393 -0.06572972\n  0.01282936  0.08879056  0.06109153  0.01524738  0.11141557  0.01508199\n -0.0112769  -0.01285438 -0.01380131 -0.01413204 -0.06307457 -0.00533774\n  0.03777719 -0.00835235 -0.03919619 -0.05341471 -0.00845203 -0.06878041\n -0.03257211  0.07694774 -0.07081551  0.01966949 -0.08931563 -0.07819103\n -0.06604864 -0.01094082  0.01156745 -0.01169224  0.00972471  0.01935322\n  0.01246863  0.08288229 -0.06957217  0.00067257 -0.05563864  0.00083004\n -0.00479136  0.07552293  0.05230282 -0.11148713  0.06192538 -0.03219255\n  0.00063393 -0.06216149  0.03459936  0.03095209  0.02283257  0.00314945\n  0.15721272 -0.02563476 -0.00648995  0.00155848  0.01044517 -0.05680666\n  0.03611977 -0.03708726 -0.0093241   0.05160712  0.09102303 -0.02302321\n -0.02666426 -0.04814519 -0.01700983 -0.05343599 -0.05886257  0.03358661\n -0.03048567  0.03779339  0.0444154   0.02771723  0.00178755 -0.10420509\n -0.01339257 -0.050327    0.10609235  0.07920875 -0.06305976  0.00743837\n -0.04410812  0.03703948  0.02011086 -0.05147916 -0.06780818  0.0293525\n -0.04559219 -0.05474573  0.00844033 -0.01612316 -0.03590344 -0.04924504\n -0.00241554  0.00713332  0.05085292  0.00034965  0.05306072 -0.08890935\n -0.03969259 -0.18766269  0.01686822 -0.05230438 -0.04845956  0.07029192\n -0.05952561  0.00485813  0.02635357  0.01035195  0.06277804  0.11470417\n  0.02028659 -0.03001612 -0.02310417  0.03791485  0.07832545 -0.0309308\n  0.00793966  0.07602171 -0.01951783 -0.0497753  -0.06392124  0.00064712\n -0.05222818  0.03053872 -0.04517882  0.14470658  0.07698647  0.02820353\n -0.02851402  0.04573518  0.02150977  0.06765611 -0.11046888  0.11882749\n -0.0444549  -0.00140194  0.0363432  -0.01379522 -0.00600973  0.08753884\n  0.0091754   0.01228086 -0.09731627  0.09080115 -0.07500872 -0.05014279\n  0.06185071 -0.00732458  0.00245223  0.02506399 -0.05625997  0.0449655\n -0.01398571 -0.04981592 -0.05419873 -0.07130412  0.05042477  0.00215791\n  0.00467943 -0.03741515 -0.05364814  0.01534775 -0.02631913  0.01282047\n -0.02323542 -0.0391561  -0.00605082 -0.03491496 -0.0572332  -0.01639788\n  0.05802845 -0.06991038  0.07803362  0.06597768  0.00029753  0.05706003\n -0.09587286 -0.01381392 -0.04182608 -0.03208861 -0.029776   -0.01717948\n  0.08621982  0.00027412  0.00813623  0.00211065 -0.02802512  0.00428427\n -0.02780901 -0.00880487 -0.07219983  0.07897951  0.05948388  0.02235946\n -0.00333576 -0.14776878 -0.01431759  0.08337958 -0.03671185  0.02666122\n  0.01272899  0.04202723 -0.04223315 -0.02570105 -0.00891526 -0.00804137\n  0.05761682  0.04393943 -0.03468444 -0.00138744  0.0412058   0.0406734\n -0.02292135 -0.00338215 -0.06273764  0.02406615  0.02866843  0.13273223\n -0.00858249 -0.00372417  0.03761296 -0.01262436 -0.00747299  0.02585401\n  0.04207382 -0.04208402 -0.0464595   0.13372937 -0.02638265  0.01712728\n  0.10985035  0.00116361  0.03426012  0.05793836  0.01360502  0.07356878\n  0.08589525 -0.04739468 -0.00928758  0.05972861 -0.01183448 -0.04933476\n  0.00155444  0.0014863  -0.04052301 -0.03863423 -0.05442545  0.04021639\n  0.09435225  0.03761905 -0.03094032 -0.05188308  0.01294828 -0.01970326\n -0.07069009  0.03173064 -0.00992353  0.0275902  -0.00075729 -0.02206303]",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "skills": [
+          "Sso",
+          "Opencv",
+          "Mongodb",
+          "Aws",
+          "React",
+          "Debugging",
+          "Css",
+          "Matplotlib",
+          "Html",
+          "Version Control",
+          "Data Analysis",
+          "Analytical Skills",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Oracle",
+          "Machine Learning",
+          "Keras",
+          "Problem Solving",
+          "Deep Learning",
+          "Javascript",
+          "Sql",
+          "Flask",
+          "Web3",
+          "Java",
+          "C",
+          "Sqlite",
+          "Tensorflow",
+          "Git",
+          "Transformers",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [],
+          "fields": [
+            "AI",
+            "Machine Learning",
+            "Education"
+          ],
+          "institutions": [
+            "\u2022 Sri Chaitanya Junior College                                                                                                                                                          2020 - 2022",
+            "\u2022 Sri Chaitanya Techno School                                                                                                                                       2019  - 2020",
+            "\u2022 Oracle certified Foundations Associate - Oracle university"
+          ],
+          "highest_degree": null,
+          "highest_level": null,
+          "qualification_text": "in AI"
+        },
+        "qualification_match": {
+          "match_score": 0.5,
+          "matched": false,
+          "details": "Could not determine qualification match",
+          "candidate_qualification": "in AI",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.831,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.815,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.415,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Nadendla Harsha Vardhan",
+        "resume_filename": "HARSHA_VARDHAN_RESUME (3).pdf",
+        "resume_text": "NADENDLA HARSHA VARDHAN\n\u00a7 nadendlaharsha | \u00ef Nadendla Harsha Vardhan | # harshavardhannadendla9@gmail.com\n| H +91-8008708670\nWork Experience\nAI ML Intern, InternPe June 2025 \u2013 July 2025\nCompleted 2-month online internship on AI & ML, gaining hands-on experience in developing machine\nlearning models and handling real-time data processing.\nPython Developer Intern, VaultOfCodes July 2024 \u2013 August 2024\nWorked on developing and optimizing Python applications while strengthening problem-solving and programming skills.\nProjects\nAI Recruitment Partner (Python, Streamlit, Llama 3, Whisper, Ollama)\nBuilt a web-based recruitment tool that cut candidate screening time by 50% for 100+ applicants. Used\nLlama 3 and Whisper for skill extraction, tailored questions, and real-time voice response evaluation.\nProvided resume feedback, keyword alignment, and AI-driven enhancements with local NLP models.\nFake Image Detection (Python, Streamlit, TensorFlow, Matplotlib, OpenCV, Scikit-learn, SQLite)\nDesigned a fake image detection pipeline using Error Level Analysis, edge detection, and noise filtering\nto amplify forgery artifacts.\nBuilt and trained a custom CNN for high-accuracy classification of manipulated images, merging deep\nlearning with image forensics.\nTour Tales\n(HTML, CSS, JavaScript,ReactJs,PHP,NodeJs MySQL)\nCrafted a vibrant travel experience portal with interactive sections for tours, hotels, cultural spots, and\nblogs. Enhanced travel exploration through sleek UI and intuitive browsing, integrating visually engaging\nlayouts to boost user engagement\nEducation\n2022 - Present\nBachelor\u2019s Degree at Bapatla Engineering college\n(CGPA: 9.18/10.0)\n2020 - 2022\nVignana Bharathi Junior College Board of Intermediate Education\n(Percentage - 94.5)\n2020\nSt.Ann\u2019s School ICSE\n(Percentage - 81.3)\nAchievements\nCertifications:\nOracle certified Foundations Associate \u2013 Oracle university (2025) ,Salesforce certified AI\nAssociate-Salesforce (2025)\nSkills\nLanguages:\nPython,C,java core\nFull-Stack:\nHTML,CSS,Javascript,Reactjs,Expressjs,MongoDB,MYSQL\nAI/ML Tools:\nTransformers,TensorFlow, NumPy, Pandas, Keras, Scikit-learn\nVersion Control:\nGit,Github\nSoftware Engineering:\nData Structures & Algorithms(DSA), Machine Learning, NLP",
+        "resume_embedding": "[-6.37928322e-02  1.87339615e-02  8.37574713e-03  1.20866075e-02\n -2.76666172e-02  4.52653728e-02  3.99254896e-02 -4.44488190e-02\n -3.89261693e-02  5.04752174e-02  4.37714346e-02 -6.79002851e-02\n -2.56846435e-02  4.87785861e-02  1.66280121e-02 -5.03095724e-02\n -1.77191831e-02  4.57794257e-02 -6.27062619e-02  3.44201699e-02\n  6.38983697e-02 -5.92793934e-02  6.34932006e-03 -9.09884200e-02\n  4.46179137e-02 -6.69800583e-03  3.26585025e-02  4.78167571e-02\n -9.37729627e-02 -1.87701359e-01  5.14551438e-03  2.21442617e-02\n -3.75924422e-03 -6.28834069e-02  7.65566677e-02 -5.58915641e-03\n -3.66535457e-03  7.33860210e-02  4.13952321e-02  5.54729886e-02\n -3.10652684e-02 -9.86779258e-02  1.63157284e-02 -5.85077219e-02\n  1.68678518e-02 -5.13340905e-02 -6.90379515e-02 -4.79472503e-02\n  6.08080849e-02 -5.83796100e-05 -4.97968718e-02 -3.02382316e-02\n  5.36213852e-02  3.57081220e-02  1.97768044e-02  3.34855281e-02\n  5.95429763e-02  4.36909199e-02  8.30331966e-02  7.72043616e-02\n  5.86746372e-02  1.56397615e-02 -1.23867504e-01  1.18630461e-01\n  3.72270495e-02  5.98584861e-02 -4.21740999e-03  1.69394985e-02\n  1.90585945e-02 -1.85945798e-02  3.83949676e-03  2.07609553e-02\n -4.95427148e-03  3.60937938e-02 -4.46908846e-02  7.40189403e-02\n  1.08153373e-02  6.07507713e-02 -3.86189893e-02 -2.96872556e-02\n  2.33562775e-02 -3.11496127e-02 -2.18579695e-02  5.32029942e-02\n -4.59025018e-02 -2.15605479e-02  3.90465520e-02 -3.43992673e-02\n -3.47496048e-02 -2.19191834e-02 -5.43587729e-02 -3.69829014e-02\n  8.25079996e-03 -8.63114186e-03 -2.82662194e-02 -3.50648724e-02\n  1.72943305e-02  3.06457635e-02 -5.74946366e-02  7.32885525e-02\n  3.30932550e-02  2.09162841e-04 -5.22384979e-02 -1.72044635e-02\n -3.59326340e-02 -5.75668775e-02  8.41233600e-03 -6.51913062e-02\n  6.18027262e-02 -5.92750590e-03 -1.66126806e-02 -4.56341915e-02\n -8.52202810e-03 -3.23337242e-02  6.09427541e-02  7.63685927e-02\n -2.53315140e-02 -8.11326951e-02 -2.88966633e-02  2.64753513e-02\n  3.22545618e-02  1.80866960e-02  8.08190275e-03 -5.27290031e-02\n  2.76476350e-02 -5.23403324e-02  2.84190401e-02  1.01729535e-01\n  6.27210066e-02  8.31306167e-03  8.64480957e-02  2.43151635e-02\n -1.83727890e-02 -2.94427220e-02 -1.78081803e-02 -3.90055478e-02\n -6.42352328e-02  2.13194918e-02  3.87712196e-02 -1.02826664e-02\n -3.25443968e-02 -5.81995100e-02 -2.07706559e-02 -6.07126430e-02\n -2.46490147e-02  8.05128217e-02 -6.63799644e-02  3.22539844e-02\n -6.98399320e-02 -7.20721260e-02 -7.13724317e-03 -2.96689793e-02\n  2.89620291e-02 -6.27955003e-03  4.51084110e-04  2.76996512e-02\n  1.94009021e-02  4.90475781e-02 -8.57110620e-02  2.65800720e-03\n -7.04942197e-02 -1.88595746e-02  2.01271046e-02  1.00403175e-01\n  6.00279644e-02 -1.24180675e-01  6.46178871e-02  4.64210613e-03\n  1.67643521e-02 -5.93660474e-02  3.78871299e-02  2.09697559e-02\n  2.41683312e-02  1.31565984e-02  1.44357651e-01 -2.08721217e-02\n  5.27859991e-03  1.19531329e-03  2.24798713e-02 -6.51551113e-02\n  4.29386720e-02 -6.17094785e-02  5.48618101e-03  1.19440950e-01\n  1.00958183e-01 -3.03702559e-02 -3.53087410e-02 -8.60796794e-02\n -3.08706798e-02 -5.27276322e-02 -5.21073081e-02  3.42355445e-02\n -2.98560951e-02  3.83615084e-02  3.57977077e-02  4.22767401e-02\n  2.42630634e-02 -5.21635562e-02 -3.89359072e-02 -5.52991591e-02\n  1.17296942e-01  8.43988881e-02 -3.80673744e-02  3.55452411e-02\n -5.27132675e-02  5.73043823e-02  2.93497369e-02 -2.68813297e-02\n -3.89682464e-02  2.61033177e-02 -3.99845280e-02 -2.24942118e-02\n  2.58566327e-02 -3.85715440e-02 -2.00195462e-02 -4.93872166e-02\n  2.12678909e-02  3.08625121e-02  5.43949716e-02  2.44417898e-02\n  7.57436976e-02 -9.33863819e-02 -6.60143197e-02 -1.91421121e-01\n  1.46220429e-02 -6.67654946e-02 -5.10849059e-02  6.38603792e-02\n -7.41957948e-02  1.47451097e-02  4.77515422e-02 -8.81641265e-03\n  4.60326970e-02  1.04692176e-01 -3.20046954e-02 -2.12509222e-02\n -2.31427569e-02  2.44873222e-02  7.58710206e-02 -1.27727119e-02\n  1.31719594e-03  6.13655038e-02 -4.30296659e-02 -3.75924669e-02\n -6.48393631e-02 -6.47491449e-03 -7.38130808e-02  1.18630743e-02\n -3.61065604e-02  1.48564532e-01  7.66656622e-02  2.69651357e-02\n -1.89605039e-02  2.83242967e-02  7.38884695e-03  3.06461789e-02\n -1.08034179e-01  1.01755865e-01 -5.95289506e-02 -3.76707725e-02\n  4.66190465e-02 -2.35644355e-02 -1.89785305e-02  9.35271680e-02\n  4.45581507e-03  4.82806824e-02 -1.16503395e-01  6.16210811e-02\n -4.46242020e-02 -2.15382203e-02  7.54342452e-02 -4.00054194e-02\n  2.39770189e-02 -2.65026372e-03 -6.39680997e-02  2.41364706e-02\n -3.47439237e-02 -2.91051231e-02 -4.60064448e-02 -8.81695822e-02\n  5.90454862e-02 -1.60119571e-02  7.25797703e-03 -5.62117249e-02\n -5.59867322e-02  2.13015042e-02 -1.92882288e-02  7.99825415e-03\n  1.08775543e-02 -1.11783696e-02 -2.25406829e-02 -2.96093747e-02\n -6.89035058e-02 -2.19958350e-02  7.30443597e-02 -4.37195860e-02\n  3.23963314e-02  3.98008525e-02 -1.38514070e-02  4.78066094e-02\n -6.64326474e-02  6.00933039e-04 -1.19540654e-02 -5.37655549e-03\n -4.70398627e-02 -3.36375944e-02  7.94434994e-02 -5.64868189e-03\n -3.99002852e-03 -2.23826151e-03 -2.53085457e-02  9.65089770e-04\n -3.56304646e-02  2.38602632e-03 -8.58117118e-02  8.86210427e-02\n  5.98927289e-02  2.97177155e-02 -2.70287339e-02 -1.48051232e-01\n -1.76175423e-02  6.33996949e-02 -3.24779600e-02 -3.28084338e-03\n  9.60178860e-03  3.29043120e-02 -5.14560416e-02 -1.22170672e-02\n -7.78803462e-03 -1.63169932e-02  2.84321662e-02  5.23058176e-02\n -1.20906662e-02 -8.26326490e-04  1.54435849e-02  6.58832192e-02\n  8.47320916e-05  2.85742246e-03 -7.34709576e-02  1.18985400e-02\n  5.33427522e-02  1.35441437e-01 -3.07561108e-03 -1.52358133e-02\n  5.23880236e-02  3.40605830e-03  2.39345841e-02  2.12804917e-02\n  4.34479713e-02 -2.98976749e-02 -5.64270318e-02  1.09622173e-01\n -1.77534483e-02  1.11621721e-02  6.63125962e-02  1.32756084e-02\n -9.14145901e-04  5.65010607e-02  1.12814158e-02  8.80672485e-02\n  8.67508948e-02 -2.84464266e-02  4.09573375e-04  4.42386307e-02\n  2.81194486e-02 -5.75412102e-02  1.25070782e-02 -2.11187452e-02\n -5.35285473e-02 -4.39037085e-02 -3.98418345e-02  5.15437201e-02\n  3.24677974e-02  4.01753522e-02 -4.93051596e-02 -6.45485073e-02\n  2.14346834e-02 -1.59121081e-02 -4.61219810e-02  1.68473795e-02\n -2.38892250e-03  1.98299568e-02 -3.41846086e-02 -1.36868958e-03]",
+        "email": "harshavardhannadendla9@gmail.com",
+        "phone": "+91 8008708670",
+        "skills": [
+          "Sso",
+          "Opencv",
+          "Mongodb",
+          "React",
+          "Css",
+          "Matplotlib",
+          "Express.Js",
+          "Node.Js",
+          "Numpy",
+          "Html",
+          "Version Control",
+          "Data Analysis",
+          "Feature Engineering",
+          "Mysql",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Oracle",
+          "Machine Learning",
+          "Keras",
+          "Problem Solving",
+          "Deep Learning",
+          "Javascript",
+          "Sql",
+          "Java",
+          "C",
+          "Sqlite",
+          "Php",
+          "Tensorflow",
+          "Git",
+          "Salesforce",
+          "Pandas",
+          "Transformers",
+          "Natural Language Processing",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [],
+          "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+          ],
+          "institutions": [
+            "Bachelor\u2019s Degree at Bapatla Engineering college",
+            "Vignana Bharathi Junior College Board of Intermediate Education",
+            "St.Ann\u2019s School ICSE"
+          ],
+          "highest_degree": null,
+          "highest_level": null,
+          "qualification_text": "in Software Engineering"
+        },
+        "qualification_match": {
+          "match_score": 0.5,
+          "matched": false,
+          "details": "Could not determine qualification match",
+          "candidate_qualification": "in Software Engineering",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.833,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.816,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.416,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Nadendla Harsha Vardhan",
+        "resume_filename": "HARSHA'S RESUME.pdf",
+        "resume_text": "NADENDLA HARSHA VARDHAN \n \nharshavardhannadendla9@gmail.com \n           +91 8008708670   \nEDUCATION \nB.TECH \nBapatla Engineering College \nCGPA :9.17/10.0 \nINTERMEDIATE(MPC) \nVignana Bharathi junior College \nGPA: 9.45/ 10.00 \nSSC \nSt.Anns English Medium High School \nMajor GPA: 8.1 / 10.00 \nTECHNICAL SKILLS \n\u2022 python \n\u2022 MongoDB \n\u2022 React js \n\u2022 C++ \n\u2022 R-studio \n\u2022 Node js \n\u2022 typescript \n\u2022 kotlin \nINDUSTRY \nEXPERIENCE \nAI & ML Intern \u2013 InternPe \nJul- 2025 \nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing \nmachine learning models and handling real-time data processing. \n    \nPYTHON Developer Intern \u2013 VaultOfCodes \nJul- 2024 \nWorked on developing and optimizing Python applications while strengthening problemsolving and programming skills. \n  \nPROJECTS \n--------------------------------------------------------------------------------------------------------------------------------------------- \n PromptEase: An AI Middleware Platform for Enhanced Language Model Interactions \n                                                                                                                             (AUG 2025) \nThe current landscape of AI language model interactions presents significant challenges for     \nusers seeking to leverage multiple AI platforms effectively. Existing systems require users to \nmanage separate accounts, API keys, and interfaces across different providers (OpenAI,   \nGoogle, Anthropic, Meta), each with distinct parameter systems and interaction paradigms. \n \nMovie Recommendation System (Collaborative + Content-based)                        (JUN 2025) \na hybrid recommendation engine using collaborative filtering (user-item matrix factorization) and \ncontent-based filtering (TF-IDF, cosine similarity on movie metadata). Implemented on the MovieLens \ndataset to predict personalized movie suggestions. \nSKILLS \n----------------------------------------------------------------------------------------------------------------------------------------------------------- \n \nManagement: Interpersonal Communication, Analytical Reasoning, Time management, Problem \nSolving \nLanguages: Fluent in English and Telugu, Hindi \nCertifications & Training: AI associate , AWS Responsible \nAI , Oracle cloud infrastructure, GEN-AI,Salesforce \nHobbies: Article reading , Playing Cricket , puzzle solving",
+        "resume_embedding": "[-5.95779940e-02  4.35302907e-04 -4.74464800e-03 -8.91088508e-03\n -3.82560231e-02  6.33053705e-02  1.40055437e-02 -1.89993642e-02\n -5.87500893e-02  5.25574721e-02  4.11181077e-02 -4.77883816e-02\n -3.51284668e-02  3.65547501e-02  3.36003527e-02 -4.28990051e-02\n  1.16553502e-02  2.57416368e-02 -4.33789715e-02  2.74985023e-02\n  7.99686462e-02 -6.71661869e-02  2.49743136e-03 -1.06583953e-01\n  4.78238128e-02 -8.15533381e-03  4.95283231e-02  5.20369001e-02\n -1.09924287e-01 -1.89735085e-01 -1.68313540e-03  4.21965085e-02\n  4.61740084e-02 -5.78339994e-02  6.99288622e-02 -1.99678401e-03\n -3.50822471e-02  5.46477549e-02  1.60689205e-02  2.65581906e-02\n -4.65059280e-02 -8.31822678e-02  1.78165752e-02 -4.93988059e-02\n -1.36581864e-02 -3.34256068e-02 -4.80150580e-02 -4.14060690e-02\n  3.81374471e-02  1.49811171e-02 -7.07157254e-02 -3.46923247e-02\n  6.85284808e-02  1.07861692e-02  1.24100838e-02  4.60098311e-02\n  5.34149781e-02  2.70483606e-02  6.79718331e-02  7.19545186e-02\n  5.16893417e-02  1.43714319e-03 -8.80552083e-02  1.15509070e-01\n  6.41639009e-02  5.17573133e-02 -2.57039163e-02  3.07693277e-02\n -6.48669992e-03 -4.97692032e-03 -1.42478272e-02  4.74062599e-02\n  4.06130543e-03  8.17168911e-04 -5.67029715e-02  6.21130653e-02\n  1.99778546e-02  5.40526286e-02 -3.74388434e-02 -3.09089739e-02\n  2.75486871e-03 -3.15630063e-02 -3.35807279e-02  2.15756111e-02\n -3.45090739e-02 -2.62972154e-02  5.11916876e-02 -5.36316670e-02\n -4.21317071e-02 -1.97492149e-02 -7.72481188e-02 -8.28664098e-03\n  4.12164219e-02 -9.67462547e-03 -3.10092624e-02  1.08320871e-02\n  3.98059823e-02  2.97998320e-02 -5.88890053e-02  8.99025053e-02\n  3.49896438e-02 -9.70482081e-03 -5.16282544e-02 -2.34994851e-02\n -3.45954336e-02 -4.21392359e-02  1.37738846e-02 -1.50484508e-02\n  6.95369095e-02 -8.39325786e-03 -4.88811638e-03 -3.86939012e-02\n -9.68586747e-03 -2.03575362e-02  3.31002139e-02  6.10797852e-02\n  1.50305638e-02 -9.65535641e-02 -1.43451951e-02  2.71406677e-02\n  1.49983196e-02  2.53219400e-02  6.39837701e-03 -4.21704687e-02\n  3.46838944e-02 -4.48802002e-02  2.34223939e-02  7.71450028e-02\n  6.56978264e-02 -2.08514929e-02  8.23379159e-02  2.13645026e-02\n -4.53388877e-02 -9.79355350e-03 -2.64494661e-02 -3.46332975e-02\n -7.69063607e-02 -2.67319027e-02  3.60505208e-02  4.14253213e-03\n -2.04388555e-02 -5.27540967e-02 -6.90537645e-03 -6.91563487e-02\n -1.38158519e-02  9.02377516e-02 -6.89021870e-02  3.59325670e-02\n -5.81188090e-02 -5.45757078e-02 -3.03999111e-02 -4.94066477e-02\n  8.77735380e-04  9.63675324e-03 -7.57687446e-03  1.95032991e-02\n  4.25769836e-02  7.90466815e-02 -8.88060927e-02 -6.27738377e-03\n -9.21057835e-02 -3.39993872e-02  2.17772536e-02  9.69951004e-02\n  7.26610199e-02 -1.11470908e-01  5.36291152e-02 -1.10442182e-02\n  1.38967633e-02 -3.94744612e-02  2.15874799e-02  4.05213237e-02\n  4.34836373e-03  5.52231167e-03  1.45945653e-01 -3.58333364e-02\n -2.07452010e-02  9.58349276e-03  4.50434014e-02 -3.58519368e-02\n  3.82099114e-02 -6.15945421e-02 -1.36330742e-02  7.58142024e-02\n  8.37421641e-02 -4.87964414e-02 -1.45498523e-02 -6.51917160e-02\n -1.91112012e-02 -5.55787198e-02 -3.56210209e-02  2.63673030e-02\n  6.16648374e-03  4.90362383e-02  1.12509234e-02  2.46099457e-02\n  4.17246670e-03 -5.42222857e-02 -5.52445501e-02 -4.27553356e-02\n  1.20520227e-01  8.74128714e-02 -5.28853536e-02  4.11955193e-02\n -6.74769506e-02  7.51620084e-02  2.91670933e-02 -2.71672681e-02\n -4.20088023e-02 -8.61962966e-04 -1.55405020e-02 -3.18162739e-02\n  2.14834511e-02 -2.26680748e-02 -3.46919596e-02 -5.19697554e-02\n  1.61060356e-02  3.42784077e-02  7.17253610e-02 -1.16241351e-03\n  7.71972686e-02 -7.99306408e-02 -5.51153384e-02 -1.85609624e-01\n  2.77259834e-02 -5.93006313e-02 -6.61426112e-02  5.81067055e-02\n -4.11998928e-02  4.84479079e-03  3.37999389e-02  4.46514366e-03\n  4.32719067e-02  8.75736848e-02 -4.61527426e-03 -2.45800558e-02\n  3.71506461e-03  5.96629046e-02  6.39488399e-02 -7.32229417e-03\n -2.57781036e-02  4.02506851e-02 -3.59356739e-02 -5.95816746e-02\n -6.56351075e-02 -7.88059333e-05 -8.07548761e-02  4.37985696e-02\n -2.36242451e-02  1.60338506e-01  7.74596408e-02  2.09952276e-02\n -2.00191811e-02  2.46181320e-02  3.80316824e-02  2.05673762e-02\n -1.17215529e-01  8.04394931e-02 -4.24466096e-02 -3.90265062e-02\n  5.55556864e-02 -5.43533191e-02 -4.27409336e-02  9.99779701e-02\n  1.39535563e-02  4.94880415e-02 -1.05159260e-01  6.46400154e-02\n -4.23162542e-02 -4.32971455e-02  7.89106414e-02 -5.18580386e-03\n  7.12303352e-03 -8.12853500e-03 -6.84918389e-02  2.83521935e-02\n -2.72306744e-02 -4.84746844e-02 -3.34860608e-02 -9.00475234e-02\n  7.66032934e-02 -1.67903572e-03  2.82284338e-02 -8.61227959e-02\n -1.55445235e-02  9.88821872e-03 -1.59777291e-02  7.84456823e-03\n  6.31505344e-03 -1.17786294e-02 -6.78453827e-03 -8.42041820e-02\n -8.82227346e-02 -2.11389046e-02  4.02046926e-02 -7.02305138e-02\n  5.55440597e-02  6.25636652e-02 -1.77300777e-02  4.72023711e-02\n -5.05375713e-02  1.49939014e-02 -2.00227764e-03 -2.06178147e-02\n -5.58032207e-02 -3.18870097e-02  6.55411780e-02 -8.87723826e-03\n -1.18381772e-02 -4.39064810e-03 -3.50128785e-02  9.78012010e-03\n -7.17791682e-03 -5.22210076e-03 -9.00016651e-02  9.31686908e-02\n  5.79363145e-02  3.30749922e-03 -1.35990186e-02 -1.65660873e-01\n -3.61721031e-02  7.29746819e-02 -2.06909981e-02  1.74434278e-02\n -1.01520969e-02  4.50982936e-02 -1.64003130e-02 -7.40036508e-03\n -3.41311889e-03  2.28731078e-03  1.47651397e-02  4.22360115e-02\n  2.66264868e-03 -6.12823572e-03  3.35928202e-02  6.07352816e-02\n  2.04311479e-02 -3.83387133e-03 -4.51899096e-02  3.05601954e-02\n  4.72769700e-02  1.54268607e-01  9.30117164e-03 -7.97976367e-03\n  2.99063157e-02 -1.85990687e-02  2.72585731e-02  1.60011481e-02\n  6.11079447e-02 -1.37183974e-02 -7.41580650e-02  1.34170309e-01\n -2.70688757e-02  2.74079125e-02  6.50726855e-02  1.05797611e-02\n  1.38135711e-02  6.65997863e-02  3.13498527e-02  7.03807920e-02\n  5.61856404e-02 -4.04608697e-02 -6.98271533e-03  4.32148986e-02\n  3.65395583e-02 -6.97020441e-02  1.99417560e-03 -2.38646083e-02\n -6.64290562e-02 -6.64668083e-02 -3.58068310e-02  4.39008884e-02\n  4.86742742e-02  4.12356220e-02 -4.88846116e-02 -5.48301600e-02\n  3.47738750e-02 -8.11216515e-03 -5.67513928e-02  7.36850267e-03\n -3.42938714e-02  4.14447561e-02 -1.73416808e-02 -2.28917040e-03]",
+        "email": "harshavardhannadendla9@gmail.com",
+        "phone": "+91 8008708670",
+        "skills": [
+          "Sso",
+          "Mongodb",
+          "Aws",
+          "React",
+          "Kotlin",
+          "Testing",
+          "C++",
+          "Typescript",
+          "Node.Js",
+          "Analytical Skills",
+          "Oracle",
+          "Go",
+          "Time Management",
+          "Machine Learning",
+          "Google Cloud",
+          "Data Engineering",
+          "Problem Solving",
+          "Javascript",
+          "Communication",
+          "C",
+          "Salesforce",
+          "Erp",
+          "Python",
+          "Terraform",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [
+            "B.TECH"
+          ],
+          "fields": [
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+          ],
+          "institutions": [
+            "Bapatla Engineering College",
+            "Vignana Bharathi junior College",
+            "St.Anns English Medium High School"
+          ],
+          "highest_degree": "B.TECH",
+          "highest_level": "bachelors",
+          "qualification_text": "B.TECH in AI"
+        },
+        "qualification_match": {
+          "match_score": 1.0,
+          "matched": true,
+          "details": "Qualification met: B.TECH",
+          "candidate_qualification": "B.TECH in AI",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.821,
+          "skill_score": 0.0,
+          "experience_score": 0.5,
+          "final_score": 0.26,
+          "matched_skills": [],
+          "missing_skills": [
+            "Java"
+          ],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.41,
+            "skill_contribution": 0.0,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.25
+          }
+        }
+      },
+      {
+        "resume_name": "Yakkaladevi Bhuvanesh",
+        "resume_filename": "MY RESUME.pdf",
+        "resume_text": "YAKKALADEVI BHUVANESH \n| Phone: \nEmail :\nLinkedin : \n|My Portfolio:\n|Github : \nyakkaladevibhuvanesh@gmail.com \n+919491962208\nwww.linkedin.com/in/yakkaladevi-bhuvanesh\nhttps://tinyurl.com/bhuvan \ngithub.com/Bhuvanesh9876\nPROJECTS \nEDUCATION \nINTERNSHIPS \nCAREER OBJECTIVE \nI'm a Computer Science student with hands-onexperience in full-stack web development and a solid grasp of\nprogramming and data structures. I'm always eager to learn and working on real-world projects\u2014especially in web\ndevelopment, AI, and cybersecurity. \nTECHNICAL SKILLS \nACHIEVEMENTS & CERTIFICATIONS \nBapatla Engineeering College (AIML), BAPATLA\nBachelor of Technology CGPA: 9.20(Upto VI sem)\nSri Chaitanya Jr. College, Vijayawada.\nIPE Percentage: 73.7%\nSri Chaitanya School, Vijayawada.\nSSC BSEAP Percentage: 96% \nOracle Foundations Associate \u2013 Oracleuniversity (2025)\nAI Fundamentals \u2013 IBM (2024)\nGenerative AI \u2013 Techgyan Technologies (2025)\nPower BI \u2013 Spypro Security Solutions pvt.Ltd (2025)\nMongoDB \u2013 SpringBoard (2024)\nAWS Flash \u2013 AWS training (2024)\nDeep Learning \u2013 IBM Skills Network (2025) \n \nC, Java,Python, JavaScript\nReact, React Native, Tailwindcss, HTML, CSS \nNodeJS, ExpressJS, WebSockets \nMongoDB, Firebase, SQL, Cloudinary, Supabase \nPower BI, GitHub, VS Code \n \nAn advanced AI-powered development tool that generates code snippets, debugs errors, and provides intelligent\nsuggestions. Features include multi-language support, real-time error detection, code optimization suggestions,\nand collaborative debugging sessions.\nHand Sign Emotion Detection & Alert System\nPython & OpenCV-based system detecting hand gestures and facial cues to trigger alerts for sad/fear \nemotions. \n \nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing machine learning models\nand handling real-time data processing.\nPYTHON Developer Intern \u2013 VaultOfCodes \nJul- 2024 \nWorked on developing and optimizing Python applications while strengthening problem-solving and programming\nskills. \nAI & ML Intern \u2013 InternPe\nProgramming Languages :\nFrontend : \nBackend :\nDatabases :\nTools & Platforms:\nCodeGenius - AICodeGenerator&Debugger  |  https://code-generator-website-sable.vercel.app\nJul- 2025\n2022-2026 \n2020-2022 \n2019-2020",
+        "resume_embedding": "[-7.09408671e-02  2.25364417e-02  1.58626139e-02  1.02073525e-03\n -2.25880146e-02  3.14732231e-02  4.03008983e-02 -2.62179691e-02\n -8.46285746e-03  2.96772551e-02  5.70601560e-02 -5.18689267e-02\n -1.59269141e-03  1.11435065e-02  1.31351844e-04 -4.77758497e-02\n -1.83579586e-02  6.20133393e-02 -7.07188472e-02  3.70626114e-02\n  8.70063752e-02 -5.44433743e-02  3.21957143e-03 -6.42997846e-02\n  8.33715033e-03  2.47436529e-03  5.97223863e-02  4.11384590e-02\n -1.02031328e-01 -2.03862980e-01  4.10056636e-02  1.02687692e-02\n  4.63320091e-02 -5.18703535e-02  6.06827438e-02 -2.23247055e-03\n -1.54668475e-02  6.10412620e-02  3.05341035e-02  5.74250706e-02\n -2.24119015e-02 -5.87903671e-02  2.15794984e-02 -6.29466027e-02\n -5.94958244e-03 -3.46874855e-02 -6.03972375e-02 -3.64776105e-02\n  7.73038268e-02  1.14665693e-02 -5.00314236e-02 -4.50597592e-02\n  6.14734516e-02  4.38964516e-02  1.10544832e-02  2.23371815e-02\n  5.23963906e-02  6.33125901e-02  5.74899539e-02  7.26497546e-02\n  6.61558509e-02  1.58900525e-02 -1.19891420e-01  9.62739661e-02\n  7.03122467e-02  2.32511777e-02 -3.64282206e-02  2.04636678e-02\n  1.81434099e-02 -1.31983673e-02 -1.27063701e-02  3.56500000e-02\n  2.51778937e-03  4.97229770e-03 -4.96132225e-02  6.09543733e-02\n -1.12596238e-02  6.03906624e-02 -1.59579925e-02 -2.53871027e-02\n  2.03782264e-02 -4.26919088e-02 -3.65229100e-02  6.25661463e-02\n -1.50389597e-02  1.57350898e-02  4.39862944e-02 -4.27560918e-02\n -2.53008995e-02 -6.41540363e-02 -5.50364926e-02 -2.15580687e-02\n  9.48259793e-03 -5.23037091e-02 -1.96746849e-02 -4.84452210e-02\n  4.78973389e-02  5.27019277e-02 -1.04805626e-01  8.60859379e-02\n  1.69146284e-02 -1.99892744e-02 -3.02448589e-02 -1.42123923e-02\n -3.10774632e-02 -4.19651270e-02 -2.48997565e-02 -4.41092700e-02\n  4.15661223e-02 -3.50414254e-02 -3.89465280e-02 -4.80250120e-02\n  1.17864208e-02 -2.30218116e-02  6.69898465e-02  7.90377855e-02\n -1.09156277e-02 -6.36521876e-02 -1.87025834e-02  2.65443083e-02\n  5.07849492e-02 -3.41946119e-03  3.98634300e-02 -3.15242633e-02\n  5.57946190e-02 -5.94160110e-02  9.69793461e-03  7.97853842e-02\n  6.66006207e-02  8.34559929e-03  1.01947933e-01 -3.52770719e-03\n -9.24563780e-03 -2.30911858e-02 -1.48755694e-02 -1.15614478e-02\n -7.40139708e-02 -1.19177969e-02  5.04109748e-02 -3.68543697e-04\n -1.68422777e-02 -4.93927002e-02 -7.68429227e-03 -8.13425854e-02\n -1.22294296e-02  5.38891517e-02 -7.48658553e-02  3.87115963e-02\n -9.09221172e-02 -5.82997724e-02 -5.96849881e-02 -1.47789791e-02\n  2.48405039e-02 -1.46425450e-02  3.24929226e-03  2.90167052e-02\n  2.61432361e-02  5.86609542e-02 -7.09431320e-02 -1.37183489e-02\n -7.35394135e-02 -2.25726049e-02  1.70762502e-02  8.28834400e-02\n  5.69080897e-02 -1.05323821e-01  7.82734230e-02 -3.22166905e-02\n  8.58795177e-03 -7.00535700e-02  1.56615339e-02  4.72307298e-03\n  4.25594207e-03  1.47552006e-02  1.42478541e-01 -4.68688570e-02\n -9.94954724e-03 -5.27337519e-03  1.33033982e-02 -4.49127033e-02\n  5.93061149e-02 -5.87321483e-02 -1.94752254e-02  6.35488704e-02\n  9.48785767e-02 -1.07886884e-02 -2.95146126e-02 -3.37461829e-02\n -1.38447378e-02 -7.01890290e-02 -6.94019496e-02  2.87048277e-02\n -4.05759402e-02  4.63524349e-02  2.11674757e-02  4.27090637e-02\n -8.94081686e-03 -8.20838213e-02 -1.48520386e-02 -2.97656171e-02\n  1.16887398e-01  7.06396997e-02 -5.33284508e-02  2.09519137e-02\n -4.72614579e-02  1.77238919e-02  3.55499648e-02 -3.30614634e-02\n -4.10273671e-02  8.29228945e-03 -3.99780460e-02 -3.43787894e-02\n  2.28453781e-02 -2.45114882e-02 -4.35003377e-02 -5.22674620e-02\n  3.46555584e-03  1.65811442e-02  4.02767509e-02 -4.01274674e-03\n  4.73093465e-02 -8.22840109e-02 -6.39249086e-02 -1.85033500e-01\n  2.25345511e-02 -7.69924149e-02 -5.37410378e-02  5.01425825e-02\n -5.35325631e-02  8.18241679e-04  3.27450000e-02 -7.19210831e-03\n  3.51066440e-02  1.11907162e-01  2.36183945e-02 -2.02068724e-02\n -1.22361993e-02  4.15956751e-02  6.08526580e-02 -3.16413422e-03\n  2.81086587e-03  8.40507299e-02 -8.45060404e-03 -3.60971242e-02\n -7.97620863e-02 -1.01072285e-02 -8.57148543e-02  2.80271247e-02\n -6.59868941e-02  1.34951368e-01  8.06775093e-02  3.84679362e-02\n -3.38572673e-02  5.46290837e-02  3.34676243e-02  5.89811951e-02\n -1.21034808e-01  1.29580006e-01 -5.00039719e-02 -3.46930176e-02\n  2.83988751e-02 -3.39658819e-02 -1.20851882e-02  9.28118676e-02\n  1.92122627e-02  9.12207831e-03 -8.78817290e-02  4.42939363e-02\n -7.39045888e-02 -2.85689551e-02  5.99679835e-02 -1.44912219e-02\n  1.08738346e-02  2.87717544e-02 -4.23816144e-02  8.46365467e-02\n -2.09115054e-02 -3.12357619e-02 -7.26451352e-02 -6.46096542e-02\n  5.78359142e-02 -2.15004757e-02  1.98160205e-02 -5.54911457e-02\n -5.83810881e-02  1.00946939e-02  1.37608377e-02  1.45359943e-02\n  1.04594817e-02 -3.19766961e-02 -2.83183268e-04 -4.50281613e-02\n -5.46273030e-02 -1.34150162e-02  5.67332059e-02 -6.38986602e-02\n  7.73182213e-02  6.94297627e-02  8.76771938e-03  5.94749525e-02\n -8.14693943e-02  1.61003158e-03 -2.48127151e-02 -1.55507773e-02\n -4.69725803e-02 -1.65029354e-02  7.09859654e-02 -1.04098569e-03\n -1.94517076e-02 -5.36684674e-05 -2.38226391e-02  1.47235701e-02\n -5.12875207e-02  5.47190895e-03 -7.98345655e-02  1.08464472e-01\n  5.83878048e-02  3.79206203e-02 -8.82973801e-03 -1.59636363e-01\n -6.24523405e-03  6.33368418e-02 -3.66451927e-02  3.77477799e-03\n -8.38631485e-03  4.50985655e-02 -4.31729332e-02 -3.70345898e-02\n -2.05822922e-02 -1.28781619e-02  3.88975479e-02  4.23598140e-02\n -4.83337678e-02 -1.62965655e-02  4.80195321e-02  2.07646843e-02\n -1.53486673e-02 -1.07856803e-02 -7.34398961e-02  2.63163373e-02\n  2.35543493e-02  1.23530507e-01 -5.97149739e-03 -1.48799336e-02\n  4.62649576e-02 -3.99459004e-02 -7.10372406e-04  3.23073678e-02\n  3.11522800e-02 -1.65629815e-02 -3.30829769e-02  1.27424195e-01\n -1.48216216e-02  2.71124076e-02  1.00578956e-01 -1.18746227e-02\n  1.26438504e-02  3.86010073e-02  2.36105788e-02  6.79691955e-02\n  6.98650852e-02 -4.31229360e-02  1.09040868e-02  7.98951015e-02\n  8.07138626e-03 -4.00156751e-02 -4.20067366e-03 -6.02094783e-03\n -2.90124621e-02 -6.85613453e-02 -2.51404643e-02  5.45583703e-02\n  9.73031074e-02  3.23776640e-02 -2.25156229e-02 -2.02043802e-02\n -1.01826275e-02 -1.15003977e-02 -4.65529636e-02  2.44838446e-02\n -2.63020173e-02  4.39701453e-02 -2.04283055e-02 -3.18790860e-02]",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "skills": [
+          "Cybersecurity",
+          "Sso",
+          "Opencv",
+          "Mongodb",
+          "Aws",
+          "React",
+          "Debugging",
+          "Css",
+          "Express.Js",
+          "Node.Js",
+          "Spring",
+          "Html",
+          "Data Science",
+          "Game Development",
+          "React Native",
+          "Python",
+          "Go",
+          "Oracle",
+          "Machine Learning",
+          "Problem Solving",
+          "Deep Learning",
+          "Javascript",
+          "Sql",
+          "Flask",
+          "Web3",
+          "Network Security",
+          "Java",
+          "C",
+          "Git",
+          "Power Bi",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [
+            "Bachelor of Technology"
+          ],
+          "fields": [
+            "Computer Science",
+            "AI",
+            "Machine Learning",
+            "Cybersecurity",
+            "Education"
+          ],
+          "institutions": [
+            "Bapatla Engineeering College (AIML), BAPATLA",
+            "Sri Chaitanya Jr. College, Vijayawada.",
+            "Sri Chaitanya School, Vijayawada."
+          ],
+          "highest_degree": "Bachelor of Technology",
+          "highest_level": "bachelors",
+          "qualification_text": "Bachelor of Technology in Computer Science"
+        },
+        "qualification_match": {
+          "match_score": 1.0,
+          "matched": true,
+          "details": "Qualification met: Bachelor of Technology",
+          "candidate_qualification": "Bachelor of Technology in Computer Science",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.832,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.816,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.416,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Yakkaladevi Bhuvanesh",
+        "resume_filename": "RESUME.pdf",
+        "resume_text": "YAKKALADEVI BHUVANESH\n\u00a7 Bhuvanesh98 | \u00ef Yakkaladevi Bhuvanesh | # yakkaladevibhuvanesh@gmail.com\n| H +91-9491962208\nWork Experience\nAI ML Intern , InternPe\nJune 2025 \u2013 July 2025\nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing machine learning\nmodels and handling real-time data processing.\nPYTHON Developer Intern , VaultOfCodes\nJuly 2024 \u2013 August 2024\nWorked on developing and optimizing Python applications while strengthening problem-solving and programming skills.\nProjects\nAI Recruitment Partner (Python, Streamlit, Llama 3, Whisper, Ollama)\nBuilt a web-based recruitment tool that cut candidate screening time by 50% for 100+ applicants. Used\nLlama 3 and Whisper for skill extraction, tailored questions, and real-time voice response evaluation.\nProvided resume feedback, keyword alignment, and AI-driven enhancements with local NLP models.\nFake Image Detection (Python, Streamlit, TensorFlow, Matplotlib, OpenCV, Scikit-learn, SQLite)\nDesigned a fake image detection pipeline using Error Level Analysis, edge detection, and noise filtering to\namplify forgery artifacts. Built and trained a custom CNN for high-accuracy classification of manipulated\nimages, merging deep learning with image forensics.\nCode Genius \u2013 AI Code Generator and Debugger (React-vite, MongoDB, Tailwindcss, openrouter)\nAn advanced AI-powered development tool that generates code snippets, debugs errors, and provides intelligent suggestions. Features include multi-language support, real-time error detection, code optimization\nsuggestions, and collaborative debugging sessions.\nEducation\n2022 - Present\nBachelor\u2019s Degree at Bapatla Engineering college\n(CGPA: 9.20/10.0)\n2022\nSri Chaitanya Junior College Board of Intermediate Education\n(Percentage - 75.5)\n2020\nSri Chaitanya Techno School Board of Secondary Education\n(Percentage - 100.0)\nAchievements\nCertifications:\nOracle certified Foundations Associate \u2013 Oracle university (2025), AI Fundamentals \u2013\nIBM (2024), AWS Flash \u2013 AWS training (2024).\nSkills\nLanguages:\nPython, C, Java core\nFull-Stack:\nHTML, CSS, JavaScript, React.js, Express.js, MongoDB, MySQL\nAI/ML Tools:\nTransformers, TensorFlow, Keras, Scikit-learn\nVersion Control:\nGit, GitHub\nSoftware Engineering:\nData Structures & Algorithms(DSA), Machine Learning, NLP",
+        "resume_embedding": "[-0.05772822  0.01865203  0.02242736 -0.0035642  -0.02407087  0.02470662\n  0.02171399 -0.03721264 -0.01085892  0.02348222  0.05673336 -0.08203619\n -0.01039727  0.02713286  0.00717092 -0.04620919 -0.00944607  0.07759651\n -0.06372007  0.04024561  0.08566018 -0.05332769  0.00857652 -0.10004523\n  0.01938175  0.0172166   0.04907609  0.03326504 -0.09275267 -0.18179893\n  0.01185642  0.01808244  0.0219074  -0.04620219  0.06910235 -0.01875216\n -0.01169071  0.06691886  0.05155097  0.05985649 -0.03302082 -0.06215531\n  0.0152851  -0.06256514 -0.00544018 -0.01551397 -0.08123279 -0.04318884\n  0.07287618 -0.00262682 -0.06622779 -0.02852144  0.07643384  0.04386696\n  0.03153786  0.02970712  0.05780561  0.06156068  0.05986821  0.0833213\n  0.07613371  0.00851594 -0.100077    0.11987805  0.04673207  0.02873624\n -0.04184094  0.00863416  0.00079098 -0.01132588 -0.01333181  0.0270593\n -0.00668556  0.01791304 -0.06208966  0.06535072  0.00468932  0.05403889\n -0.0083288  -0.02750169  0.02158649 -0.025693   -0.02560259  0.04340708\n -0.02705789 -0.00623397  0.03559204 -0.02975237 -0.02747369 -0.0682756\n -0.05040182 -0.02706179 -0.00083429 -0.03409301 -0.0292407  -0.04533266\n  0.0274842   0.01958852 -0.08253399  0.07094274  0.02275209 -0.01818904\n -0.02917061  0.00547512 -0.03560317 -0.05587337 -0.02864143 -0.04688546\n  0.04244087 -0.03281503 -0.03215292 -0.04533728  0.00732657 -0.04820987\n  0.05096946  0.10728859 -0.03676336 -0.06103707 -0.0275105   0.03060959\n  0.06537729  0.00290279  0.02324576 -0.04021839  0.03506381 -0.06364834\n  0.00541348  0.0868891   0.06194243  0.0204728   0.10891674  0.00096753\n -0.01317224 -0.02850619 -0.01982811 -0.01491034 -0.06028024 -0.00304609\n  0.06124053 -0.00090758 -0.04119844 -0.04938559 -0.00332832 -0.06690606\n -0.02787633  0.06431293 -0.05454287  0.04340432 -0.09533086 -0.06499483\n -0.05356175 -0.01841979  0.01880262 -0.02000791  0.03150643  0.01585139\n  0.0118802   0.06812941 -0.07180568 -0.00179287 -0.08740718 -0.0064571\n  0.01119054  0.08038805  0.04962413 -0.1123865   0.06948993 -0.01446978\n  0.00402802 -0.0494207   0.03087806  0.0228816   0.03103592  0.00525859\n  0.16094969 -0.02981504 -0.00272671  0.0157868   0.01261062 -0.0594266\n  0.04193694 -0.04834329 -0.01317011  0.07857583  0.10676479 -0.01977914\n -0.02657835 -0.03788909 -0.00281298 -0.05784976 -0.06559857  0.04081294\n -0.03285123  0.03446352  0.03658273  0.03917021  0.00828285 -0.09429187\n -0.02943484 -0.04921077  0.08898228  0.07872522 -0.05070022  0.00061522\n -0.05334471  0.02763209  0.01154384 -0.05245009 -0.06263491  0.0217886\n -0.03385972 -0.0495646   0.00312183 -0.03018052 -0.02858805 -0.03632749\n  0.00093007  0.01181742  0.04817466  0.00710834  0.05749812 -0.08835948\n -0.05389502 -0.19012523  0.00045863 -0.06978199 -0.04608185  0.07745807\n -0.08690333  0.00422284  0.03759606  0.01460249  0.06311947  0.11008725\n  0.0145481  -0.01080329 -0.01835231  0.03941961  0.07947763 -0.02038354\n -0.00033631  0.09276759 -0.02364236 -0.06373389 -0.07256163 -0.00834596\n -0.06834703  0.0212374  -0.02909311  0.14330055  0.07430681  0.02740552\n -0.02040939  0.05450083  0.01753226  0.04381774 -0.11610281  0.12188512\n -0.0458695  -0.02097823  0.04122338 -0.0202905   0.00842895  0.08016524\n  0.00406591 -0.00313786 -0.10839488  0.07371556 -0.07498684 -0.05359227\n  0.0600189  -0.01558663 -0.00267369  0.02037945 -0.05947568  0.03568798\n -0.02147342 -0.01239761 -0.0745826  -0.06855369  0.06203633  0.00973372\n  0.01316068 -0.03365215 -0.0609394   0.01163687 -0.01026286  0.01869282\n -0.02574342 -0.02771709 -0.00329968 -0.04158205 -0.05631977 -0.02627633\n  0.07150116 -0.04800337  0.0611737   0.06248663 -0.00308073  0.05345173\n -0.09350026  0.0032169  -0.01573872 -0.0278745  -0.02587887 -0.01536047\n  0.07681503 -0.00513928  0.0022332   0.01266649 -0.0188335  -0.0074359\n -0.04411694 -0.03116669 -0.07165594  0.08476873  0.06895094  0.03084237\n -0.01613914 -0.14202243 -0.00259079  0.07404183 -0.01463346  0.01533739\n  0.00531891  0.02562641 -0.02615422 -0.02541909 -0.00572898 -0.00970765\n  0.04477335  0.05606934 -0.0400518   0.00775026  0.04995117  0.06398178\n -0.00420571 -0.01707096 -0.06300812  0.0237605   0.03660055  0.12007354\n -0.01602939  0.00071745  0.05316987 -0.00044004 -0.00270922  0.02820997\n  0.04554729 -0.02666596 -0.03857807  0.11907117 -0.03805951  0.00491708\n  0.08687387  0.00337696  0.03017868  0.05057459  0.01063205  0.08029112\n  0.07867734 -0.03679285  0.00161757  0.06351781  0.00911297 -0.05433369\n  0.00149552 -0.00245829 -0.03960175 -0.0626287  -0.05343439  0.03960236\n  0.0813846   0.05323685 -0.02779294 -0.04493144  0.00685348 -0.01395\n -0.06015914  0.01959458 -0.01415275  0.01731873 -0.01044711 -0.02285933]",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "skills": [
+          "Sso",
+          "Opencv",
+          "Mongodb",
+          "Aws",
+          "React",
+          "Debugging",
+          "Css",
+          "Matplotlib",
+          "Express.Js",
+          "Html",
+          "Version Control",
+          "Data Analysis",
+          "Feature Engineering",
+          "Mysql",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Oracle",
+          "Machine Learning",
+          "Keras",
+          "Problem Solving",
+          "Deep Learning",
+          "Javascript",
+          "Sql",
+          "Flask",
+          "Java",
+          "C",
+          "Sqlite",
+          "Tensorflow",
+          "Git",
+          "Transformers",
+          "Natural Language Processing",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [],
+          "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+          ],
+          "institutions": [
+            "Bachelor\u2019s Degree at Bapatla Engineering college",
+            "Sri Chaitanya Junior College Board of Intermediate Education",
+            "Sri Chaitanya Techno School Board of Secondary Education"
+          ],
+          "highest_degree": null,
+          "highest_level": null,
+          "qualification_text": "in Software Engineering"
+        },
+        "qualification_match": {
+          "match_score": 0.5,
+          "matched": false,
+          "details": "Could not determine qualification match",
+          "candidate_qualification": "in Software Engineering",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.831,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.815,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.415,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Shaik Roohi Rehana Begum",
+        "resume_filename": "roohi_11_11_2025_ (5).pdf",
+        "resume_text": "Shaik Roohi Rehana Begum\nBapatla, Andhra Pradesh\nEmail: roohi.2204@gmail.com \u2014 Phone: +91-8106432605\nLinkedIn: LinkedIn \u2014 GitHub: GitHub\nProfile Summary\nAI Engineer with hands-on experience in Generative AI, Deep Learning, NLP, and Computer Vision. Skilled in\nbuilding retrieval-augmented systems, LLM pipelines, preprocessing frameworks, and scalable AI applications\nusing Python, TensorFlow, Keras, FastAPI, and MongoDB. Strong proficiency in dataset processing, vector\nsearch, model refinement, and end to end deployment of AI systems.\nEducation\nB.Tech in Artificial Intelligence and Machine Learning\n2022\u20132026\nBapatla Engineering College, Bapatla\nCGPA: 9.5/10\nClass XII \u2013 Vikas Vidhya Vihar, Vinjamuru\n2020\u20132022\nPercentage: 96%\nClass X \u2013 Sri Netaji Vikas, Vinjamuru\n2020\nGPA: 10/10\nTechnical Skills\nProgramming: Python, C, JavaScript, HTML, CSS\nAI/ML: Generative AI, Deep Learning, NLP, Computer Vision, RAG Architectures\nFrameworks: TensorFlow, Keras, YOLOv8, Scikit-learn, OpenCV, HuggingFace\nTools: Google Gemini LLM, ChromaDB, Git, Jupyter, VS Code, Google Colab\nDeployment / Databases: FastAPI, MongoDB\nAPIs: REST APIs, OpenWeatherMap API\nInternships and Major Projects\nGenerative AI Intern \u2013 Business Intelligence RAG Dashboard\nGenAI Workshop\n\u2022 Engineered a scalable retrieval-augmented workflow using HuggingFace embeddings and ChromaDB,\nenhancing document retrieval accuracy by 80%.\n\u2022 Created automated summarization and insight features using the Gemini LLM, lowering manual review\ntime by 40%.\n\u2022 Streamlined query routing and chunk handling processes, increasing response efficiency by 30%.\nGitHub link: https://github.com/Roohi2204/RAG-Financial-Analyst-Pipeline\nComputer Vision Intern \u2013 Real Time Object Detection (YOLOv8)\nGenAI Workshop\n\u2022 Built a real time detection system with YOLOv8m and OpenCV, achieving 25\u201330 FPS during live\ninference.\n\u2022 Refined prediction accuracy by 22% through threshold tuning and improved non maximum suppression.\n\u2022 Constructed a deployable computer vision pipeline suitable for edge-based environments.\nGitHub link: https://github.com/Roohi2204/YOLOv8-RealTime-Webcam-Detector\nMachine Learning Intern \u2013 Breast Cancer Detection\nInternPe\n1\n\u2022 Built a neural network model using Keras achieving 93.8% accuracy on the Wisconsin Breast Cancer\ndataset.\n\u2022 Boosted training consistency by 15% via normalization, stratified sampling, and enhanced validation\nmethods.\n\u2022 Authored the full ML workflow including preprocessing, feature extraction, tuning, and structured evaluation.\nGitHub link: https://github.com/Roohi2204/BioBERT-Cancer-Classifier-Flask\nPython Developer Intern \u2013 Real Time Weather Application\nVault of Codes\n\u2022 Designed a real time weather dashboard using the OpenWeatherMap API, reducing response delay by\n20%.\n\u2022 Enhanced maintainability by 35% using modular parsing functions and structured API integration.\n\u2022 Automated update intervals and data validation ensuring accurate live weather information.\nGitHub link: https://github.com/Roohi2204/Real-Time-Weather-AppProject Highlights\n\u2022 Designed LLM-powered functions including prompt structures, vector retrieval, and reasoning-based\nautomation.\n\u2022 Connected ChromaDB with LLM systems to perform semantic search, dense retrieval, and contextual\nexpansion.\n\u2022 Built preprocessing frameworks that increased dataset readiness and lowered ML training duration by\n30%.\n\u2022 Applied evaluation methods such as precision, recall, accuracy, F1 score, and structured cross validation.\n\u2022 Created modular AI components for tasks involving classification, detection, embedding generation, and\ninference.\n\u2022 Utilized Git-based workflows including branching, issue tracking, and structured version management.\nLanguages\nEnglish (Fluent), Hindi (Fluent), Telugu (Native)\n2",
+        "resume_embedding": "[-0.04346348  0.02801183 -0.01778076  0.02038663 -0.04639689  0.03518596\n  0.00779527 -0.0392263  -0.00247162  0.03172431  0.05217414 -0.07665933\n -0.02786235  0.02632266  0.03712178 -0.05350531 -0.00643389  0.06031201\n -0.053849    0.0546845   0.11452767 -0.05311074  0.00585678 -0.08326695\n  0.033892   -0.00305199  0.04571617  0.03072021 -0.06777269 -0.19802442\n  0.00274302  0.03551336  0.00222427 -0.02022869  0.02837142 -0.00744618\n -0.03100008  0.06365296  0.04112647  0.04733759  0.0099763  -0.05462512\n  0.01690671 -0.08218524  0.00467507 -0.03147505 -0.05911815 -0.06988285\n  0.05563003  0.01100445 -0.07971516 -0.06765079  0.05938787  0.03849634\n  0.01932469  0.03422288  0.04503433  0.03270403  0.06802583  0.0608328\n  0.06858429  0.03999864 -0.13046445  0.12943737  0.0706631   0.03892118\n -0.03302193  0.00564117 -0.01560108 -0.02341703 -0.00140974  0.06732418\n -0.0110837  -0.00204554 -0.08754145  0.07947631  0.02810859  0.05621282\n -0.02889917  0.00751159  0.01706572 -0.03378076 -0.02787807  0.02507177\n -0.04048723  0.00596908  0.00275194 -0.04446538 -0.01925469 -0.05472057\n -0.02842383 -0.01274667  0.03927117 -0.0358409  -0.01312995 -0.02759926\n  0.01276658  0.0519798  -0.05403149  0.07260358  0.0367263   0.00137049\n -0.01327935 -0.031069   -0.06361558 -0.03446152 -0.0007752  -0.00287217\n  0.05010797 -0.02015096 -0.01122925 -0.04944671 -0.01717296  0.00981469\n  0.04956538  0.04415963 -0.001695   -0.10083139 -0.04822353  0.02514811\n  0.01475948  0.02021281 -0.00288895 -0.06804281  0.04838387 -0.05027967\n  0.05784938  0.10265087  0.08490302 -0.01366216  0.09775157  0.02510851\n -0.01517669 -0.01403191 -0.00313174 -0.02869225 -0.05582461 -0.00215598\n  0.02851385 -0.00080388 -0.01649028 -0.05646703 -0.03208928 -0.06069002\n  0.00096829  0.07702576 -0.05814476  0.05107902 -0.04657433 -0.08812598\n -0.04784381 -0.0063292  -0.00517783  0.00338914  0.00163173  0.04338653\n  0.0119446   0.09106231 -0.07656787  0.01210975 -0.08003011 -0.01496796\n  0.02758048  0.08121049  0.0450653  -0.12520495  0.03377076 -0.01873783\n  0.02518321 -0.0590566   0.05722684  0.01739866  0.01817139 -0.00417449\n  0.15153609 -0.02317133  0.0026947   0.00612546  0.00877312 -0.05127504\n  0.02942451 -0.06797044 -0.01988719  0.07285686  0.08265577 -0.00975872\n -0.04875591 -0.0310578  -0.07568596 -0.03129317 -0.04122984  0.04873742\n -0.0289787   0.04727069  0.01993415 -0.0020304   0.00837962 -0.08803589\n -0.00526066 -0.03060541  0.0769609   0.09267005 -0.0864441   0.02714103\n -0.06489745  0.06927983  0.0187183  -0.02801808 -0.04736966  0.01533458\n -0.0337246  -0.0090539   0.01773751 -0.04266401 -0.02335575 -0.04502815\n  0.01463462  0.02620645  0.03609915  0.01789377  0.0573273  -0.09400092\n -0.07227683 -0.16418114  0.01497357 -0.05192681 -0.05987517  0.06075507\n -0.04534318 -0.00432119  0.01182484  0.00241291  0.0406829   0.08958612\n  0.01437831 -0.01720815 -0.00275458 -0.00630682  0.05468094 -0.03649137\n  0.01809319  0.03171945  0.00322122 -0.06825608 -0.07377249 -0.00071986\n -0.0698754   0.05981912 -0.04365409  0.12403847  0.10656194  0.04282198\n -0.03865518  0.04054446  0.0609583   0.06058419 -0.13343671  0.10543381\n -0.03605069 -0.01757413  0.04407733 -0.01466948 -0.02122272  0.07626004\n  0.00566389 -0.01414867 -0.0909845   0.08869901 -0.08230341 -0.04305001\n  0.04461296  0.00113292  0.02535102  0.01727585 -0.07304678  0.05660866\n -0.02041545 -0.03913345 -0.09118574 -0.04997081  0.08534068 -0.02288609\n  0.00171959 -0.05318382 -0.05886463  0.00447075 -0.04060314  0.01890133\n -0.01878083 -0.0345176   0.00702632 -0.04457559 -0.03809656 -0.02409612\n  0.03326837 -0.0501881   0.05380804  0.0505655  -0.01239237  0.05021843\n -0.07163002  0.00876212 -0.02898263 -0.03455918 -0.05337946  0.01314395\n  0.06118004  0.01276876  0.00723461 -0.01389833 -0.02813464 -0.00707486\n  0.01419654  0.02582492 -0.04354989  0.0885911   0.05852377  0.00673331\n -0.0163956  -0.16638613 -0.04564679  0.05252157 -0.03275358  0.03102792\n  0.00824798  0.03071515 -0.03116551 -0.02309571 -0.02873747 -0.00354546\n  0.06435024  0.02456396 -0.00421066 -0.00416059  0.01556636  0.03808195\n -0.03691183  0.01066257 -0.05945008  0.00135503  0.04426762  0.14078894\n -0.00584354  0.00873199  0.02750805 -0.02913633 -0.00762103  0.00752234\n  0.03373603 -0.00277228 -0.07191183  0.12990579  0.0113858   0.0261813\n  0.08933542  0.02027789  0.02420885  0.01767858  0.00549225  0.07825144\n  0.09030787 -0.02443302 -0.00616542  0.06738979  0.02999239 -0.09576017\n -0.00298691 -0.00324413 -0.01951507 -0.0515319  -0.04341393  0.02448299\n  0.08175851  0.05370363 -0.0340233  -0.03681755  0.02175503 -0.02384172\n -0.0869582   0.02477087  0.01032886  0.05943643 -0.04931423 -0.01839692]",
+        "email": "roohi.2204@gmail.com",
+        "phone": "+91 8106432605",
+        "skills": [
+          "Opencv",
+          "Mongodb",
+          "Aws",
+          "Architecture",
+          "Css",
+          "Computer Vision",
+          "Model Deployment",
+          "Html",
+          "Data Visualization",
+          "Fastapi",
+          "Feature Engineering",
+          "Scala",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Time Management",
+          "Machine Learning",
+          "Neural Networks",
+          "Keras",
+          "Deep Learning",
+          "Code Review",
+          "Javascript",
+          "Flask",
+          "Rest Api",
+          "Java",
+          "Hugging Face",
+          "C",
+          "Tensorflow",
+          "Git",
+          "Natural Language Processing",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [
+            "LLM",
+            "B.Tech",
+            "as"
+          ],
+          "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+          ],
+          "institutions": [
+            "Bapatla Engineering College, Bapatla"
+          ],
+          "highest_degree": "LLM",
+          "highest_level": "masters",
+          "qualification_text": "LLM in Artificial Intelligence"
+        },
+        "qualification_match": {
+          "match_score": 1.0,
+          "matched": true,
+          "details": "Qualification met: LLM",
+          "candidate_qualification": "LLM in Artificial Intelligence",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.824,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.812,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.412,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Shaik Shameem",
+        "resume_filename": "Shameem.pdf",
+        "resume_text": "SHAIK SHAMEEM\n# shameemsk002@gmail.com\n\u0083 +91 9381861106\n\u00ef LinkedIn \u00a7 GitHub\nPROFESSIONAL SUMMARY\nResults-oriented Artificial Intelligence and Machine Learning undergraduate (GPA: 8.88) with strong expertise\nin Python, AI, Machine Learning, Deep Learning, Generative AI, and Pega. Demonstrated ability to analyze\ncomplex problems, take calculated risks, and deliver solutions under high-pressure environments. A proactive\nsocial activist and founder of a service-driven society, leading a committed team to support and uplift the needy\nthrough education and essential resources. Highly motivated to contribute technical excellence, adaptability, and\na strong work ethic to organizational success while building scalable, impactful solutions.\nSKILLS\n\u2022 Programming: Python, Java (Basics), R\n\u2022 AI/ML: Generative AI, Deep Learning, Machine Learning, NLP, Computer Vision, RAG Architectures\n\u2022 Web Technologies: HTML, CSS\n\u2022 Frameworks: TensorFlow, Keras, YOLOv8, Scikit-learn, OpenCV, HuggingFace\n\u2022 Tools: Google Gemini LLM, ChromaDB, Git, Jupyter, VS Code, Google Colab, Pega(Workflow Automation)\n\u2022 Deployment/Databases: MongoDB, SQL\n\u2022 Soft Skills: Problem Solving, Teamwork, Communication\nEDUCATION\n\u2022 B.Tech Artificial Intelligence Machine Learning\nSep 2022 \u2013 May 2026\nBapatla Engineering College, Andhra Pradesh \u2014 CGPA: 8.88/10\n\u2022 HSC \u2013 Physics, Chemistry, & Mathematics\n2020 \u2013 2022\nDreamz Junior College \u2014 Percentage: 89.6%\n\u2022 BSEAP \u2013 SSC\n2020\nDreamz High School \u2014 Percentage: 95.8%\nEXPERIENCE\n\u2022 Generative AI Intern\u2013 Business Intelligence RAG Dashboard\nGenAI Workshop\nWorked as a Generative AI Intern, applying prompt engineering and GenAI tools to develop intelligent, contextaware solutions. Gained hands-on experience in LLM integration, prompt optimization, and scalable workflow\ndesign, with a focus on response accuracy and efficiency.\n\u2022 Pega Certified System Architect \u2013 TalentSprint\n2025\nWorked as a Pega Intern, gaining hands-on experience in case management, form design, data handling, and\nworkflow automation using the Pega platform. Developed a strong understanding of rule-driven, enterpriselevel application development and practical problem-solving.\n\u2022 AI Prompt Engineering Intern \u2013 Vaultofcodes (Remote)\n2024\nApplied Generative AI and prompt engineering to develop an AI Tutor system, focusing on intelligent responses, workflow optimization, and scalable AI solution design.\n\u2022 Web Technologies Intern \u2013 MotionCut (Remote)\n2024\nApplied front-end development skills using HTML, CSS, and JavaScript to build responsive interfaces and\ninteractive forms. Gained hands-on experience in UI design, client-side validation, and responsive web development, strengthening practical understanding of real-world web application workflows.\nPROJECTS\n\u2022 Generative AI\u2013Driven Business Intelligence RAG Dashboard: Developed and implemented a scalable Business Intelligence dashboard powered by Retrieval-Augmented Generation (RAG) to enable intelligent data retrieval and analysis. Leveraged HuggingFace embeddings and ChromaDB to significantly enhance document\nretrieval accuracy, while integrating the Gemini LLM for automated summarization and actionable insight generation. Optimized query routing and chunk handling mechanisms to improve response efficiency and ensure\na high-performance, user-centric analytics experience.\n\u2022 Student Registration System \u2013 Pega Platform: Designed and implemented a Student Registration System\nusing the Pega platform, applying core concepts of case lifecycle management, form configuration, data modeling, and rule-based workflow automation. Developed structured, end-to-end business processes for student\nonboarding, validation, and data handling, strengthening practical understanding of enterprise-grade application development and business process automation.\n\u2022 AI Tutor System \u2013 Prompt Engineering Generative AI: Designed and developed an AI-powered Tutor system\nusing Generative AI tools and prompt engineering techniques to deliver intelligent, context-aware responses.\nImplemented optimized prompt workflows and AI integrations to enhance response relevance, system efficiency, and solution scalability, enabling a personalized and user-centric learning experience.\n\u2022 Responsive Website Registration Form \u2013 Web Technologies: Designed and developed a responsive website\nusing HTML, CSS, and JavaScript, applying core front-end principles for cross-device compatibility. Implemented an interactive registration form with client-side validation, gaining hands-on experience in UI design,\nresponsive layouts, and real-world web application workflows.\nCERTIFICATIONS & ACHIEVEMENTS\n\u2022 Pega Cerified System Architect(PCSA) \u2013 TalentSprint[Pega]\n\u2022 Introduction to IoT \u2013 NPTEL(81%)\n\u2022 Privacy and Security in Online Social Media \u2013 NPTEL(72%)\n\u2022 Introduction to LLM \u2013 NPTEL(69%)\n\u2022 All India Rank 26, Advanced Category \u2013 National AI Olympiad (NAIO) 2025, organized by TalentSprint - part\nof Accenture\nACADEMIC ACHIEVEMENTS\n\u2022 Selected for the exclusive Honors track in AI & ML.\n\u2022 Secured 1st prize in the Literary Event held by Awaaz Club on Engineering Day, Awarded by the College\nPresident.\n\u2022 2nd place\u2013 Seminar Competition on Engineering Day (College level).\n\u2022 Participated in various literary events and competitions organized by different colleges and earned recognition\nfor creative thinking and public speaking abilities\nEXTRACURRICULAR ACTIVITIES\n\u2022 Head Member, AWAAZ Club\nActively participated and involved in organizing literary events including debates, creative writing, poetry\nrecitations, and book discussions, strengthening communication, public speaking, and critical thinking skills\nthrough collaboration, event planning, and written contributions.\n\u2022 Played a central role in hosting college and departmental events, showcasing effective communication and\npresentation skills.\n\u2022 Participated in technical seminars and discussions on recent developments in Artificial Intelligence and Machine Learning.\nLEADERSHIP & SOCIAL IMPACT\n\u2022 Founder & Core Member \u2013 Mishaye Pupil Society\nLead a collaborative team in planning and executing fund-driven service initiatives aimed at supporting underprivileged communities, with a focus on education assistance and basic necessities.\nLANGUAGES & INTERESTS\n\u2022 Languages: English, Hindi, Telugu, Urdu\n\u2022 Interests: Creative Writing, Community Service & Social Awareness, Continuous Learning, Mentorship",
+        "resume_embedding": "[-6.09250143e-02  4.39708531e-02  8.88786372e-03  5.21922996e-03\n -2.63897050e-02  3.21975350e-02  3.20066661e-02 -1.67943351e-02\n -5.33531010e-02  6.43302053e-02  4.09331433e-02 -6.30188286e-02\n -6.66211099e-06  2.21441109e-02  3.87508981e-02 -7.00957775e-02\n  1.00377551e-03  4.27263230e-02 -5.41127287e-02  2.11901534e-02\n  6.81430623e-02 -5.63486777e-02 -1.15633532e-02 -9.44794267e-02\n -3.68187879e-03  3.80496308e-02  4.77263741e-02  2.87635569e-02\n -7.84452111e-02 -1.89591020e-01  3.20290364e-02  4.96331379e-02\n  4.14031334e-02 -5.77981211e-02  3.67950983e-02 -2.21215039e-02\n -2.19751317e-02  6.70343935e-02  1.39760152e-02  4.54802588e-02\n -1.75839979e-02 -6.28625676e-02 -5.37553988e-03 -9.20848399e-02\n  1.72188580e-02 -5.81381433e-02 -3.15296538e-02 -7.19256997e-02\n  7.40959346e-02  1.07018044e-02 -6.48185760e-02 -4.83699068e-02\n  6.94246218e-02  2.75830571e-02  3.26165669e-02  4.60134223e-02\n  6.51077852e-02  5.19153923e-02  5.18928282e-02  1.10713258e-01\n  5.86625859e-02  4.15256508e-02 -1.08699307e-01  1.02420226e-01\n  7.82689154e-02  1.47216059e-02 -4.69328165e-02  2.60346681e-02\n -2.68130023e-02 -1.59034543e-02  8.17244593e-03  6.49403483e-02\n -3.79834301e-03  2.08824947e-02 -6.63199574e-02  1.08712286e-01\n  1.65863689e-02  8.26152191e-02 -4.51907702e-02 -2.43529323e-02\n  2.14778036e-02 -3.26117836e-02  1.62218628e-03  4.45677899e-02\n -4.06683050e-02 -1.67207960e-02  5.51152974e-03 -4.76485938e-02\n -1.59692708e-02 -3.48068401e-02 -4.98773642e-02  3.57354130e-03\n  1.73652638e-02 -2.02228036e-02  3.07590365e-02 -3.54750641e-02\n  1.40512409e-02  1.32319611e-02 -5.33878654e-02  8.42568949e-02\n  3.61445211e-02 -8.75246525e-03 -1.10957455e-02 -3.44518758e-02\n -2.98137628e-02 -4.85399179e-02 -5.86348446e-03 -1.88852828e-02\n  5.39045744e-02 -1.53693755e-03 -1.06328363e-02 -5.23877144e-02\n  1.05765257e-02  1.20220529e-02  7.58113414e-02  6.37147874e-02\n -1.41221751e-02 -7.39869699e-02 -2.45265607e-02  3.94227915e-02\n  2.35661957e-02  2.93495803e-04  2.15095710e-02 -4.96596545e-02\n  1.25467274e-02 -6.28086701e-02  2.17143986e-02  1.29706010e-01\n  1.29868224e-01 -3.16841458e-03  9.82832536e-02  2.64310688e-02\n -1.51279625e-02 -6.77084667e-04  1.81348796e-03 -7.95943439e-02\n -6.56971261e-02  1.77198537e-02  5.50071150e-02 -2.64603402e-02\n  6.69264514e-03 -4.75070775e-02 -2.16933582e-02 -6.57109618e-02\n -5.31003671e-03  7.64164329e-02 -6.75014630e-02  2.17281915e-02\n -2.08713859e-02 -6.70462698e-02 -6.99263215e-02  7.04629300e-03\n  1.68377087e-02 -2.11660676e-02  5.82003873e-03 -1.99230202e-03\n  2.10047979e-02  8.50217715e-02 -9.09449533e-02 -4.25489992e-02\n -9.70409960e-02 -1.88125372e-02  3.42339687e-02  8.51958767e-02\n  5.58452941e-02 -1.19004786e-01  5.72148189e-02 -1.08258389e-02\n  2.52327379e-02 -7.65687525e-02  4.51840572e-02 -8.80066585e-03\n  7.10062357e-03 -1.25885764e-02  1.52509913e-01 -2.67752167e-02\n  2.08653063e-02 -1.03962822e-02 -9.75003495e-05 -3.25976610e-02\n  4.15758677e-02 -5.15615940e-02 -2.73591056e-02  3.09861358e-02\n  5.96994124e-02 -3.83325433e-03 -5.69103435e-02 -5.59414737e-02\n -1.21211745e-02 -3.99650931e-02 -6.78605884e-02  4.00849767e-02\n  1.39654090e-03  1.89967640e-02  2.46538427e-02  3.49091878e-03\n  2.67452765e-02 -6.17139675e-02 -1.90477017e-02 -3.17141823e-02\n  8.95178616e-02  8.89385864e-02 -4.91164625e-02  4.14905809e-02\n -6.91950321e-02  7.15566576e-02  2.50315224e-03 -2.81024165e-03\n -4.49735075e-02 -8.21025111e-03 -1.44138765e-02 -3.09794098e-02\n  3.55536714e-02  3.56175960e-03 -4.69652489e-02 -6.03370182e-02\n  2.11367756e-02  1.17430715e-02  2.57149339e-02 -7.40120001e-03\n  4.11539823e-02 -6.09954670e-02 -1.05194859e-01 -1.63789228e-01\n  1.61149551e-03 -6.61154613e-02 -5.85345589e-02  5.34930974e-02\n -3.69137302e-02  1.85408462e-02  1.89629905e-02 -6.93372311e-03\n  4.76290844e-02  1.00574099e-01  6.03706692e-04 -1.29337348e-02\n  1.22522805e-02 -1.83032248e-02  6.51668385e-02 -3.75069007e-02\n  1.07308906e-02  6.86395019e-02  8.67761113e-03 -3.21658291e-02\n -5.57263084e-02  2.32797172e-02 -7.05496222e-02  1.43314870e-02\n -4.25215140e-02  1.16753548e-01  6.50667474e-02  5.31107709e-02\n -1.56833176e-02  2.74568778e-02  4.37368564e-02  3.36661302e-02\n -1.24344461e-01  1.01652846e-01 -2.19176076e-02 -1.65323783e-02\n  3.76542173e-02 -1.87727138e-02 -7.31882602e-02  6.86529726e-02\n  5.86393755e-03 -5.47750760e-03 -1.12379849e-01  8.42098743e-02\n -4.46348824e-02 -4.46797162e-02  8.27912763e-02 -1.77945849e-02\n  3.28630991e-02  1.80204809e-02 -9.09561813e-02  4.56975475e-02\n -6.59985542e-02 -5.99645190e-02 -5.97598925e-02 -7.69968852e-02\n  6.65686876e-02 -1.70260742e-02 -9.74841602e-03 -5.80133609e-02\n -5.35430238e-02  3.08856033e-02 -1.01027153e-02 -4.17821482e-03\n -7.38883531e-03 -2.18834002e-02 -5.05173858e-03 -3.57083455e-02\n -6.72611669e-02 -4.19610878e-05  5.06095327e-02 -5.07690683e-02\n  5.18000945e-02  4.68187630e-02  5.89231867e-03  7.05537871e-02\n -3.28750163e-02 -1.03024049e-02 -3.92321125e-02 -5.83180115e-02\n -5.36800437e-02  3.24839838e-02  6.63426220e-02 -7.73072988e-03\n -5.98027883e-03 -1.82912573e-02 -1.51209179e-02 -8.61440971e-03\n -2.99709011e-02  3.03644016e-02 -4.14856300e-02  7.06440657e-02\n  2.73401849e-02  3.45934257e-02 -2.19159015e-03 -1.73178211e-01\n -4.42605577e-02  4.11830358e-02 -1.67280883e-02  4.09295447e-02\n -2.00296491e-02  4.77369651e-02 -6.74257353e-02 -4.09485139e-02\n -3.72331031e-02 -1.28238639e-02  4.07384820e-02  4.13100533e-02\n -9.49328765e-03  1.85225010e-02  5.17374389e-02  4.03103679e-02\n -1.11455051e-02  1.37142069e-03 -5.76374121e-02  3.97899449e-02\n  4.62224260e-02  1.33887470e-01 -3.80155854e-02 -8.56468361e-03\n  5.41846678e-02 -1.47030158e-02 -8.17516819e-03  6.58548530e-03\n  6.16790988e-02 -1.71163399e-03 -5.32385483e-02  1.27595738e-01\n -5.25187235e-03  4.08699960e-02  7.61660114e-02 -2.85041332e-03\n  2.17066128e-02  3.19093652e-02  8.60389136e-03  6.41888902e-02\n  8.52630362e-02 -3.57496850e-02 -8.20952840e-03  5.29828854e-02\n -7.94136489e-04 -2.31517050e-02 -1.32954922e-02 -1.96147915e-02\n -5.32094501e-02 -5.48201054e-02 -5.04566915e-02  4.88036461e-02\n  7.32915550e-02  3.09899878e-02 -3.14022005e-02 -6.40349910e-02\n  1.13611445e-02 -2.20474731e-02 -7.61664510e-02  1.06549058e-02\n -1.27836177e-02  1.37474844e-02 -3.22323292e-02 -2.79375892e-02]",
+        "email": "shameemsk002@gmail.com",
+        "phone": "+91 9381861106",
+        "skills": [
+          "Opencv",
+          "Mongodb",
+          "Aws",
+          "Architecture",
+          "Technical Writing",
+          "Css",
+          "Computer Vision",
+          "Html",
+          "Performance Optimization",
+          "Game Development",
+          "Excel",
+          "Adaptability",
+          "Iot",
+          "Continuous Integration",
+          "Data Analysis",
+          "Scala",
+          "Responsive Design",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Time Management",
+          "Machine Learning",
+          "Keras",
+          "Problem Solving",
+          "Deep Learning",
+          "Javascript",
+          "Api Design",
+          "Sql",
+          "Web3",
+          "Teamwork",
+          "Hugging Face",
+          "Java",
+          "Communication",
+          "Servicenow",
+          "C",
+          "Leadership",
+          "Tensorflow",
+          "Git",
+          "System Design",
+          "Critical Thinking",
+          "Presentation Skills",
+          "Continuous Deployment",
+          "Unity",
+          "Natural Language Processing",
+          "Erp",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [
+            "LLM",
+            "B.Tech",
+            "as"
+          ],
+          "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Mathematics",
+            "Physics"
+          ],
+          "institutions": [
+            "Bapatla Engineering College, Andhra Pradesh \u2014 CGPA: 8.88/10",
+            "Dreamz Junior College \u2014 Percentage: 89.6%",
+            "Dreamz High School \u2014 Percentage: 95.8%"
+          ],
+          "highest_degree": "LLM",
+          "highest_level": "masters",
+          "qualification_text": "LLM in Artificial Intelligence"
+        },
+        "qualification_match": {
+          "match_score": 1.0,
+          "matched": true,
+          "details": "Qualification met: LLM",
+          "candidate_qualification": "LLM in Artificial Intelligence",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.833,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.817,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.417,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      },
+      {
+        "resume_name": "Yakkaladevi Bhuvanesh",
+        "resume_filename": "Yakkaladevi Bhuvanesh.pdf",
+        "resume_text": "Yakkaladevi Bhuvanesh\n+91- 9491962208 | yakkaladevibhuvanesh@gmail.com | Yakkaladevi Bhuvanesh | Bhuvanesh98\nOBJECTIVE\nMachine Learning Engineer intern with hands-on experience applying Python and TensorFlow to optimize applications and build \nreal-time ML models. Skilled in Transformers, scikit-learn, and data pipeline development, with demonstrated ability to enhance \nperformance and reliability. Seeking to advance AI-driven personalization and scalable ML systems.\nEXPERIENCE\nInternPe\nPresent\nAI ML Intern\n\u2022 Applied engineering principles and machine learning frameworks like TensorFlow and scikit-learn to optimize Python applications, \nimproving reliability and efficiency while leveraging data analytics best practices to solve complex programming challenges\nVaultOfCodes\nPython Developer Intern\n\u2022 Developed machine learning models with a focus on statistical modeling, data quality, and real-time processing performance, ensuring \nhigh availability for data-driven features\nEDUCATION\nBapatla Engineering College\n2022 - 2026\nBachelors of Technology, AIML\n\u2022 GPA: 9.20 / 10\nSri Chaitanya Junior College\n2020 - 2022\nIntermediate, MPC\nSri Chaitanya Techno School\n2019 - 2020\nSSC\nPROJECTS\nAI Recruitment Partner\n\u2022 Built a web-based recruitment tool that cut candidate screening time by 50 percent for 100+ applicants. Used Llama 3 and Whisper for \nskill extraction, tailored questions, and real-time voice response evaluation.\nEnterprise AI Model Evaluation & Dataset Curation Framework\n\u2022 Designed an end-to-end dataset curation and evaluation pipeline for enterprise ML use cases, focusing on data quality, class imbalance, \nand distribution shifts.\n\u2022 Built standardized evaluation frameworks to benchmark multiple ML models using task-specific metrics (accuracy, F1, calibration \nerror, robustness).\n\u2022 Conducted systematic error analysis and data slicing to identify failure patterns across user segments and edge cases.\nCode Genius: AI Code Generator and Debugger\n\u2022 Collaborated with stakeholders to determine user requirements and architected an AI debugger with real-time error detection to improve \ndeveloper workflow efficiency.\nSKILLS\n\u2022 Programming Languages: Python, C, Java\n\u2022 Web Technologies: HTML, CSS, JavaScript\n\u2022 Database Systems: SQL, DBMS\n\u2022 Version Control: Git, GitHub\n\u2022 Machine Learning Frameworks & Tools: Transformers, TensorFlow, Keras, Scikit-learn, ML Frameworks\n\u2022 Software Engineering: Data Structures and Algorithms(DSA), Machine Learning, NLP\n\u2022 Data Analysis & Engineering: Statistical Modeling, Data Pipelines, Data Analytics\nCERTIFICATIONS\n\u2022 Oracle certified Foundations Associate:Oracle university, 2025\n\u2022 AI Fundamentals:IBM, 2024\n\u2022 Deep Learning:IBM Skills Network, 2024\n\u2022 AWS Flash:AWS training, 2024\n\u2022 Cloud Computing , Internet Of Things:NPTEL, 2025\nACHIEVEMENTS\n\u2022 Participated in Various Workshops",
+        "resume_embedding": "[-7.61013106e-02  1.85322464e-02  7.47091649e-03  5.01500582e-03\n -2.36138962e-02  3.67764570e-02  3.00233364e-02 -9.19184089e-03\n -2.00182870e-02  4.77048894e-03  5.41916080e-02 -7.65925124e-02\n -1.64607458e-03  1.59549918e-02  1.46696828e-02 -6.05008751e-02\n -1.58482809e-02  9.09981579e-02 -6.91904947e-02  3.34584340e-02\n  8.20323825e-02 -5.13831675e-02  3.30497604e-03 -7.80821219e-02\n  7.59627903e-03  1.49945999e-02  6.00970089e-02  3.51085700e-02\n -8.49585235e-02 -1.80982649e-01  3.38279456e-02  1.94071680e-02\n  3.58679965e-02 -4.51893546e-02  7.65499324e-02 -1.68901961e-02\n  1.12077231e-02  5.37365451e-02  4.84028906e-02  6.58903122e-02\n -2.90203076e-02 -5.58324680e-02  3.09943384e-03 -5.68887256e-02\n -8.05050973e-03 -3.89816165e-02 -5.02140708e-02 -4.72454578e-02\n  5.28976247e-02  1.00325968e-03 -5.62759042e-02 -4.12768014e-02\n  6.17534369e-02  5.39548807e-02  2.76925508e-02  4.37754802e-02\n  6.72602206e-02  8.29580799e-02  8.52836519e-02  8.73673782e-02\n  8.31411481e-02  4.98069823e-03 -1.08932786e-01  9.89317596e-02\n  5.83244935e-02  3.78612056e-02 -1.31847514e-02  6.77261362e-03\n  5.12804417e-03  2.25989074e-02 -1.66558418e-02  2.37524062e-02\n  1.25421043e-02  8.34522676e-03 -5.54096811e-02  5.22245131e-02\n  8.60882457e-03  5.24849035e-02 -3.57645913e-03 -2.12864857e-02\n  1.39415180e-02 -2.98547726e-02 -3.72517742e-02  5.82346022e-02\n -3.11155841e-02  3.69405170e-04  3.06192134e-02 -6.14319742e-02\n -1.91831272e-02 -3.59511375e-02 -6.38186336e-02 -1.16489613e-02\n  8.53520725e-03 -2.41648545e-03 -3.10424976e-02 -6.09573163e-02\n  3.45786028e-02  1.53788310e-02 -7.98664391e-02  8.69124979e-02\n  2.48619802e-02 -1.56391282e-02 -4.15271930e-02  3.23833413e-02\n -4.98877317e-02 -6.45225793e-02 -1.48813473e-02 -4.43890281e-02\n  5.79076186e-02 -3.35840471e-02 -5.14279120e-02 -5.57013601e-02\n -5.89735201e-03 -1.11843487e-02  4.92323264e-02  8.53722841e-02\n  8.00085138e-04 -5.29927798e-02 -2.88233925e-02  3.55735235e-02\n  3.34578343e-02 -7.09106214e-04  3.67446393e-02 -3.09592541e-02\n  4.41548787e-02 -6.47540838e-02  7.31261447e-03  9.42253545e-02\n  5.51140420e-02  1.34655014e-02  1.02231786e-01 -7.20911557e-05\n -1.65944807e-02 -2.10247021e-02 -1.56218931e-03 -1.70810949e-02\n -4.99543175e-02 -2.48126239e-02  4.05525342e-02  5.34416176e-03\n -4.55810502e-02 -5.67013323e-02 -8.14344385e-04 -5.54935634e-02\n -5.78674413e-02  8.45348239e-02 -9.46733952e-02  1.80854388e-02\n -6.11385442e-02 -8.90985951e-02 -5.67836761e-02  2.01344420e-03\n  1.41052920e-02 -8.86907987e-03  2.21219342e-02  1.45397410e-02\n  2.06138026e-02  8.34175497e-02 -8.25811550e-02 -1.01565318e-02\n -6.53253123e-02 -2.39338838e-02 -1.24892453e-02  7.60721937e-02\n  3.89972366e-02 -8.95087272e-02  6.10393584e-02 -1.28077148e-02\n -1.65163970e-03 -4.59834225e-02  3.67761105e-02 -8.32614768e-03\n  1.78304892e-02  2.64459644e-02  1.79500684e-01 -3.82299237e-02\n -3.98283405e-03 -1.54348789e-02  2.02605613e-02 -7.97809660e-02\n  4.13900428e-02 -3.29458006e-02 -9.91019048e-03  5.13745025e-02\n  9.35864598e-02 -1.24549270e-02 -1.50913708e-02 -3.88518460e-02\n -4.03818898e-02 -5.22173718e-02 -5.03748320e-02  3.73726450e-02\n -1.56728756e-02  3.15417424e-02  2.52406783e-02  1.49857979e-02\n  1.41552426e-02 -9.47420970e-02 -1.64807662e-02 -6.43621236e-02\n  8.25612545e-02  8.12055394e-02 -6.27835020e-02  7.60289049e-03\n -5.48982434e-02  5.01858443e-02  2.84768417e-02 -4.34443317e-02\n -4.62867729e-02  4.49259244e-02 -4.00947332e-02 -4.52809781e-02\n  6.62998576e-03 -1.38857411e-02 -3.49572226e-02 -4.85375971e-02\n  1.04831578e-02 -9.76989046e-04  4.08280604e-02 -1.84498560e-02\n  5.47088906e-02 -8.37054625e-02 -6.57947138e-02 -1.66001096e-01\n  9.73297376e-03 -6.99045137e-02 -3.77649032e-02  7.40958974e-02\n -4.67822030e-02  2.14780588e-03  2.54576877e-02 -9.59955528e-03\n  4.72885258e-02  1.20755218e-01  1.24323172e-02 -2.24686507e-02\n -4.27438617e-02  2.51290742e-02  6.28740415e-02 -3.82806435e-02\n  1.24351950e-02  6.10486194e-02 -9.53593198e-03 -5.40758707e-02\n -6.27166405e-02  9.00387205e-03 -7.10055679e-02  4.11232933e-02\n -4.68723401e-02  1.43368423e-01  7.34161213e-02  4.19058017e-02\n -1.96888708e-02  3.92534435e-02  3.22159529e-02  5.15953004e-02\n -1.12125069e-01  1.32819042e-01 -5.12581728e-02 -1.91593207e-02\n  4.51159626e-02 -1.58989877e-02 -1.99088547e-02  8.75985697e-02\n  1.47599410e-02  2.65341271e-02 -8.29290748e-02  7.95042887e-02\n -7.90604651e-02 -3.83913778e-02  5.08911759e-02 -1.63372047e-02\n  8.16304330e-03  2.82309689e-02 -6.59283847e-02  4.99451086e-02\n -4.91113514e-02 -2.97244489e-02 -6.20814450e-02 -8.62475783e-02\n  5.92354462e-02 -8.07429384e-03 -1.01982048e-02 -4.28753942e-02\n -6.90545291e-02  3.81321162e-02  1.63015997e-04  9.44443885e-03\n -3.49921919e-02 -3.91318090e-02 -1.03331776e-02 -4.96691428e-02\n -6.01078011e-02 -1.76461507e-02  6.37015775e-02 -5.54628931e-02\n  7.81585425e-02  6.56454638e-02  1.22956801e-02  5.22101708e-02\n -7.81373531e-02 -6.96998090e-03 -2.75973622e-02 -2.27986723e-02\n -5.87307513e-02 -1.63369998e-02  7.34373704e-02 -9.36531741e-03\n  3.84456548e-03 -7.81416369e-04 -1.01366211e-02  1.27430586e-02\n -4.08689491e-02 -1.69871852e-03 -5.62578104e-02  7.34930560e-02\n  6.48486093e-02  3.08973584e-02  1.25413630e-02 -1.50631934e-01\n -9.15752910e-03  6.96548298e-02 -2.81898994e-02  2.43511684e-02\n  3.97077529e-03  2.24596635e-02 -3.48053239e-02 -2.70809736e-02\n -2.61541270e-03 -9.73328762e-03  5.19623384e-02  4.40048352e-02\n -2.42529511e-02 -1.15786279e-02  3.45691442e-02  6.34293258e-02\n -2.04258710e-02 -1.31336311e-02 -6.88709915e-02  4.12774794e-02\n  4.39190529e-02  1.35387376e-01 -8.55087861e-03 -1.78321842e-02\n  4.49706726e-02 -2.77003683e-02 -7.18331942e-03  2.64750533e-02\n  4.07988206e-02 -5.33579588e-02 -5.58838695e-02  1.40868574e-01\n -1.58287026e-02  1.30556151e-02  9.45921168e-02 -9.43003409e-03\n  8.19059275e-03  5.98419718e-02  1.25557594e-02  5.05080447e-02\n  8.49557742e-02 -3.47623155e-02 -7.66048254e-03  6.71766475e-02\n -2.80532277e-06 -5.59115708e-02 -3.28367427e-02  1.32833831e-02\n -3.91824022e-02 -3.49113010e-02 -4.65873815e-02  3.22389044e-02\n  7.64757246e-02  3.91040668e-02 -3.35936993e-02 -5.01621738e-02\n -5.26301842e-03 -2.99773421e-02 -7.13633895e-02  1.51058873e-02\n -1.35573596e-02  3.21009606e-02 -2.88690012e-02 -3.23879123e-02]",
+        "email": "yakkaladevibhuvanesh@gmail.com",
+        "phone": "+91 9491962208",
+        "skills": [
+          "Sso",
+          "Aws",
+          "Architecture",
+          "Css",
+          "Html",
+          "Version Control",
+          "Data Analysis",
+          "Feature Engineering",
+          "Scala",
+          "Python",
+          "Go",
+          "Scikit-Learn",
+          "Oracle",
+          "Machine Learning",
+          "Statistical Analysis",
+          "Keras",
+          "Deep Learning",
+          "Javascript",
+          "Sql",
+          "Flask",
+          "Web3",
+          "Java",
+          "C",
+          "Tensorflow",
+          "Git",
+          "Transformers",
+          "Natural Language Processing",
+          "Erp",
+          "Data Engineering",
+          "R"
+        ],
+        "experience": 0.0,
+        "qualifications": {
+          "degrees": [],
+          "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+          ],
+          "institutions": [
+            "Bapatla Engineering College",
+            "Sri Chaitanya Junior College",
+            "Sri Chaitanya Techno School"
+          ],
+          "highest_degree": null,
+          "highest_level": null,
+          "qualification_text": "in Software Engineering"
+        },
+        "qualification_match": {
+          "match_score": 0.5,
+          "matched": false,
+          "details": "Could not determine qualification match",
+          "candidate_qualification": "in Software Engineering",
+          "required_qualification": "B.Tech"
+        },
+        "scores": {
+          "semantic_score": 0.818,
+          "skill_score": 1.0,
+          "experience_score": 0.5,
+          "final_score": 0.809,
+          "matched_skills": [
+            "Java"
+          ],
+          "missing_skills": [],
+          "confidence": 0.7,
+          "score_breakdown": {
+            "semantic_contribution": 0.409,
+            "skill_contribution": 0.3,
+            "experience_contribution": 0.1,
+            "penalty_applied": 0.0
+          }
+        }
+      }
+    ]
+  }
+]

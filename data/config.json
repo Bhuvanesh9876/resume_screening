@@ -1,0 +1,10 @@
+{
+    "weights": {
+        "semantic": 0.5,
+        "skill": 0.3,
+        "experience": 0.2
+    },
+    "thresholds": {
+        "shortlist": 0.80
+    }
+}

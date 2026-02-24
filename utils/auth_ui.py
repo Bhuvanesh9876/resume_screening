@@ -11,9 +11,9 @@ def render_auth_sidebar():
             if st.button("🚪 Sign Out", key="signout_btn"):
                 supabase.auth.sign_out()
                 st.session_state.clear()
-                st.switch_page("pages/0_🔐_Auth.py")
+                st.switch_page("pages/0_🔐_Login.py")
 
         else:
             st.warning("Not logged in")
             if st.button("🔐 Login / Signup"):
-                st.switch_page("pages/0_🔐_Auth.py")
+                st.switch_page("pages/0_🔐_Login.py")
