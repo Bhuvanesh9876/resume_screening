@@ -7,7 +7,7 @@ identify skills, entities, and candidate names.
 """
 
 import re
-from typing import List, Set, Optional
+from typing import List, Set
 import spacy
 from spacy.language import Language
 import streamlit as st

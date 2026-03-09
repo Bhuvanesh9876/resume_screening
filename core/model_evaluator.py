@@ -219,6 +219,39 @@ class ModelEvaluator:
         
         return pd.DataFrame(analysis)
     
+    def get_score_distribution(self, results: List[Dict]) -> Dict[str, List[float]]:
+        """
+        Get distribution of final scores for visualization.
+        
+        Args:
+            results: List of result dictionaries
+            
+        Returns:
+            Dictionary with 'all', 'tp', 'tn', 'fp', 'fn' score lists
+        """
+        dist = {
+            'all': [],
+            'tp': [], 'tn': [], 'fp': [], 'fn': []
+        }
+        
+        threshold = SHORTLIST_THRESHOLD
+        
+        for result in results:
+            score = result.get('scores', {}).get('final_score', 0)
+            dist['all'].append(score)
+            
+            resume_name = result.get('resume_name', '')
+            if resume_name in self.ground_truth:
+                actual = self.ground_truth[resume_name]
+                predicted = score >= threshold
+                
+                if predicted and actual: dist['tp'].append(score)
+                elif not predicted and not actual: dist['tn'].append(score)
+                elif predicted and not actual: dist['fp'].append(score)
+                elif not predicted and actual: dist['fn'].append(score)
+                
+        return dist
+
     def get_coverage(self, results: List[Dict]) -> Dict[str, float]:
         """
         Calculate what percentage of resumes have ground truth labels

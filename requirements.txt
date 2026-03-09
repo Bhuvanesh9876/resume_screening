@@ -12,3 +12,7 @@ rapidfuzz
 pandas
 plotly
 groq
+chardet
+pytesseract
+pillow
+pdf2image

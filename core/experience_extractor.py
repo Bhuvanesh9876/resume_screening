@@ -7,9 +7,8 @@ and deep role verification to ensure maximum accuracy and strict project exclusi
 """
 
 import re
-import hashlib
 from datetime import datetime
-from typing import List, Tuple, Dict, Optional, Any
+from typing import List, Dict, Optional, Any
 
 # --- Configuration & Patterns ---
 CURRENT_YEAR = datetime.now().year
@@ -81,7 +80,7 @@ def _parse_year(year_str: str) -> Optional[int]:
         if year < 100:
             year += 2000 if year <= (CURRENT_YEAR % 100) + 2 else 1900
         if 1970 <= year <= CURRENT_YEAR + 5: return year
-    except: pass
+    except Exception: pass
     return None
 
 def _to_decimal(year: int, month: int = 6) -> float:
@@ -182,11 +181,9 @@ def extract_date_intervals(text: str) -> List[Dict[str, Any]]:
                             "pos": match.start(),
                             "text": match.group(0)
                         })
-            except: continue
+            except Exception: continue
             
     return intervals
-
-# --- Role Verification ---
 
 def is_professional_role(context: str, block_type: str) -> bool:
     """Validate if a date match represents a professional job/internship."""
@@ -218,21 +215,48 @@ def is_professional_role(context: str, block_type: str) -> bool:
     # General text requires both title/company OR internship
     return (has_title and has_company) or is_intern
 
+# --- Project Detail Extraction ---
+
+def _extract_project_details(content: str) -> List[str]:
+    """Extract individual project items from project section content."""
+    # Split by common project delimiters: bullet points, newlines with bold text, etc.
+    raw_projects = re.split(r'\n(?:\s*[•\-\*]\s*|\s*\d+\.\s*|(?=\*\*))', content)
+    projects = []
+    
+    for p in raw_projects:
+        clean_p = p.strip()
+        if not clean_p: continue
+        
+        # Take the first line as title/summary if it's long
+        lines = clean_p.split('\n')
+        if lines:
+            title = lines[0].strip(' *:-')
+            if len(title) > 3:
+                projects.append(title)
+                
+    return projects[:5] # Return top 5 projects
+
 # --- Main Logic ---
 
-def extract_experience(text: str) -> float:
-    """Main pipeline for experience calculation."""
-    if not text or not text.strip(): return 0.0
+def extract_experience(text: str) -> Dict[str, Any]:
+    """Main pipeline for experience calculation and project extraction."""
+    if not text or not text.strip(): 
+        return {"years": 0.0, "projects": []}
     
     blocks = map_resume_structure(text)
     all_valid_intervals = []
+    projects_list = []
     
     for block in blocks:
-        # Extract dates in this block
+        # 1. Handle Project Extraction separately
+        if block["type"] == "projects":
+            projects_list.extend(_extract_project_details(block["content"]))
+            
+        # 2. Extract dates for experience calculation
         block_dates = extract_date_intervals(block["content"])
         
         for date_match in block_dates:
-            # Get 250 chars of context around the date match in block content
+            # Get 300 chars of context around the date match in block content
             pos = date_match["pos"]
             start_ctx = max(0, pos - 150)
             end_ctx = min(len(block["content"]), pos + 150)
@@ -241,13 +265,18 @@ def extract_experience(text: str) -> float:
             if is_professional_role(context, block["type"]):
                 all_valid_intervals.append(date_match["range"])
                 
+    # Deduplicate projects
+    projects_list = list(set(projects_list))
+    
     if not all_valid_intervals:
         # Fallback to explicit extraction if no intervals found
-        return _fallback_explicit(text)
+        fallback_yrs = _fallback_explicit(text)
+        return {"years": fallback_yrs, "projects": projects_list}
         
     # Merge overlaps
     sorted_ivs = sorted(all_valid_intervals)
-    if not sorted_ivs: return 0.0
+    if not sorted_ivs: 
+        return {"years": 0.0, "projects": projects_list}
     
     merged = [sorted_ivs[0]]
     for start, end in sorted_ivs[1:]:
@@ -258,7 +287,10 @@ def extract_experience(text: str) -> float:
             merged.append((start, end))
             
     total = sum(e - s for s, e in merged)
-    return round(min(total, 45), 1)
+    return {
+        "years": round(min(total, 45), 1),
+        "projects": projects_list
+    }
 
 def _fallback_explicit(text: str) -> float:
     """Last resort: look for 'X years of experience' statements."""
@@ -267,5 +299,5 @@ def _fallback_explicit(text: str) -> float:
     matches = re.findall(pattern, text_lower)
     if matches:
         try: return round(max(float(m) for m in matches), 1)
-        except: pass
+        except Exception: pass
     return 0.0

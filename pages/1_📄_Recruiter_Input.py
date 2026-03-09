@@ -52,40 +52,48 @@ SKILL_OPTIONS = [
     "Time Management", "Critical Thinking", "Analytical Skills", "Creativity", "Adaptability"
 ]
 
-# Sync widgets with job_data if loaded from history
-if st.session_state.get("config_loaded_from_history"):
+job_data_cache = st.session_state.get("job_data", {})
+
+# Initialize session state keys for all widgets if we have job_data_cache and the widgets aren't set
+# (This handles both 'loaded from history' and 'navigated back from another page')
+if "config_loaded_from_history" in st.session_state and st.session_state.config_loaded_from_history:
     st.success("✅ Configuration loaded from history! Review the data below and click 'Save & Continue' to process.")
+    st.session_state.config_loaded_from_history = False  # Clear flag
+
+if job_data_cache:
+    if "input_job_title" not in st.session_state:
+        st.session_state.input_job_title = job_data_cache.get("job_title", "")
+    if "input_job_desc" not in st.session_state:
+        st.session_state.input_job_desc = job_data_cache.get("job_description", "")
+    if "input_qualification" not in st.session_state:
+        # Load from history (could be string or list now)
+        saved_qual = job_data_cache.get("qualification", ["None"])
+        if isinstance(saved_qual, str):
+            saved_qual = [saved_qual]
+        st.session_state.input_qualification = saved_qual
     
-    # Pre-populate widget session state keys
-    job_data = st.session_state.get("job_data", {})
-    st.session_state["input_job_title"] = job_data.get("job_title", "")
-    st.session_state["input_job_desc"] = job_data.get("job_description", "")
-    st.session_state["input_qualification"] = job_data.get("qualification", "")
-    st.session_state["input_experience"] = job_data.get("required_experience", 0)
-    st.session_state["input_good_to_have"] = ", ".join(job_data.get("good_to_have_skills", [])) if isinstance(job_data.get("good_to_have_skills"), list) else job_data.get("good_to_have_skills", "")
+    if "input_year_of_passing" not in st.session_state:
+        saved_years = job_data_cache.get("year_of_passing", [])
+        st.session_state.input_year_of_passing = ", ".join(map(str, saved_years)) if isinstance(saved_years, list) else str(saved_years)
+        
+    if "input_experience" not in st.session_state:
+        st.session_state.input_experience = job_data_cache.get("required_experience", 0)
     
-    # Handle Must Have Skills (complex list vs string)
-    saved_skills = job_data.get("must_have_skills", [])
+    saved_skills = job_data_cache.get("must_have_skills", [])
     if isinstance(saved_skills, str):
         saved_skills = [s.strip() for s in saved_skills.split(",") if s.strip()]
         
-    # Separate skills
     dropdown_skills = [s for s in saved_skills if s in SKILL_OPTIONS]
     custom_skills = [s for s in saved_skills if s not in SKILL_OPTIONS]
     
-    st.session_state["input_skills_dropdown"] = dropdown_skills
-    st.session_state["input_custom_skills"] = ", ".join(custom_skills)
-    
-    st.session_state["config_loaded_from_history"] = False  # Clear flag
-
-# Clear any previous validation error on page load if not triggered by button
-if "validation_error" not in st.session_state:
-    st.session_state.validation_error = None
-
-# Display validation error at the top if present
-if st.session_state.validation_error:
-    error_placeholder.error(st.session_state.validation_error)
-    st.session_state.validation_error = None  # Clear after displaying
+    if "input_skills_dropdown" not in st.session_state:
+        st.session_state.input_skills_dropdown = dropdown_skills
+    if "input_custom_skills" not in st.session_state:
+        st.session_state.input_custom_skills = ", ".join(custom_skills)
+        
+    if "input_good_to_have" not in st.session_state:
+        saved_good = job_data_cache.get("good_to_have_skills", [])
+        st.session_state.input_good_to_have = ", ".join(saved_good) if isinstance(saved_good, list) else str(saved_good)
 
 job_title = st.text_input("Job Title", key="input_job_title")
 job_description = st.text_area("Job Description", height=150, key="input_job_desc")
@@ -112,11 +120,24 @@ st.subheader("📋 Job Requirements")
 col1, col2 = st.columns(2)
 
 with col1:
-    qualification = st.text_input(
-        "Required Qualification",
-        placeholder="e.g., Bachelor's in Computer Science, MBA, PhD",
+    qual_options = ["None", "BTech", "MTech", "MCA", "MBA", "BCA", "Any Bachelor's", "Any Master's"]
+    qualification = st.multiselect(
+        "Required Qualification(s)",
+        options=qual_options,
+        default=["None"],
         key="input_qualification"
     )
+    
+    # Year of Passing becomes mandatory if qualification is NOT None
+    year_of_passing_str = ""
+    # Check if anything other than "None" is selected
+    if qualification and "None" not in qualification:
+        year_of_passing_str = st.text_input(
+            "Allowed Years of Passing (comma separated)",
+            placeholder="e.g., 2022, 2023, 2024",
+            key="input_year_of_passing",
+            help="Enter one or more years. Candidates not matching these specifically will be rejected."
+        )
 
 with col2:
     required_experience = st.number_input(
@@ -133,22 +154,6 @@ st.subheader("🔧 Skills Requirements")
 
 
 
-# Required Skills - Multiselect dropdown
-# Get saved skills and separate into dropdown-available and custom skills
-saved_must_have_skills = st.session_state.get("job_data", {}).get("must_have_skills", [])
-
-# Handle if saved as string (from old records)
-if isinstance(saved_must_have_skills, str):
-    saved_must_have_skills = [s.strip() for s in saved_must_have_skills.split(",") if s.strip()]
-
-# Separate skills that are in dropdown vs custom skills
-dropdown_skills_default = [s for s in saved_must_have_skills if s in SKILL_OPTIONS]
-custom_skills_saved = [s for s in saved_must_have_skills if s not in SKILL_OPTIONS]
-
-# Initialize session state if not already set (avoid default vs state conflict)
-if "input_skills_dropdown" not in st.session_state:
-    st.session_state.input_skills_dropdown = dropdown_skills_default
-
 must_have_skills_selected = st.multiselect(
     "Required Skills",
     options=sorted(SKILL_OPTIONS),
@@ -157,19 +162,12 @@ must_have_skills_selected = st.multiselect(
 )
 
 # Option to add custom skills not in the list
-custom_skills_str = ", ".join(custom_skills_saved) if custom_skills_saved else ""
-if "input_custom_skills" not in st.session_state:
-    st.session_state.input_custom_skills = custom_skills_str
-
 custom_must_have = st.text_input(
     "Complementary Skills (comma separated)",
     placeholder="e.g., SAP, Salesforce, domain-specific tools...",
     help="Add any additional skills not listed in the dropdown",
     key="input_custom_skills"
 )
-
-# Handle good_to_have_skills - could be string or list
-# Already handled in pre-fill block for 'input_good_to_have'
 
 good_to_have_skills = st.text_input(
     "Preferred Qualifications (comma separated)",
@@ -183,18 +181,15 @@ col1, col2 = st.columns(2)
 with col1:
     if st.button("💾 Save & Continue", type="primary", use_container_width=True):
         if not job_title or not job_description:
-            st.session_state.validation_error = "⚠️ Job title and description are required."
-            st.rerun()
+            error_placeholder.error("⚠️ Job title and description are required.")
         else:
             # Validate job description word count
             word_count = len(job_description.split())
             
             if word_count < 30:
-                st.session_state.validation_error = f"⚠️ Job description must be between 30 to 2500 words.\n\nCurrent word count: **{word_count}** words\n\nPlease add at least **{30 - word_count}** more words."
-                st.rerun()
+                error_placeholder.error(f"⚠️ Job description must be between 30 to 2500 words.\n\nCurrent word count: **{word_count}** words\n\nPlease add at least **{30 - word_count}** more words.")
             elif word_count > 2500:
-                st.session_state.validation_error = f"⚠️ Job description must be between 30 to 2500 words.\n\nCurrent word count: **{word_count}** words\n\nPlease remove at least **{word_count - 2500}** words."
-                st.rerun()
+                error_placeholder.error(f"⚠️ Job description must be between 30 to 2500 words.\n\nCurrent word count: **{word_count}** words\n\nPlease remove at least **{word_count - 2500}** words.")
             else:
                 # Combine dropdown selections with custom skills
                 must_list = list(must_have_skills_selected)  # Skills from dropdown
@@ -209,10 +204,16 @@ with col1:
                 
                 good_list = [s.strip() for s in good_to_have_skills.split(",") if s.strip()]
                 
+                # Parse years of passing
+                year_list = []
+                if year_of_passing_str:
+                    year_list = [int(y.strip()) for y in year_of_passing_str.split(",") if y.strip().isdigit()]
+
                 st.session_state["job_data"] = {
                     "job_title": job_title,
                     "job_description": job_description,
                     "qualification": qualification,
+                    "year_of_passing": year_list,
                     "required_experience": required_experience,
                     "must_have_skills": must_list,
                     "good_to_have_skills": good_list
@@ -225,6 +226,7 @@ with col1:
                             "job_title": job_title,
                             "job_description": job_description,
                             "required_qualification": qualification,
+                            "required_year_of_passing": year_list,
                             "required_experience": required_experience,
                             "must_have_skills": must_list,  # Passed as list (Postgres Text Array)
                             "good_to_have_skills": good_list  # Passed as list (Postgres Text Array)
@@ -239,6 +241,7 @@ with col1:
                         st.error(f"❌ Database Error: {str(e)}")
                         pass
                 
+                st.session_state["autosave_done"] = False
                 st.success("Job configuration saved!")
                 st.switch_page("pages/2_⚙️_Processing.py")
 

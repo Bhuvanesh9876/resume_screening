@@ -1,4 +1,4 @@
--- Enable Vector Support
+nable Vector Support
 create extension if not exists vector;
 
 -- Create Job Configs Table

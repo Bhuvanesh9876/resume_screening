@@ -132,14 +132,44 @@ def extract_name(text: str) -> str:
 
     return ""
 
+def extract_linkedin(text: str) -> str:
+    """Extract LinkedIn profile URL."""
+    pattern = r'((?:https?://)?(?:www\.)?linkedin\.com/in/[A-Za-z0-9_-]+/?)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    return match.group(1) if match else ""
+
+def extract_github(text: str) -> str:
+    """Extract GitHub profile URL."""
+    pattern = r'((?:https?://)?(?:www\.)?github\.com/[A-Za-z0-9_-]+/?)'
+    match = re.search(pattern, text, re.IGNORECASE)
+    return match.group(1) if match else ""
+
+def extract_portfolio(text: str) -> str:
+    """Extract personal website or portfolio links (Behance, Dribbble, etc.)."""
+    patterns = [
+        r'((?:https?://)?(?:www\.)?behance\.net/[A-Za-z0-9_-]+/?)',
+        r'((?:https?://)?(?:www\.)?dribbble\.com/[A-Za-z0-9_-]+/?)',
+        r'((?:https?://)?(?:www\.)?medium\.com/@[A-Za-z0-9_-]+/?)',
+        r'(https?://(?:www\.)?(?!(?:linkedin|github|behance|dribbble|medium|gmail|google|outlook|yahoo|facebook|twitter|instagram))[A-Za-z0-9.-]+\.[a-z]{2,}(?:/[A-Za-z0-9._%+-]*)*)'
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, re.IGNORECASE)
+        if match:
+            return match.group(1)
+    return ""
+
 def extract_contact_info(text: str) -> Dict[str, str]:
     """
-    Extract name, email, and phone from text and return as a dictionary.
+    Extract name, email, phone, and social links from text.
     """
     if not text:
-        return {"name": "", "email": "", "phone": ""}
+        return {"name": "", "email": "", "phone": "", "linkedin": "", "github": "", "portfolio": ""}
+    
     return {
         "name": extract_name(text),
         "email": extract_email(text),
         "phone": normalize_phone(extract_phone(text)),
+        "linkedin": extract_linkedin(text),
+        "github": extract_github(text),
+        "portfolio": extract_portfolio(text)
     }

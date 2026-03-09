@@ -6,53 +6,311 @@ Extracts educational qualifications and degrees from resume text.
 
 import re
 from typing import List, Dict, Optional, Any
+from datetime import datetime
+
+
+def _simplify_degree_token(text: str) -> str:
+    """Uppercase and remove non-alphanumeric characters.
+
+    Examples:
+    - "M.Tech" -> "MTECH"
+    - "Bachelor's" -> "BACHELORS"
+    """
+    if not text:
+        return ""
+    return re.sub(r"[^A-Z0-9]+", "", text.upper())
+
+
+def _degree_level_from_text(degree_text: str) -> Optional[str]:
+    """Infer degree level from a degree string.
+
+    For short tokens such as MS, ME, BA, BS we require that they appear as the
+    *entire* normalized string or at a clear boundary — otherwise words like
+    INTERMEDIATE, SYSTEMS, etc. produce false positives.
+
+    Short patterns (<=4 chars) are checked via **word-boundary search** in the
+    original text rather than substring search in the stripped/concatenated
+    form.  This prevents false positives like "FEEDBACK" → "DBA" or
+    "COMBAT" → "MBA" while correctly matching "MBA in Finance".
+    """
+    t = _simplify_degree_token(degree_text)
+    if not t:
+        return None
+
+    # Upper-cased original text for word-boundary checks on short patterns.
+    upper_orig = (degree_text or "").upper().strip()
+
+    def _has_short(pattern: str) -> bool:
+        """Return True if a short pattern (<=4 chars) legitimately appears.
+
+        We require either:
+          - exact match on the simplified text  (e.g., input is just "MBA"), OR
+          - the pattern exists as a standalone word in the original text.
+
+        This avoids false positives from concatenated text where "DBA"
+        hides inside "FEEDBACK" or "MBA" inside "COMBAT".
+        """
+        if t == pattern:
+            return True
+        if re.search(r"\b" + re.escape(pattern) + r"\b", upper_orig):
+            return True
+        return False
+
+    # ── Doctorate ─────────────────────────────────────────────────
+    if any(k in t for k in ["DOCTORATE", "DOCTOROFPHILOSOPHY"]):
+        return "doctorate"
+    if any(_has_short(k) for k in ["PHD", "DBA", "EDD"]):
+        return "doctorate"
+    if t in ("MD", "JD"):
+        return "doctorate"
+
+    # ── Masters ───────────────────────────────────────────────────
+    # Long tokens (>=5 chars) — safe as substring even in longer text
+    if any(k in t for k in ["MTECH", "MASTER", "MPHIL", "POSTGRADUATE"]):
+        return "masters"
+    # Short tokens — word-boundary check to avoid false positives
+    if any(_has_short(k) for k in ["MBA", "MCA", "LLM", "MSC", "MENG", "MCOM", "PG"]):
+        return "masters"
+    # Very short exact match
+    for k in ["MS", "ME", "MA", "MED"]:
+        if t == k:
+            return "masters"
+
+    # ── Bachelors ─────────────────────────────────────────────────
+    if any(k in t for k in ["BTECH", "BACHELOR", "BARCH", "BPHARM", "UNDERGRADUATE"]):
+        return "bachelors"
+    if any(_has_short(k) for k in ["BBA", "BCA", "LLB", "BSC", "BENG", "BCOM", "UG"]):
+        return "bachelors"
+    for k in ["BS", "BE", "BA", "BED"]:
+        if t == k:
+            return "bachelors"
+
+    # ── Associate ─────────────────────────────────────────────────
+    # "ASSOCIATE" (9 chars) is safe as substring only if it's a complete
+    # word — "ASSOCIATED" should NOT match.
+    if re.search(r"\bASSOCIATE\b", upper_orig):
+        return "associate"
+    if any(_has_short(k) for k in ["AAS"]):
+        return "associate"
+    if t in ("AS", "AA"):
+        return "associate"
+
+    # ── Diploma ───────────────────────────────────────────────────
+    if any(k in t for k in ["DIPLOMA", "POSTGRADUATEDIPLOMA"]):
+        return "diploma"
+    if any(_has_short(k) for k in ["PGDM", "PGDCA"]):
+        return "diploma"
+
+    # ── Certificate ───────────────────────────────────────────────
+    if any(k in t for k in ["CERTIFICATE", "CERTIFICATION"]):
+        return "certificate"
+
+    return None
+
+
+def _extract_education_block(text: str) -> str:
+    """Try to extract a likely Education section block from resume text."""
+    if not text:
+        return ""
+
+    lines = [ln.strip() for ln in text.splitlines()]
+    if not lines:
+        return ""
+
+    # Broader set of education-section headers
+    edu_header = re.compile(
+        r"\b(EDUCATION|EDUCATIONAL\s+BACKGROUND|ACADEMIC|ACADEMIC\s+BACKGROUND|QUALIFICATION(?:S)?|ACADEMIC\s+DETAILS?)\b",
+        re.IGNORECASE,
+    )
+
+    start_idx = None
+    for i, ln in enumerate(lines):
+        if edu_header.search(ln):
+            start_idx = i
+            break
+
+    if start_idx is None:
+        return ""
+
+    # Stop at next common section header (but NOT "INTERMEDIATE" which is a degree)
+    stop_header = re.compile(
+        r"^\s*(?:EXPERIENCE|WORK\s+EXPERIENCE|INDUSTRY\s+EXPERIENCE|TECHNICAL\s+SKILLS|SKILLS|PROJECTS|CERTIFICATIONS?|ACHIEVEMENTS|SUMMARY|PROFILE|INTERNSHIPS?|PUBLICATIONS?|OBJECTIVE|HOBBIES|EXTRACURRICULAR|HONORS|AWARDS|REFERENCES|CONTACT)\s*:?\s*$",
+        re.IGNORECASE,
+    )
+
+    block_lines: List[str] = []
+    for ln in lines[start_idx + 1 :]:
+        if stop_header.search(ln):
+            break
+        # Avoid collecting a huge block in noisy resumes
+        block_lines.append(ln)
+        if len(block_lines) >= 40:
+            break
+
+    return "\n".join([ln for ln in block_lines if ln])
+
+
+def _extract_graduation_year(text: str) -> Optional[int]:
+    """Extract the most likely graduation / completion year.
+
+    Strategy (in priority order):
+      1. Explicit year ranges in the education block (e.g. "2022 - 2026").
+      2. "Present / Current" ranges in the education block → estimate end year.
+      3. Lines containing degree keywords + year anywhere in the text.
+      4. Fallback to the most recent plausible year in the full text.
+
+    Key fix: "Present" ranges are checked BEFORE standalone years so that
+    "2022 - Present" is not mis-read as just "2022".
+    """
+    if not text:
+        return None
+
+    year_re = re.compile(r"\b(20[0-2][0-9]|19[7-9][0-9])\b")
+    range_re = re.compile(
+        r"\b(19[7-9][0-9]|20[0-2][0-9])\s*(?:-|–|—|to)\s*(19[7-9][0-9]|20[0-2][0-9]|[0-9]{2})\b",
+        re.IGNORECASE,
+    )
+    present_range_re = re.compile(
+        r"\b(19[7-9][0-9]|20[0-2][0-9])\s*(?:-|–|—|to)\s*(present|current|now|pursuing|ongoing)\b",
+        re.IGNORECASE,
+    )
+
+    education_block = _extract_education_block(text)
+
+    def end_years_from_ranges(blob: str) -> List[int]:
+        """Return end-years from explicit year–year ranges."""
+        years: List[int] = []
+        for _start, end in range_re.findall(blob):
+            try:
+                end_yr = int(end)
+                if end_yr < 100:
+                    end_yr += 2000 if end_yr < 50 else 1900
+                years.append(end_yr)
+            except Exception:
+                pass
+        return years
+
+    def standalone_years(blob: str) -> List[int]:
+        """Return all standalone year mentions, EXCLUDING those part of a range."""
+        # Mask out explicit year-year ranges so their start/end years aren't double counted
+        masked_blob = range_re.sub(" [RANGE] ", blob)
+        # Mask out present ranges
+        masked_blob = present_range_re.sub(" [PRESENT_RANGE] ", masked_blob)
+        
+        years: List[int] = []
+        for y in year_re.findall(masked_blob):
+            try:
+                years.append(int(y))
+            except Exception:
+                pass
+        return years
+
+    def estimate_present_range(blob: str) -> Optional[int]:
+        """Estimate graduation year from ranges like '2022 - Present'."""
+        present_ranges = present_range_re.findall(blob)
+        if not present_ranges:
+            return None
+        starts = []
+        for start, _tag in present_ranges:
+            try:
+                starts.append(int(start))
+            except Exception:
+                pass
+        if not starts:
+            return None
+        start_year = max(starts)
+        level_hint = (
+            _degree_level_from_text(blob) or _degree_level_from_text(text)
+        )
+        duration = 4 if level_hint == "bachelors" else 2 if level_hint == "masters" else 4
+        est = start_year + duration
+        current_year = datetime.now().year
+        if est < start_year:
+            return None
+        if est > current_year + 6:
+            est = current_year + 1
+        return est
+
+    # ---------- Education block based ----------
+    if education_block:
+        # 1a) Check for "Present" / "Current" ranges FIRST so that
+        #     "2022 - Present" is not consumed as standalone "2022".
+        present_est = estimate_present_range(education_block)
+
+        # 1b) Explicit year-year ranges (e.g. 2022 - 2026)
+        range_years = end_years_from_ranges(education_block)
+
+        # If we have explicit end-years, prefer the highest (most recent degree)
+        if range_years:
+            best = max(range_years)
+            # If we also have a present estimate that's bigger, use it
+            if present_est and present_est > best:
+                return present_est
+            return best
+
+        # Only present-range found (no explicit end year)
+        if present_est:
+            return present_est
+
+        # 1c) Standalone years inside education block
+        edu_standalone = standalone_years(education_block)
+        if edu_standalone:
+            return max(edu_standalone)
+
+    # 2) Lines with degree keywords anywhere in the text
+    candidate_years: List[int] = []
+    degree_line_re = re.compile(
+        r"\b(B\s*\.?\s*TECH|M\s*\.?\s*TECH|BTECH|MTECH|BACHELOR|MASTER|UNIVERSITY|COLLEGE|INSTITUTE|DEGREE)"
+        r"\b",
+        re.IGNORECASE,
+    )
+    for ln in text.splitlines():
+        if degree_line_re.search(ln):
+            # Check present ranges on this line first
+            line_est = estimate_present_range(ln)
+            if line_est:
+                candidate_years.append(line_est)
+            candidate_years.extend(end_years_from_ranges(ln))
+            candidate_years.extend(standalone_years(ln))
+    if candidate_years:
+        return max(candidate_years)
+
+    # 3) Present range anywhere in the full text
+    full_est = estimate_present_range(text)
+    if full_est:
+        return full_est
+
+    # 4) Fallback: most recent plausible year anywhere in the full text
+    all_years = end_years_from_ranges(text) + standalone_years(text)
+    return max(all_years) if all_years else None
 
 # Common degree patterns
 DEGREE_PATTERNS = [
     # Doctoral degrees
-    r'\b(Ph\.?D\.?|Doctor of Philosophy|Doctorate|D\.Phil\.?)\b',
-    r'\b(Ed\.?D\.?|Doctor of Education)\b',
-    r'\b(M\.?D\.?|Doctor of Medicine)\b',
-    r'\b(J\.?D\.?|Juris Doctor)\b',
-    r'\b(D\.?B\.?A\.?|Doctor of Business Administration)\b',
+    r'\b(Ph\.?D\.?|JD|MD|Doctorate|Doctor of Philosophy|Doctor of Education|Juris Doctor|Doctor of Medicine|DBA)\b',
+    
+    # Master's degrees & Postgraduate
+    r"\b(M\s*\.?\s*Tech|MTECH|Master'?s?\s+of\s+Technology|Masters?\s+of\s+Technology|M\s*\.?\s*Technology)\b",
+    r"\b(M\.?S|MS|Master'?s?\s+of\s+Science|Masters?\s+of\s+Science|M\.?Sc|MSC)\b",
+    r"\b(M\.?E|ME|M\.?Eng|MENG|Master'?s?\s+of\s+Engineering|Masters?\s+of\s+Engineering)\b",
+    r'\b(M\.?B\.?A|Masters? of Business Administration|M\.?C\.?A|Masters? of Computer Applications)\b',
+    r'\b(M\.?A|Masters? of Arts|M\.?Com|Masters? of Commerce|M\.?Ed|M\.?Phil|LL\.?M)\b',
+    r'\b(Postgraduate|PG)\b',
+    
+    # Bachelor's degrees & Undergraduate
+    r"\b(B\s*\.?\s*Tech|BTECH|Bachelor'?s?\s+of\s+Technology|Bachelors?\s+of\s+Technology|B\s*\.?\s*Technology)\b",
+    r"\b(B\.?S|BS|Bachelor'?s?\s+of\s+Science|Bachelors?\s+of\s+Science|B\.?Sc|BSC)\b",
+    r"\b(B\.?E|BE|B\.?Eng|BENG|Bachelor'?s?\s+of\s+Engineering|Bachelors?\s+of\s+Engineering)\b",
+    r'\b(B\.?B\.?A|Bachelors? of Business Administration|B\.?C\.?A|Bachelors? of Computer Applications)\b',
+    r'\b(B\.?A|Bachelors? of Arts|B\.?Com|Bachelors? of Commerce|B\.?Ed|B\.?Pharm|B\.?Arch|LL\.?B)\b',
+    r'\b(Undergraduate|UG)\b',
 
-    # Master's degrees
-    r'\b(M\.?S\.?|Master of Science|Masters? of Science|M\.?Sc\.?)\b',
-    r'\b(M\.?A\.?|Master of Arts|Masters? of Arts)\b',
-    r'\b(M\.?B\.?A\.?|Master of Business Administration)\b',
-    r'\b(M\.?E\.?|M\.?Eng\.?|Master of Engineering|Masters? of Engineering)\b',
-    r'\b(M\.?Tech\.?|Master of Technology)\b',
-    r'\b(M\.?C\.?A\.?|Master of Computer Applications)\b',
-    r'\b(M\.?Com\.?|Master of Commerce)\b',
-    r'\b(M\.?Ed\.?|Master of Education)\b',
-    r'\b(M\.?Phil\.?|Master of Philosophy)\b',
-    r'\b(M\.?F\.?A\.?|Master of Fine Arts)\b',
-    r'\b(L\.?L\.?M\.?|Master of Laws)\b',
-    r'\b(M\.?P\.?H\.?|Master of Public Health)\b',
-    r'\b(M\.?P\.?A\.?|Master of Public Administration)\b',
-
-    # Bachelor's degrees
-    r'\b(B\.?S\.?|Bachelor of Science|Bachelors? of Science|B\.?Sc\.?)\b',
-    r'\b(B\.?A\.?|Bachelor of Arts|Bachelors? of Arts)\b',
-    r'\b(B\.?E\.?|B\.?Eng\.?|Bachelor of Engineering|Bachelors? of Engineering)\b',
-    r'\b(B\.?Tech\.?|Bachelor of Technology)\b',
-    r'\b(B\.?B\.?A\.?|Bachelor of Business Administration)\b',
-    r'\b(B\.?C\.?A\.?|Bachelor of Computer Applications)\b',
-    r'\b(B\.?Com\.?|Bachelor of Commerce)\b',
-    r'\b(B\.?Ed\.?|Bachelor of Education)\b',
-    r'\b(B\.?F\.?A\.?|Bachelor of Fine Arts)\b',
-    r'\b(L\.?L\.?B\.?|Bachelor of Laws)\b',
-    r'\b(B\.?Arch\.?|Bachelor of Architecture)\b',
-    r'\b(B\.?Pharm\.?|Bachelor of Pharmacy)\b',
-
-    # Associate degrees
-    r'\b(A\.?S\.?|Associate of Science|A\.?S\.?c\.?)\b',
-    r'\b(A\.?A\.?|Associate of Arts)\b',
-    r'\b(A\.?A\.?S\.?|Associate of Applied Science)\b',
-
-    # Diploma and Certificate
-    r'\b(Diploma|Post[- ]?Graduate Diploma|PG Diploma|PGDM|PGDCA)\b',
-    r'\b(Certificate|Professional Certificate|Certification)\b',
+    # Generic degree phrases that appear in many fresher resumes
+    r"\bBachelor[’']?s\s+Degree\b",
+    r"\bMaster[’']?s\s+Degree\b",
+    
+    # Associate & Diplomas
+    r'\b(Associate Degree|Associate of Science|Associate of Arts|Diploma|PGDM|PGDCA|Post Graduate Diploma)\b',
 ]
 
 # Fields of study
@@ -86,17 +344,44 @@ DEGREE_LEVELS = {
     ],
     'masters': [
         'M.S', 'MS', 'M.A', 'MA', 'MBA', 'M.E', 'M.Eng', 'M.Tech',
-        'MCA', 'M.Com', 'M.Ed', 'M.Phil', 'MFA', 'LLM', 'MPH', 'MPA'
+        'MCA', 'M.Com', 'M.Ed', 'M.Phil', 'MFA', 'LLM', 'MPH', 'MPA',
+        'Postgraduate', 'PG'
     ],
     'bachelors': [
         'B.S', 'BS', 'B.A', 'BA', 'B.E', 'B.Eng', 'B.Tech', 'BBA',
-        'BCA', 'B.Com', 'B.Ed', 'BFA', 'LLB', 'B.Arch', 'B.Pharm'
+        'BCA', 'B.Com', 'B.Ed', 'BFA', 'LLB', 'B.Arch', 'B.Pharm',
+        'Undergraduate', 'UG'
     ],
     'associate': ['A.S', 'AS', 'A.A', 'AA', 'AAS'],
     'diploma': ['Diploma', 'PG Diploma', 'PGDM', 'PGDCA'],
     'certificate': ['Certificate', 'Certification'],
 }
 
+# Degree normalization mapping
+DEGREE_ALIASES = {
+    "BTECH": ["BACHELOR OF TECHNOLOGY", "B.TECH", "B TECH", "B. TECHNOLOGY"],
+    "MTECH": ["MASTER OF TECHNOLOGY", "M.TECH", "M TECH", "M. TECHNOLOGY"],
+    "MCA": ["MASTER OF COMPUTER APPLICATIONS", "M.C.A", "M CA"],
+    "MBA": ["MASTER OF BUSINESS ADMINISTRATION", "M.B.A", "M BA"],
+    "BCA": ["BACHELOR OF COMPUTER APPLICATIONS", "B.C.A", "B CA"],
+    "BSC": ["BACHELOR OF SCIENCE", "B.SC", "B SC", "B.S"],
+    "MSC": ["MASTER OF SCIENCE", "M.SC", "M SC", "M.S"],
+    "BE": ["BACHELOR OF ENGINEERING", "B.E", "B ENG", "B.ENG"],
+    "ME": ["MASTER OF ENGINEERING", "M.E", "M ENG", "M.ENG"],
+}
+
+def normalize_degree(degree_name: str) -> str:
+    """Normalize a degree name to its common alias."""
+    if not degree_name:
+        return ""
+    upper_name = degree_name.upper().strip()
+    for alias, patterns in DEGREE_ALIASES.items():
+        if upper_name == alias:
+            return alias
+        for pattern in patterns:
+            if pattern in upper_name:
+                return alias
+    return upper_name
 
 def extract_qualifications(resume_text: str) -> Dict[str, Any]:
     """
@@ -106,12 +391,7 @@ def extract_qualifications(resume_text: str) -> Dict[str, Any]:
         resume_text: Raw text from resume
 
     Returns:
-        Dictionary containing:
-        - degrees: List of extracted degrees
-        - fields: List of fields of study
-        - institutions: List of educational institutions
-        - highest_degree: The highest degree level found
-        - qualification_text: Combined qualification string
+        Dictionary containing extracted data
     """
     if not resume_text:
         return {
@@ -119,7 +399,8 @@ def extract_qualifications(resume_text: str) -> Dict[str, Any]:
             "fields": [],
             "institutions": [],
             "highest_degree": None,
-            "qualification_text": ""
+            "qualification_text": "",
+            "year_of_passing": None
         }
 
     text_original = resume_text
@@ -135,6 +416,20 @@ def extract_qualifications(resume_text: str) -> Dict[str, Any]:
             if cleaned and cleaned not in degrees:
                 degrees.append(cleaned)
 
+    # Fallback: scan for standalone degree strings that the regexes above
+    # might miss due to DOCX formatting (e.g. "B.TECH" alone on a line).
+    if not degrees:
+        standalone_degree_re = re.compile(
+            r"(?:^|\s)(B\.?\s*TECH|M\.?\s*TECH|BTECH|MTECH|MCA|MBA|BCA|BBA|"
+            r"B\.?E|M\.?E|B\.?SC|M\.?SC|B\.?A|M\.?A|B\.?COM|M\.?COM|"
+            r"B\.?ED|M\.?ED|PH\.?D|PGDM|PGDCA)(?:\s|$|[,.])",
+            re.IGNORECASE,
+        )
+        for m in standalone_degree_re.finditer(text_original):
+            cleaned = m.group(1).strip()
+            if cleaned and cleaned not in degrees:
+                degrees.append(cleaned)
+
     # Extract fields of study
     fields = []
     for field in FIELDS_OF_STUDY:
@@ -142,160 +437,228 @@ def extract_qualifications(resume_text: str) -> Dict[str, Any]:
             if field not in fields:
                 fields.append(field)
 
-    # Extract institutions (look for lines containing university/college keywords)
+    # Extract institutions
     institutions = []
     lines = text_original.split('\n')
     for line in lines:
         for pattern in INSTITUTION_INDICATORS:
             if re.search(pattern, line, re.IGNORECASE):
-                # Clean the line and add as institution
                 cleaned_line = line.strip()
                 if 5 < len(cleaned_line) < 200:
-                    # Try to extract just the institution name
                     if cleaned_line not in institutions:
                         institutions.append(cleaned_line)
                 break
 
-    # Determine highest degree
+    # Determine highest degree level
     highest_degree = None
     highest_level = None
-    level_order = [
-        'doctorate', 'masters', 'bachelors', 'associate', 'diploma', 'certificate'
-    ]
+    level_order = ['doctorate', 'masters', 'bachelors', 'associate', 'diploma', 'certificate']
 
     for degree in degrees:
-        degree_upper = degree.upper()
-        for level in level_order:
-            for degree_keyword in DEGREE_LEVELS[level]:
-                if degree_keyword.upper() in degree_upper:
-                    if (highest_level is None or
-                            level_order.index(level) < level_order.index(highest_level)):
-                        highest_level = level
-                        highest_degree = degree
-                    break
+        level = _degree_level_from_text(degree)
+        if not level:
+            continue
+        if highest_level is None or level_order.index(level) < level_order.index(highest_level):
+            highest_level = level
+            highest_degree = degree
 
-    # Build qualification text
-    qualification_parts = []
-    if highest_degree:
-        qualification_parts.append(highest_degree)
-    if fields:
-        qualification_parts.append(f"in {fields[0]}")
+    # If we failed to extract explicit degree strings, try inferring from
+    # the Education block / full text.  We scan LINE-BY-LINE rather than
+    # passing the whole block because _degree_level_from_text strips all
+    # non-alphanumeric chars → on a large block, short patterns like "DBA"
+    # or "AAS" appear by coincidence in the concatenated text.
+    if highest_level is None:
+        education_block = _extract_education_block(text_original)
+        fallback_text = education_block if education_block else text_original
+        for ln in fallback_text.splitlines():
+            cleaned = ln.strip()
+            if not cleaned or len(cleaned) > 120:
+                continue
+            level = _degree_level_from_text(cleaned)
+            if level:
+                if highest_level is None or level_order.index(level) < level_order.index(highest_level):
+                    highest_level = level
 
-    qualification_text = " ".join(qualification_parts) if qualification_parts else ""
+    # Extract graduation year (prefer education section / date ranges)
+    grad_year = _extract_graduation_year(text_original)
+
+    # qualification_text for summary display
+    qual_text = f"{highest_degree or ''} {f'in {fields[0]}' if fields else ''}".strip()
 
     return {
-        "degrees": degrees[:5],  # Limit to top 5
-        "fields": fields[:5],  # Limit to top 5
-        "institutions": institutions[:3],  # Limit to top 3
+        "degrees": degrees[:5],
+        "fields": fields[:5],
+        "institutions": institutions[:3],
         "highest_degree": highest_degree,
         "highest_level": highest_level,
-        "qualification_text": qualification_text
+        "qualification_text": qual_text,
+        "year_of_passing": grad_year
     }
 
-
 def match_qualification(candidate_quals: Dict[str, Any],
-                       required_qualification: str) -> Dict[str, Any]:
+                       required_qualifications: Any,  # Now accepts string or list of strings
+                       required_years: Optional[Any] = None) -> Dict[str, Any]:
     """
-    Match candidate qualifications against required qualification.
-
-    Args:
-        candidate_quals: Dictionary from extract_qualifications()
-        required_qualification: Required qualification string from job
-
-    Returns:
-        Dictionary with match score and details
+    Match candidate qualifications against requirements.
+    Supports multiple degree requirements, levels, synonyms, and specific graduation years.
+    Returns the best match found among the required qualifications.
     """
-    if not required_qualification or not candidate_quals:
+    # Normalize input to a list
+    req_qual_list = []
+    if isinstance(required_qualifications, str):
+        if not required_qualifications or required_qualifications == "None":
+            req_qual_list = []
+        else:
+            req_qual_list = [required_qualifications]
+    elif isinstance(required_qualifications, list):
+        req_qual_list = [q for q in required_qualifications if q and q != "None"]
+
+    if not req_qual_list or not candidate_quals:
         return {
-            "match_score": 0.5,  # Neutral if no requirement
-            "matched": False,
+            "match_score": 1.0, 
+            "matched": True,
+            "year_match": True,
             "details": "No specific qualification requirement"
         }
 
-    required_upper = required_qualification.upper()
-
-    # Check for degree level match
-    required_level = None
-    level_order = [
-        'doctorate', 'masters', 'bachelors', 'associate', 'diploma', 'certificate'
-    ]
-
-    for level in level_order:
-        for keyword in DEGREE_LEVELS[level]:
-            if keyword.upper() in required_upper:
-                required_level = level
-                break
-        if required_level:
-            break
-
+    candidate_degrees = [normalize_degree(d) for d in candidate_quals.get("degrees", [])]
     candidate_level = candidate_quals.get("highest_level")
 
-    match_score = 0.5
-    matched = False
-    details = "Could not determine qualification match"
+    # Level Hierarchy
+    level_order = ['doctorate', 'masters', 'bachelors', 'associate', 'diploma', 'certificate']
+    def get_level(degree_norm):
+        # Use robust inference first (handles MTECH/BTECH etc)
+        inferred = _degree_level_from_text(degree_norm)
+        if inferred:
+            return inferred
 
-    # Calculate match score
-    if required_level and candidate_level:
-        required_idx = level_order.index(required_level)
-        candidate_idx = level_order.index(candidate_level)
+        for level, keywords in DEGREE_LEVELS.items():
+            for kw in keywords:
+                if kw.upper() in str(degree_norm).upper():
+                    return level
+        return None
 
-        if candidate_idx <= required_idx:
-            # Candidate meets or exceeds requirement
-            match_score = 1.0
-            matched = True
-            details = f"Qualification met: {candidate_quals.get('highest_degree', 'N/A')}"
-        elif candidate_idx == required_idx + 1:
-            # One level below
-            match_score = 0.7
-            matched = False
-            details = (f"Slightly below requirement: Has {candidate_level}, "
-                       f"needs {required_level}")
-        else:
-            # More than one level below
-            match_score = 0.4
-            matched = False
-            details = f"Below requirement: Has {candidate_level}, needs {required_level}"
-    else:
-        # Check for field match if no level comparison possible
-        field_match = False
-        for field in candidate_quals.get("fields", []):
-            if field.upper() in required_upper:
-                field_match = True
+    best_match_score = 0.0
+    best_matched = False
+    best_details = f"Required qualifications {', '.join(req_qual_list)} not identified"
+    best_req_qual = req_qual_list[0] if req_qual_list else None
+    
+    # Iterate through all acceptable qualifications to find the best match
+    for req_qual in req_qual_list:
+        required_norm = normalize_degree(req_qual)
+        required_level = get_level(required_norm)
+        
+        current_score = 0.0
+        current_matched = False
+        current_details = ""
+
+        # 1. Direct or Synonym Match (e.g. BTech == Bachelor of Technology)
+        if required_norm in candidate_degrees:
+            current_matched = True
+            current_score = 1.0
+            current_details = f"Verified {required_norm} qualification"
+        
+        # 2. Level Hierarchy Match (e.g. Master's covers Bachelor's)
+        elif required_level and candidate_level:
+            req_idx = level_order.index(required_level)
+            cand_idx = level_order.index(candidate_level)
+            
+            if cand_idx == req_idx:
+                current_matched = True
+                current_score = 1.0
+                current_details = f"Level met: {candidate_level.title()} exactly matches {required_level.title()} requirement"
+            elif cand_idx < req_idx:
+                # Overqualified: candidate has a higher degree than required (e.g. Master's vs Bachelor's)
+                # Apply a slight penalty to avoid bias toward overqualified candidates
+                current_matched = True
+                current_score = 0.8  
+                current_details = f"Overqualified: {candidate_level.title()} exceeds {required_level.title()} requirement"
+            else:
+                current_score = 0.3
+                current_details = f"Level below requirement: {candidate_level.title()} < {required_level.title()}"
+        
+        # Special "Any" degree cases
+        elif "ANY BACHELOR" in required_norm:
+            if candidate_level == 'bachelors':
+                current_matched = True
+                current_score = 1.0
+                current_details = "Matched Bachelor's level requirement exactly"
+            elif candidate_level in ['masters', 'doctorate']:
+                current_matched = True
+                current_score = 0.8
+                current_details = "Overqualified: exceeds Bachelor's level requirement"
+        elif "ANY MASTER" in required_norm:
+            if candidate_level == 'masters':
+                current_matched = True
+                current_score = 1.0
+                current_details = "Matched Master's level requirement exactly"
+            elif candidate_level == 'doctorate':
+                current_matched = True
+                current_score = 0.8
+                current_details = "Overqualified: exceeds Master's level requirement"
+                
+        # Update best match if this is better
+        if current_score > best_match_score or (current_score == best_match_score and current_matched):
+            best_match_score = current_score
+            best_matched = current_matched
+            best_details = current_details or f"Required {req_qual} not identified"
+            best_req_qual = req_qual
+            
+            # If we found a perfect match, no need to check others
+            if best_match_score == 1.0 and best_matched:
                 break
 
-        if field_match:
-            match_score = 0.8
-            matched = True
-            details = "Field of study matches requirement"
+    # 3. Year of Passing Inclusion Logic
+    year_match = True
+    candidate_year = candidate_quals.get("year_of_passing")
+    
+    # Standardize required_years into a list
+    allowed_years = []
+    if isinstance(required_years, (int, float)):
+        allowed_years = [int(required_years)]
+    elif isinstance(required_years, list):
+        allowed_years = [int(y) for y in required_years if str(y).strip().isdigit()]
+
+    if allowed_years and candidate_year:
+        if candidate_year not in allowed_years:
+            year_match = False
+            best_match_score = 0.0
+            best_matched = False
+            best_details = (f"Rejection: Graduation year {candidate_year} is not in "
+                       f"Allowed list ({', '.join(map(str, allowed_years))})")
+    elif allowed_years and not candidate_year:
+        # Could not detect year — strict mode requires the year to be present and match.
+        year_match = False
+        best_match_score = 0.0
+        best_matched = False
+        best_details = ("Rejection: Graduation year not detected (Required: one of "
+                   + ", ".join(map(str, allowed_years)) + ")")
+
+    # 4. Final Fallback if no degrees found at all
+    if not best_matched and not candidate_quals.get("degrees"):
+        # Before giving up, check if highest_level was inferred from the text
+        if candidate_quals.get("highest_level"):
+            # We inferred a level even though no explicit degree string was captured
+            pass  # keep existing match_score / details
+        else:
+            best_match_score = 0.0
+            best_details = "Rejection: No educational degrees detected in resume"
 
     return {
-        "match_score": match_score,
-        "matched": matched,
-        "details": details,
+        "match_score": best_match_score,
+        "matched": best_matched,
+        "year_match": year_match,
+        "details": best_details,
         "candidate_qualification": candidate_quals.get("qualification_text", ""),
-        "required_qualification": required_qualification
+        "candidate_year": candidate_year,
+        "required_qualification": best_req_qual or "None",
+        "required_years": allowed_years
     }
 
-
 def format_qualification_display(quals: Dict[str, Any]) -> str:
-    """
-    Format qualifications for display.
-
-    Args:
-        quals: Dictionary from extract_qualifications()
-
-    Returns:
-        Formatted string for display
-    """
+    """Format extracted qualifications for summary display."""
     parts = []
-
-    if quals.get("degrees"):
-        parts.append(f"Degrees: {', '.join(quals['degrees'])}")
-
-    if quals.get("fields"):
-        parts.append(f"Fields: {', '.join(quals['fields'])}")
-
-    if quals.get("institutions"):
-        parts.append(f"Institutions: {', '.join(quals['institutions'][:2])}")
-
+    if quals.get("degrees"): parts.append(f"Degrees: {', '.join(quals['degrees'])}")
+    if quals.get("fields"): parts.append(f"Fields: {', '.join(quals['fields'])}")
+    if quals.get("institutions"): parts.append(f"Institutions: {', '.join(quals['institutions'][:2])}")
     return " | ".join(parts) if parts else "No qualifications extracted"

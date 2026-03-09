@@ -2,14 +2,40 @@ import streamlit as st
 import json
 import os
 from datetime import datetime
+import uuid
 from supabase_client import supabase
 
 HISTORY_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "history.json")
 
+
+def _ensure_record_ids(records):
+    """Ensure each local JSON history record has a unique id.
+
+    Older versions of the app wrote history records without an `id`, which
+    made delete-by-id impossible. This function migrates in-memory records
+    and returns (records, changed).
+    """
+    changed = False
+    for record in records:
+        if not isinstance(record, dict):
+            continue
+        if not record.get("id"):
+            record["id"] = str(uuid.uuid4())
+            changed = True
+    return records, changed
+
 def _load_json_history():
     if os.path.exists(HISTORY_FILE):
         with open(HISTORY_FILE, "r") as f:
-            return json.load(f)
+            records = json.load(f)
+
+        if isinstance(records, list):
+            records, changed = _ensure_record_ids(records)
+            if changed:
+                _save_json_history(records)
+            return records
+
+        return []
     return []
 
 def _save_json_history(records):
@@ -33,7 +59,9 @@ def save_history(job_data, threshold, shortlisted_candidates, all_results=None):
             "final_score": c["scores"]["final_score"]
         })
 
-    if supabase is not None:
+    is_guest = getattr(st.session_state.get("user"), "id", None) == "guest"
+
+    if supabase is not None and not is_guest:
         try:
             # 1. Create History Record
             history_res = supabase.table("screening_history").insert({
@@ -47,41 +75,53 @@ def save_history(job_data, threshold, shortlisted_candidates, all_results=None):
             history_id = history_res.data[0]["id"]
 
             # 2. Insert Candidates (Try with new columns first)
-            try:
-                for candidate in shortlisted_candidates:
-                    # Convert embedding to list for JSON/Supabase compatibility if it's a numpy array
+            # 2. Insert Candidates 
+            # We attempt to insert with 'embedding' first, then fallback to without it.
+            # Convert values safely to avoid DB rejects (None -> "", floats strictly cast)
+            for candidate in shortlisted_candidates:
+                safe_name = candidate.get("resume_name", "Unknown Candidate").replace(".pdf", "")
+                safe_email = candidate.get("email") or ""
+                safe_phone = candidate.get("phone") or ""
+                safe_score = float(candidate["scores"]["final_score"])
+                
+                try:
                     raw_emb = candidate.get("resume_embedding")
                     emb_list = raw_emb.tolist() if hasattr(raw_emb, "tolist") else raw_emb
-
-                    supabase.table("shortlisted_candidates").insert({
-                        "history_id": history_id,
-                        "candidate_name": candidate["resume_name"].replace(".pdf", ""),
-                        "candidate_email": candidate.get("email"),
-                        "candidate_phone": candidate.get("phone"),                    
-                        "final_score": candidate["scores"]["final_score"],
-                        "embedding": emb_list  # Added pgvector support
-                    }).execute()
-            except Exception as e:
-                # Fallback: Insert without embedding if schema update isn't run yet
-                print(f"Fallback insert due to schema/embedding error: {e}")
-                for candidate in shortlisted_candidates:
-                    supabase.table("shortlisted_candidates").insert({
-                        "history_id": history_id,
-                        "candidate_name": candidate["resume_name"].replace(".pdf", ""),
-                        "final_score": candidate["scores"]["final_score"]
-                    }).execute()
                     
+                    supabase.table("shortlisted_candidates").insert({
+                        "history_id": history_id,
+                        "candidate_name": safe_name,
+                        "candidate_email": safe_email[:250], # safeguard length
+                        "candidate_phone": safe_phone[:50],  # safeguard length
+                        "final_score": safe_score,
+                        "embedding": emb_list
+                    }).execute()
+                except Exception as inner_e:
+                    print(f"Embedding insert failed: {inner_e}. Falling back to basic insert.")
+                    try:
+                        supabase.table("shortlisted_candidates").insert({
+                            "history_id": history_id,
+                            "candidate_name": safe_name,
+                            "candidate_email": safe_email[:250],
+                            "candidate_phone": safe_phone[:50],
+                            "final_score": safe_score
+                        }).execute()
+                    except Exception as fallback_e:
+                        print(f"Basic insert failed for candidate {safe_name}: {fallback_e}")
+                        
         except Exception as e:
-            st.error(f"❌ Error saving history to database: {str(e)}")
-            print(f"Error saving history: {e}")
+            st.error(f"❌ Error saving history to Database: {str(e)}")
+            print(f"Overall Error saving history: {e}")
             pass
 
     # Save full results data for complete restoration
     records = _load_json_history()
     records.insert(0, {
+        "id": str(uuid.uuid4()),
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "job_title": job_data["job_title"],
         "qualification": job_data.get("qualification", ""),
+        "year_of_passing": job_data.get("year_of_passing", []),
         "required_experience": job_data.get("required_experience", 0),
         "must_have_skills": job_data.get("must_have_skills", []),
         "good_to_have_skills": job_data.get("good_to_have_skills", []),
@@ -98,9 +138,10 @@ def load_history():
     if "user" not in st.session_state:
         return []
 
+    is_guest = getattr(st.session_state.get("user"), "id", None) == "guest"
     user_id = st.session_state["user"].id
 
-    if supabase is not None:
+    if supabase is not None and not is_guest:
         try:
             # Join with job_configs to get the full details
             history_res = (
@@ -149,10 +190,11 @@ def load_history():
                 # Format timestamp
                 timestamp_str = h["created_at"]
                 try:
-                    # Convert ISO format to readable string
-                    # e.g. 2023-10-27T10:00:00.000Z -> 2023-10-27 10:00
-                    dt = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
-                    timestamp_str = dt.strftime("%Y-%m-%d %H:%M")
+                    # Supabase stores in UTC. Convert to local time (IST +5:30 as per system info)
+                    from datetime import timezone, timedelta
+                    dt_utc = datetime.fromisoformat(timestamp_str.replace('Z', '+00:00'))
+                    dt_local = dt_utc.astimezone(timezone(timedelta(hours=5, minutes=30)))
+                    timestamp_str = dt_local.strftime("%Y-%m-%d %H:%M")
                 except Exception:
                     pass
 
@@ -161,6 +203,7 @@ def load_history():
                     "job_config_id": h.get("job_config_id"),
                     "job_title": display_title,
                     "qualification": job_details.get("required_qualification", ""),
+                    "year_of_passing": job_details.get("required_year_of_passing", []),
                     "required_experience": job_details.get("required_experience", 0),
                     "must_have_skills": must_have,
                     "good_to_have_skills": good_to_have,
@@ -194,9 +237,16 @@ def get_job_config(job_config_id: str):
         return None
 
 def delete_history_record(history_id: str):
-    if supabase is None:
+    is_guest = False
+    try:
+        is_guest = getattr(st.session_state.get("user"), "id", None) == "guest"
+    except Exception:
+        is_guest = False
+
+    if supabase is None or is_guest:
         records = _load_json_history()
-        records = [r for r in records if r.get("id") != history_id]
+        if history_id:
+            records = [r for r in records if r.get("id") != history_id]
         _save_json_history(records)
         return
 
@@ -232,6 +282,11 @@ def clear_all_history():
         return
     
     user_id = st.session_state["user"].id
+
+    # Guest users only use local JSON history, even if Supabase is configured.
+    if user_id == "guest":
+        _save_json_history([])
+        return
     
     if supabase is not None:
         try:

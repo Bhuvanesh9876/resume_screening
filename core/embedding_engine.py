@@ -1,7 +1,6 @@
 from sentence_transformers import SentenceTransformer
 import streamlit as st
 import numpy as np
-import os
 from groq import Groq
 from core.config import GROQ_API_KEY
 

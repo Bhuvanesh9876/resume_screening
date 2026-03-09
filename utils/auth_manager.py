@@ -20,7 +20,7 @@ def restore_session():
                 session["refresh_token"]
             )
             st.session_state["user"] = supabase.auth.get_user().user
-        except:
+        except Exception:
             st.session_state.clear()
 
 def save_session(auth_response):

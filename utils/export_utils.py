@@ -6,7 +6,6 @@ Allows exporting to CSV, PDF reports, and JSON formats
 import pandas as pd
 import json
 from datetime import datetime
-import io
 from typing import List, Dict
 
 
@@ -36,6 +35,9 @@ def export_to_csv(shortlisted_candidates: List[Dict], job_data: Dict) -> str:
             "Matched_Skills_Count": len(scores.get("matched_skills", [])),
             "Missing_Skills_Count": len(scores.get("missing_skills", [])),
             "Confidence": scores.get("confidence", 0),
+            "LinkedIn": candidate.get("linkedin", ""),
+            "GitHub": candidate.get("github", ""),
+            "Portfolio": candidate.get("portfolio", ""),
             "Job_Title": job_data.get("job_title", ""),
             "Screening_Date": datetime.now().strftime("%Y-%m-%d %H:%M")
         }
@@ -45,7 +47,7 @@ def export_to_csv(shortlisted_candidates: List[Dict], job_data: Dict) -> str:
         # Return empty dataframe with correct columns
         columns = ["Rank", "Candidate_Name", "Email", "Phone_Contact", "Final_Score", "Semantic_Score", 
                    "Skill_Score", "Experience_Score", "Experience_Years", "Matched_Skills", "Missing_Skills", 
-                   "Matched_Skills_Count", "Missing_Skills_Count", "Confidence", "Job_Title", "Screening_Date"]
+                   "Matched_Skills_Count", "Missing_Skills_Count", "Confidence", "LinkedIn", "GitHub", "Portfolio", "Job_Title", "Screening_Date"]
         df = pd.DataFrame(columns=columns)
     else:
         df = pd.DataFrame(data)

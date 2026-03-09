@@ -18,6 +18,36 @@ if "user" not in st.session_state:
 
 render_navbar()
 
+# Premium Styling
+st.markdown("""
+<style>
+    .metric-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+    .metric-card:hover {
+        transform: translateY(-5px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .metric-label {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 5px;
+    }
+    .metric-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #f8fafc;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 st.header("📈 Model Accuracy Evaluation")
 
 evaluator = ModelEvaluator()
@@ -32,75 +62,63 @@ tab1, tab2, tab3, tab4 = st.tabs([
 
 # Tab 1: Metrics
 with tab1:
-    st.subheader("Model Performance Metrics")
-    
     if "results" not in st.session_state or not st.session_state.get("results"):
         st.warning("⚠️ No screening results available. Please process resumes first.")
         if st.button("📄 Go to Processing"):
             st.switch_page("pages/2_⚙️_Processing.py")
     else:
         results = st.session_state["results"]
-        
-        # Check coverage
         coverage = evaluator.get_coverage(results)
         
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("Total Resumes", coverage['total_resumes'])
-        with col2:
-            st.metric("Labeled Resumes", coverage['labeled_resumes'])
-        with col3:
-            st.metric("Coverage", f"{coverage['coverage_percentage']:.1f}%")
+        # Premium Metrics Row 1
+        m1, m2, m3 = st.columns(3)
+        with m1:
+            st.markdown(f'<div class="metric-card"><div class="metric-label">Total Resumes</div><div class="metric-value">{coverage["total_resumes"]}</div></div>', unsafe_allow_html=True)
+        with m2:
+            st.markdown(f'<div class="metric-card"><div class="metric-label">Labeled Resumes</div><div class="metric-value">{coverage["labeled_resumes"]}</div></div>', unsafe_allow_html=True)
+        with m3:
+            st.markdown(f'<div class="metric-card"><div class="metric-label">Coverage</div><div class="metric-value">{coverage["coverage_percentage"]:.1f}%</div></div>', unsafe_allow_html=True)
+            
+        st.markdown("<br>", unsafe_allow_html=True)
         
         if coverage['labeled_resumes'] == 0:
             st.warning("🏷️ No ground truth labels found. Please add labels in the 'Label Data' tab.")
         else:
-            # Calculate metrics
             metrics = evaluator.evaluate(results)
             
-            st.markdown("---")
-            st.subheader("Performance Metrics")
+            # Premium Metrics Row 2
+            c1, c2, c3, c4 = st.columns(4)
+            # Visualisation
+            col_a, col_b = st.columns([1, 1])
             
-            # Display metrics in columns
-            col1, col2, col3, col4 = st.columns(4)
-            with col1:
-                st.metric("Accuracy", f"{metrics.accuracy:.2%}")
-            with col2:
-                st.metric("Precision", f"{metrics.precision:.2%}")
-            with col3:
-                st.metric("Recall", f"{metrics.recall:.2%}")
-            with col4:
-                st.metric("F1 Score", f"{metrics.f1_score:.2%}")
-            
-            st.markdown("---")
-            st.subheader("Confusion Matrix")
-            
-            # Confusion matrix
-            col1, col2 = st.columns(2)
-            with col1:
-                st.metric("✅ True Positives", metrics.true_positives, 
-                         help="Correctly predicted as shortlist")
-                st.metric("❌ False Positives", metrics.false_positives,
-                         help="Incorrectly predicted as shortlist")
-            with col2:
-                st.metric("✅ True Negatives", metrics.true_negatives,
-                         help="Correctly predicted as reject")
-                st.metric("❌ False Negatives", metrics.false_negatives,
-                         help="Incorrectly predicted as reject")
-            
-            # Visualization
-            fig = go.Figure(data=go.Heatmap(
-                z=[[metrics.true_positives, metrics.false_negatives],
-                   [metrics.false_positives, metrics.true_negatives]],
-                x=['Predicted Shortlist', 'Predicted Reject'],
-                y=['Actual Shortlist', 'Actual Reject'],
-                text=[[metrics.true_positives, metrics.false_negatives],
-                      [metrics.false_positives, metrics.true_negatives]],
-                texttemplate='%{text}',
-                colorscale='Blues'
-            ))
-            fig.update_layout(title="Confusion Matrix", height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            with col_a:
+                fig = go.Figure(data=go.Heatmap(
+                    z=[[metrics.true_positives, metrics.false_negatives],
+                       [metrics.false_positives, metrics.true_negatives]],
+                    x=['Predicted Shortlist', 'Predicted Reject'],
+                    y=['Actual Shortlist', 'Actual Reject'],
+                    text=[[metrics.true_positives, metrics.false_negatives],
+                          [metrics.false_positives, metrics.true_negatives]],
+                    texttemplate='%{text}',
+                    colorscale='Blues'
+                ))
+                fig.update_layout(title="Confusion Matrix", height=380, margin=dict(l=20, r=20, t=40, b=20))
+                st.plotly_chart(fig, use_container_width=True)
+
+            with col_b:
+                # Score Distribution
+                dist = evaluator.get_score_distribution(results)
+                fig_dist = px.histogram(
+                    pd.DataFrame({'Score': dist['all']}), 
+                    x='Score', 
+                    nbins=20,
+                    title="Score Distribution",
+                    color_discrete_sequence=['#3B82F6']
+                )
+                from core.config import SHORTLIST_THRESHOLD
+                fig_dist.add_vline(x=SHORTLIST_THRESHOLD, line_dash="dash", line_color="red", annotation_text="Threshold")
+                fig_dist.update_layout(height=380, margin=dict(l=20, r=20, t=40, b=20))
+                st.plotly_chart(fig_dist, use_container_width=True)
 
 # Tab 2: Label Data
 with tab2:

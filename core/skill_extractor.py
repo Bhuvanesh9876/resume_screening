@@ -8,7 +8,7 @@ direct matching, synonym resolution, fuzzy matching, and NLP-based entity extrac
 import re
 import os
 import json
-from typing import List, Dict, Set, Optional, Any
+from typing import List, Dict, Optional, Any
 from rapidfuzz import fuzz, process
 from core.nlp_engine import NLPEngine
 
@@ -33,6 +33,15 @@ def _load_skills_data() -> Dict[str, Any]:
         try:
             with open(SKILLS_FILE, "r", encoding="utf-8") as f:
                 _skills_data = json.load(f)
+                
+                # Auto-generate the master "skills" list from "categories"
+                # so the JSON file doesn't need to duplicate hundreds of lines.
+                if "categories" in _skills_data:
+                    auto_skills = set(_skills_data.get("skills", []))
+                    for cat_skills in _skills_data["categories"].values():
+                        auto_skills.update(cat_skills)
+                    _skills_data["skills"] = sorted(list(auto_skills))
+                    
         except (FileNotFoundError, json.JSONDecodeError):
             _skills_data = {"skills": [], "synonyms": {}, "categories": {}}
     return _skills_data
@@ -178,16 +187,8 @@ def extract_skills(text: str, skill_list: Optional[List[str]] = None,
             found.add(skill_original)
             continue
 
-        # Synonym Check
-        alias_matched = False
-        for alias, canonical in aliases.items():
-            if normalize(canonical) == skill_norm:
-                if re.search(rf"\b{re.escape(normalize(alias))}\b", text_norm):
-                    found.add(skill_original)
-                    alias_matched = True
-                    break
-        if alias_matched:
-            continue
+        # (Synonyms are already pre-resolved into text_norm globally by _resolve_synonyms, 
+        # so we don't need a massive O(N) secondary loop checking regexes here!)
 
         # Fuzzy Matching (Expensive)
         skill_word_count = len(skill_norm.split())
