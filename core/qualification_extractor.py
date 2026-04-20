@@ -57,17 +57,20 @@ def _degree_level_from_text(degree_text: str) -> Optional[str]:
         return False
 
     # ── Doctorate ─────────────────────────────────────────────────
-    if any(k in t for k in ["DOCTORATE", "DOCTOROFPHILOSOPHY"]):
-        return "doctorate"
     if any(_has_short(k) for k in ["PHD", "DBA", "EDD"]):
+        return "doctorate"
+    if any(re.search(r"\b" + k + r"\b", upper_orig) for k in ["DOCTORATE", "DOCTOR OF PHILOSOPHY", "JURIS DOCTOR", "DOCTOR OF MEDICINE"]):
         return "doctorate"
     if t in ("MD", "JD"):
         return "doctorate"
 
     # ── Masters ───────────────────────────────────────────────────
-    # Long tokens (>=5 chars) — safe as substring even in longer text
-    if any(k in t for k in ["MTECH", "MASTER", "MPHIL", "POSTGRADUATE"]):
+    # We must use word boundary checks for "MASTER" to avoid matching "MASTERED", "WEBMASTER" etc.
+    if any(re.search(r"\b" + k + r"\b", upper_orig) for k in ["MASTER", "MASTERS", "MASTER'S", "POSTGRADUATE"]):
         return "masters"
+    if any(k in t for k in ["MTECH", "MPHIL"]):
+        if not re.search(r"\b(MASTERED|WEBMASTER|SCRUMMASTER)\b", upper_orig):
+            return "masters"
     # Short tokens — word-boundary check to avoid false positives
     if any(_has_short(k) for k in ["MBA", "MCA", "LLM", "MSC", "MENG", "MCOM", "PG"]):
         return "masters"
@@ -77,7 +80,9 @@ def _degree_level_from_text(degree_text: str) -> Optional[str]:
             return "masters"
 
     # ── Bachelors ─────────────────────────────────────────────────
-    if any(k in t for k in ["BTECH", "BACHELOR", "BARCH", "BPHARM", "UNDERGRADUATE"]):
+    if any(re.search(r"\b" + k + r"\b", upper_orig) for k in ["BACHELOR", "BACHELORS", "BACHELOR'S", "UNDERGRADUATE"]):
+        return "bachelors"
+    if any(k in t for k in ["BTECH", "BARCH", "BPHARM"]):
         return "bachelors"
     if any(_has_short(k) for k in ["BBA", "BCA", "LLB", "BSC", "BENG", "BCOM", "UG"]):
         return "bachelors"
@@ -154,13 +159,11 @@ def _extract_graduation_year(text: str) -> Optional[int]:
     """Extract the most likely graduation / completion year.
 
     Strategy (in priority order):
-      1. Explicit year ranges in the education block (e.g. "2022 - 2026").
-      2. "Present / Current" ranges in the education block → estimate end year.
-      3. Lines containing degree keywords + year anywhere in the text.
-      4. Fallback to the most recent plausible year in the full text.
-
-    Key fix: "Present" ranges are checked BEFORE standalone years so that
-    "2022 - Present" is not mis-read as just "2022".
+      1. Explicit indicators anywhere (e.g. "Class of 2026", "Expected 2026").
+      2. Explicit year ranges in the education block (e.g. "2022 - 2026").
+      3. "Present / Current" ranges in the education block → estimate end year.
+      4. Context window around degree keywords (captures dates on next lines).
+      5. Fallback to the most recent plausible year in the full text.
     """
     if not text:
         return None
@@ -172,6 +175,10 @@ def _extract_graduation_year(text: str) -> Optional[int]:
     )
     present_range_re = re.compile(
         r"\b(19[7-9][0-9]|20[0-2][0-9])\s*(?:-|–|—|to)\s*(present|current|now|pursuing|ongoing)\b",
+        re.IGNORECASE,
+    )
+    explicit_grad_re = re.compile(
+        r"(?:class\s+of|graduat(?:ed|ing|ion)|anticipated|expected|pass(?:out)?\s*year|completing|completed)(?:\s+in|:|-)?\s*(?:[a-zA-Z]+\s+)?(20[0-2][0-9]|19[7-9][0-9])\b",
         re.IGNORECASE,
     )
 
@@ -192,11 +199,8 @@ def _extract_graduation_year(text: str) -> Optional[int]:
 
     def standalone_years(blob: str) -> List[int]:
         """Return all standalone year mentions, EXCLUDING those part of a range."""
-        # Mask out explicit year-year ranges so their start/end years aren't double counted
         masked_blob = range_re.sub(" [RANGE] ", blob)
-        # Mask out present ranges
         masked_blob = present_range_re.sub(" [PRESENT_RANGE] ", masked_blob)
-        
         years: List[int] = []
         for y in year_re.findall(masked_blob):
             try:
@@ -219,9 +223,7 @@ def _extract_graduation_year(text: str) -> Optional[int]:
         if not starts:
             return None
         start_year = max(starts)
-        level_hint = (
-            _degree_level_from_text(blob) or _degree_level_from_text(text)
-        )
+        level_hint = _degree_level_from_text(blob) or _degree_level_from_text(text)
         duration = 4 if level_hint == "bachelors" else 2 if level_hint == "masters" else 4
         est = start_year + duration
         current_year = datetime.now().year
@@ -231,56 +233,60 @@ def _extract_graduation_year(text: str) -> Optional[int]:
             est = current_year + 1
         return est
 
-    # ---------- Education block based ----------
-    if education_block:
-        # 1a) Check for "Present" / "Current" ranges FIRST so that
-        #     "2022 - Present" is not consumed as standalone "2022".
-        present_est = estimate_present_range(education_block)
+    # 1) Look for explicit graduation indicator ANYWHERE
+    explicit_matches = explicit_grad_re.findall(text)
+    if explicit_matches:
+        try:
+            return max(int(m) for m in explicit_matches)
+        except Exception:
+            pass
 
-        # 1b) Explicit year-year ranges (e.g. 2022 - 2026)
+    # 2) Education block based
+    if education_block:
+        present_est = estimate_present_range(education_block)
         range_years = end_years_from_ranges(education_block)
 
-        # If we have explicit end-years, prefer the highest (most recent degree)
         if range_years:
             best = max(range_years)
-            # If we also have a present estimate that's bigger, use it
             if present_est and present_est > best:
                 return present_est
             return best
 
-        # Only present-range found (no explicit end year)
         if present_est:
             return present_est
 
-        # 1c) Standalone years inside education block
         edu_standalone = standalone_years(education_block)
         if edu_standalone:
             return max(edu_standalone)
 
-    # 2) Lines with degree keywords anywhere in the text
+    # 3) Lines with degree keywords + context window (handles multi-line formatting)
     candidate_years: List[int] = []
     degree_line_re = re.compile(
-        r"\b(B\s*\.?\s*TECH|M\s*\.?\s*TECH|BTECH|MTECH|BACHELOR|MASTER|UNIVERSITY|COLLEGE|INSTITUTE|DEGREE)"
-        r"\b",
+        r"\b(B\s*\.?\s*TECH|M\s*\.?\s*TECH|BTECH|MTECH|BACHELOR|MASTER|UNIVERSITY|COLLEGE|INSTITUTE|DEGREE)\b",
         re.IGNORECASE,
     )
-    for ln in text.splitlines():
+    lines = text.splitlines()
+    for i, ln in enumerate(lines):
         if degree_line_re.search(ln):
-            # Check present ranges on this line first
-            line_est = estimate_present_range(ln)
+            start_i = max(0, i - 1)
+            end_i = min(len(lines), i + 3)
+            context_blob = "\n".join(lines[start_i:end_i])
+            
+            line_est = estimate_present_range(context_blob)
             if line_est:
                 candidate_years.append(line_est)
-            candidate_years.extend(end_years_from_ranges(ln))
-            candidate_years.extend(standalone_years(ln))
+            candidate_years.extend(end_years_from_ranges(context_blob))
+            candidate_years.extend(standalone_years(context_blob))
+            
     if candidate_years:
         return max(candidate_years)
 
-    # 3) Present range anywhere in the full text
+    # 4) Present range anywhere in the full text
     full_est = estimate_present_range(text)
     if full_est:
         return full_est
 
-    # 4) Fallback: most recent plausible year anywhere in the full text
+    # 5) Fallback: most recent plausible year anywhere in the full text
     all_years = end_years_from_ranges(text) + standalone_years(text)
     return max(all_years) if all_years else None
 
@@ -479,6 +485,21 @@ def extract_qualifications(resume_text: str) -> Dict[str, Any]:
                 if highest_level is None or level_order.index(level) < level_order.index(highest_level):
                     highest_level = level
 
+    # Ultimate fallback: If no explicit degree degree string found, but valid College/University 
+    # was extracted, assume a Bachelor's degree (very common in Indian tech resumes where they 
+    # just write "X Engineering College").
+    if highest_level is None and institutions:
+        for inst in institutions:
+            inst_lower = inst.lower()
+            if any(keyword in inst_lower for keyword in ['engineering', 'college', 'university', 'institute', 'technology']):
+                highest_level = 'bachelors'
+                inferred_degree = "Bachelor's Degree (Inferred)"
+                if not highest_degree:
+                    highest_degree = inferred_degree
+                if inferred_degree not in degrees:
+                    degrees.append(inferred_degree)
+                break
+
     # Extract graduation year (prefer education section / date ranges)
     grad_year = _extract_graduation_year(text_original)
 
@@ -514,12 +535,20 @@ def match_qualification(candidate_quals: Dict[str, Any],
         req_qual_list = [q for q in required_qualifications if q and q != "None"]
 
     if not req_qual_list or not candidate_quals:
-        return {
-            "match_score": 1.0, 
-            "matched": True,
-            "year_match": True,
-            "details": "No specific qualification requirement"
-        }
+        if not req_qual_list or "None" in req_qual_list:
+            return {
+                "match_score": 1.0, 
+                "matched": True,
+                "year_match": True,
+                "details": "No specific qualification requirement"
+            }
+        else:
+            return {
+                "match_score": 0.0,
+                "matched": False,
+                "year_match": False,
+                "details": "Rejection: No educational degrees detected in resume"
+            }
 
     candidate_degrees = [normalize_degree(d) for d in candidate_quals.get("degrees", [])]
     candidate_level = candidate_quals.get("highest_level")
@@ -564,9 +593,11 @@ def match_qualification(candidate_quals: Dict[str, Any],
             cand_idx = level_order.index(candidate_level)
             
             if cand_idx == req_idx:
-                current_matched = True
-                current_score = 1.0
-                current_details = f"Level met: {candidate_level.title()} exactly matches {required_level.title()} requirement"
+                # They share a level (e.g., both Masters), but the specific degrees didn't match above.
+                # E.g. Candidate has MBA, Requirement is MTech. These are completely different!
+                current_matched = False
+                current_score = 0.4
+                current_details = f"Mismatched degree at same level: {candidate_level.title()} level found, but strict {required_norm} is missing"
             elif cand_idx < req_idx:
                 # Overqualified: candidate has a higher degree than required (e.g. Master's vs Bachelor's)
                 # Apply a slight penalty to avoid bias toward overqualified candidates
@@ -654,11 +685,3 @@ def match_qualification(candidate_quals: Dict[str, Any],
         "required_qualification": best_req_qual or "None",
         "required_years": allowed_years
     }
-
-def format_qualification_display(quals: Dict[str, Any]) -> str:
-    """Format extracted qualifications for summary display."""
-    parts = []
-    if quals.get("degrees"): parts.append(f"Degrees: {', '.join(quals['degrees'])}")
-    if quals.get("fields"): parts.append(f"Fields: {', '.join(quals['fields'])}")
-    if quals.get("institutions"): parts.append(f"Institutions: {', '.join(quals['institutions'][:2])}")
-    return " | ".join(parts) if parts else "No qualifications extracted"

@@ -1,306 +1,158 @@
 ﻿# AI Resume Screening System
 
-An intelligent resume screening system using semantic matching, skill extraction, and explainable AI to automate candidate evaluation.
+An AI-assisted resume screening platform with a Flask backend API and React frontend.
 
 ## Features
 
-- 🎯 **Semantic Matching**: Uses sentence-transformers (e5-small-v2) for deep understanding of job descriptions and resumes
-- 🔍 **Skill Extraction**: Automatically identifies and matches technical and soft skills
-- 📊 **Multi-factor Scoring**: Combines semantic similarity, skill matching, and experience evaluation
-- 🔐 **Authentication**: Secure login with Supabase integration
-- 📈 **Model Evaluation**: Built-in accuracy metrics and performance analysis
-- 💾 **History Tracking**: Save and review past screening results
-- 🎨 **Modern UI**: Clean Streamlit interface with intuitive navigation
+- Semantic resume to job matching using embeddings
+- Skill, experience, qualification, and contact extraction
+- Weighted candidate scoring and threshold-based shortlisting
+- Explainable analysis for each candidate
+- Email draft generation and notification support
+- Screening history with reload and export
+- Supabase-backed authentication and per-user sessions
 
-## Installation
+## Tech Stack
 
-1. **Clone the repository**
+- Backend: Flask, Flask-CORS, Python
+- Frontend: React, Vite
+- AI/NLP: sentence-transformers, torch, rapidfuzz
+- Parsing: PyMuPDF, pdfplumber, python-docx, pytesseract
+- Data/Auth: Supabase
 
-   ```bash
-   cd resume_screening
-   ```
+## Prerequisites
 
-2. **Create virtual environment**
+- Python 3.10+
+- Node.js 18+
+- npm
 
-   ```bash
-   python -m venv venv
-   .\venv\Scripts\Activate.ps1  # Windows
-   # source venv/bin/activate    # Linux/Mac
-   ```
+## Backend Setup
 
-3. **Install dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure Supabase (Optional)**
-   - Create `.streamlit/secrets.toml`:
-     ```toml
-     SUPABASE_URL = "your-project-url"
-     SUPABASE_ANON_KEY = "your-anon-key"
-     ```
-
-## Usage
-
-### Start the Application
+1. Create and activate a virtual environment.
 
 ```bash
-streamlit run app.py
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
-The app will open in your browser at `http://localhost:8501`
+2. Install Python dependencies.
 
-### Workflow
-
-1. **Login** (0_🔐_Login.py)
-   - Create account or sign in
-
-2. **Job Configuration** (1_📄_Recruiter_Input.py)
-   - Enter job title and description
-   - Specify must-have and good-to-have skills
-   - Set required experience
-
-3. **Process Resumes** (2_⚙️_Processing.py)
-   - Upload PDF resumes
-   - System extracts text, skills, and experience
-   - Generates scores for each candidate
-
-4. **View Results** (3_🧑‍💼_Shortlisted_Candidates.py)
-   - See shortlisted candidates (score ≥ threshold)
-   - Review detailed score breakdowns
-   - Matched/missing skills analysis
-
-5. **History** (4_📊_History.py)
-   - Review past screening sessions
-   - Compare results over time
-
-6. **Evaluate Model** (5_📈_Model_Evaluation.py) ✨ NEW!
-   - Check model accuracy with ground truth labels
-   - Analyze precision, recall, F1 score
-   - Identify false positives/negatives
-   - Optimize threshold values
-
-## How to Check Model Accuracy
-
-### Quick Start
-
-1. **Label your data**:
-   - Go to **Model Evaluation** page → **Label Data** tab
-   - For each resume, mark as ✅ Shortlist or ❌ Reject
-   - These are your "ground truth" labels
-
-2. **View metrics**:
-   - Go to **Metrics** tab to see:
-     - **Accuracy**: Overall correctness
-     - **Precision**: Quality of shortlisted candidates
-     - **Recall**: Coverage of good candidates
-     - **F1 Score**: Balanced metric
-
-3. **Analyze errors**:
-   - Check **Error Analysis** tab for:
-     - False Positives (predicted shortlist, should reject)
-     - False Negatives (predicted reject, should shortlist)
-
-4. **Optimize threshold**:
-   - Use **Threshold Analysis** tab
-   - Find optimal cutoff score for your use case
-
-### Programmatic Evaluation
-
-```python
-from core.model_evaluator import ModelEvaluator
-
-# Initialize
-evaluator = ModelEvaluator()
-
-# Add ground truth labels
-evaluator.add_label("candidate1.pdf", True)  # Should shortlist
-evaluator.add_label("candidate2.pdf", False)  # Should reject
-
-# Evaluate
-metrics = evaluator.evaluate(results)
-print(f"Accuracy: {metrics.accuracy:.2%}")
-print(f"Precision: {metrics.precision:.2%}")
-print(f"Recall: {metrics.recall:.2%}")
-print(f"F1 Score: {metrics.f1_score:.2%}")
+```bash
+pip install -r requirements.txt
 ```
 
-See [EVALUATION_GUIDE.md](EVALUATION_GUIDE.md) for detailed instructions.
+3. Configure Supabase environment values used by supabase_client.py.
 
-## Architecture
+- SUPABASE_URL
+- SUPABASE_ANON_KEY
 
-### Scoring System
+## Frontend Setup
 
-The final score is a weighted combination:
-
-```python
-Final Score = 0.5 × Semantic + 0.3 × Skills + 0.2 × Experience - Penalty
+```bash
+cd frontend
+npm install
 ```
 
-- **Semantic Score**: Cosine similarity between job description and resume embeddings
-- **Skills Score**: Match ratio of required skills (must-have weighted 2×)
-- **Experience Score**: Candidate experience vs. required experience
-- **Penalty**: Applied for missing must-have skills
+## Run the Application
 
-Adjust weights in `core/config.py`:
+Open two terminals from the project root.
 
-```python
-SEMANTIC_WEIGHT = 0.5
-SKILL_WEIGHT = 0.3
-EXPERIENCE_WEIGHT = 0.2
-SHORTLIST_THRESHOLD = 0.65
+1. Start backend API:
+
+```bash
+python api/server.py
 ```
 
-### Project Structure
+Backend runs at http://127.0.0.1:5000.
 
+2. Start frontend dev server:
+
+```bash
+cd frontend
+npm run dev
 ```
+
+Frontend runs at http://127.0.0.1:5173 and proxies /api to http://localhost:5000 via [frontend/vite.config.js](frontend/vite.config.js).
+
+## API Quick Checks
+
+- GET /api/health -> service health
+- GET /api/status -> backend status
+- POST /api/auth/login -> login
+- POST /api/job-config -> save job config (auth required)
+- POST /api/process -> process resumes (auth required)
+- GET /api/results -> current session results (auth required)
+- GET /api/history -> history list (auth required)
+
+## Scoring
+
+Final score uses weighted factors from [core/config.py](core/config.py):
+
+- semantic similarity
+- skill match
+- experience fit
+- penalties for missing requirements
+
+Tune weights and threshold in [core/config.py](core/config.py).
+
+## Project Structure
+
+```text
 resume_screening/
-├── app.py                      # Main entry point
-├── requirements.txt            # Python dependencies
-├── supabase_client.py         # Database connection
-├── EVALUATION_GUIDE.md        # Accuracy evaluation guide
-├── core/
-│   ├── config.py              # Scoring weights and thresholds
-│   ├── embedding_engine.py    # Sentence transformer embeddings
-│   ├── skill_extractor.py     # Skill extraction logic
-│   ├── experience_extractor.py
-│   ├── scoring.py             # Score computation
-│   ├── model_evaluator.py    # Accuracy evaluation ✨ NEW!
-│   └── ...
-├── pages/
-│   ├── 0_🔐_Login.py
-│   ├── 1_📄_Recruiter_Input.py
-│   ├── 2_⚙️_Processing.py
-│   ├── 3_🧑‍💼_Shortlisted_Candidates.py
-│   ├── 4_📊_History.py
-│   └── 5_📈_Model_Evaluation.py  ✨ NEW!
-├── utils/
-│   ├── auth_manager.py
-│   └── ...
-├── data/
-│   ├── ground_truth.json      # Ground truth labels
-│   ├── history.json
-│   └── skills.json
-└── examples/
-    └── evaluation_examples.py  # Example scripts
+  api/
+    server.py
+  core/
+    config.py
+    embedding_engine.py
+    scoring.py
+    skill_extractor.py
+    experience_extractor.py
+    qualification_extractor.py
+    contact_extractor.py
+    hybrid_extractor.py
+    xai_engine_v3.py
+  utils/
+    history_store.py
+    export_utils.py
+  frontend/
+    src/
+  data/
+  requirements.txt
+  supabase_client.py
 ```
 
-## Evaluation Metrics Explained
+## Developer Commands
 
-### Accuracy
+Frontend lint:
 
-Percentage of correct predictions (both shortlist and reject)
-
-- Formula: `(TP + TN) / Total`
-- Target: > 80%
-
-### Precision
-
-Of candidates you shortlist, how many are actually good
-
-- Formula: `TP / (TP + FP)`
-- High precision = fewer wasted interviews
-- Target: > 75%
-
-### Recall
-
-Of all good candidates, how many did you find
-
-- Formula: `TP / (TP + FN)`
-- High recall = don't miss qualified candidates
-- Target: > 75%
-
-### F1 Score
-
-Harmonic mean of precision and recall
-
-- Formula: `2 × (Precision × Recall) / (Precision + Recall)`
-- Balanced metric for overall performance
-- Target: > 75%
-
-## Configuration
-
-### Adjust Scoring Weights
-
-Edit `core/config.py`:
-
-```python
-# Give more weight to semantic matching
-SEMANTIC_WEIGHT = 0.6
-SKILL_WEIGHT = 0.25
-EXPERIENCE_WEIGHT = 0.15
-
-# Make shortlisting more selective
-SHORTLIST_THRESHOLD = 0.75
+```bash
+cd frontend
+npm run lint
 ```
 
-### Change Embedding Model
+Frontend production build:
 
-Edit `core/embedding_engine.py`:
-
-```python
-DEFAULT_MODEL = "intfloat/e5-small-v2"  # Current (fast, good)
-# DEFAULT_MODEL = "intfloat/e5-base-v2"   # Better quality, slower
-# DEFAULT_MODEL = "BAAI/bge-small-en-v1.5"  # Alternative
+```bash
+cd frontend
+npm run build
 ```
 
-## Best Practices
+Python syntax check:
 
-1. **Label 50-100 resumes** for reliable accuracy evaluation
-2. **Include diverse candidates** (qualified and unqualified)
-3. **Get labels from experts** (experienced recruiters/hiring managers)
-4. **Re-evaluate regularly** when changing job roles or requirements
-5. **Monitor metrics over time** to track improvements
-6. **Use threshold analysis** to find optimal cutoff for your needs
+```bash
+python -m compileall api core utils supabase_client.py
+```
 
 ## Troubleshooting
 
-### Low Precision (Many False Positives)
-
-- Increase `SHORTLIST_THRESHOLD` to 0.70-0.80
-- Make job requirements more specific
-- Increase skill weight
-
-### Low Recall (Many False Negatives)
-
-- Decrease `SHORTLIST_THRESHOLD` to 0.55-0.60
-- Review if requirements are too strict
-- Check skill extraction is working
-
-### Slow Performance
-
-- Reduce number of resumes processed at once
-- Use smaller embedding model
-- Enable caching with `@st.cache_resource`
-
-## Dependencies
-
-- **streamlit**: Web interface
-- **sentence-transformers**: Semantic embeddings
-- **faiss-cpu**: Vector search
-- **torch**: Deep learning backend
-- **pdfplumber/PyMuPDF**: PDF extraction
-- **supabase**: Authentication (optional)
-- **pandas**: Data analysis
-- **plotly**: Visualizations
+- Frontend cannot reach backend:
+  - Confirm backend is running on port 5000.
+  - Confirm proxy in [frontend/vite.config.js](frontend/vite.config.js).
+- 401 responses from protected APIs:
+  - Ensure login succeeded and auth token is stored in localStorage session.
+- Slow processing:
+  - Reduce concurrent uploads or use smaller embedding models in [core/embedding_engine.py](core/embedding_engine.py).
 
 ## License
 
-MIT License - See LICENSE file for details
-
-## Contributing
-
-Contributions welcome! Please open an issue or submit a pull request.
-
-## Support
-
-For questions or issues:
-
-1. Check [EVALUATION_GUIDE.md](EVALUATION_GUIDE.md)
-2. Review example scripts in `examples/`
-3. Open a GitHub issue
-
----
-
-**Made with ❤️ using Streamlit and Sentence Transformers**
+MIT

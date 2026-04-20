@@ -1,5 +1,4 @@
 from sentence_transformers import SentenceTransformer
-import streamlit as st
 import numpy as np
 from groq import Groq
 from core.config import GROQ_API_KEY
@@ -13,9 +12,13 @@ def normalize_vector(vec) -> np.ndarray:
         return vec / norm
     return vec
 
-@st.cache_resource
+# Module-level cache (replaces @st.cache_resource)
+_model_cache = {}
+
 def load_model(model_name: str = DEFAULT_MODEL):
-    return SentenceTransformer(model_name)
+    if model_name not in _model_cache:
+        _model_cache[model_name] = SentenceTransformer(model_name)
+    return _model_cache[model_name]
 
 class EmbeddingEngine:
 
@@ -24,7 +27,13 @@ class EmbeddingEngine:
         self.client = None
         
         # Initialize Groq client if key is provided
-        api_key = GROQ_API_KEY or st.secrets.get("GROQ_API_KEY")
+        api_key = GROQ_API_KEY
+        if not api_key:
+            try:
+                import os
+                api_key = os.environ.get("GROQ_API_KEY", "")
+            except Exception:
+                pass
         if api_key:
             try:
                 self.client = Groq(api_key=api_key)
@@ -40,7 +49,6 @@ class EmbeddingEngine:
         # Try Groq for Llama-compatible/High-performance embeddings if available
         if self.client:
             try:
-                # Using nomic-embed-text-v1.5 via Groq (standard high-perf embedding model)
                 response = self.client.embeddings.create(
                     model="nomic-embed-text-v1.5",
                     input=text,
@@ -49,7 +57,6 @@ class EmbeddingEngine:
                 embedding = np.array(response.data[0].embedding, dtype=np.float32)
                 return normalize_vector(embedding)
             except Exception as e:
-                # Soft fallback to local E5 if Groq fails or model is not available
                 print(f"Groq Embedding Error: {e}")
                 pass
 
@@ -90,7 +97,3 @@ class EmbeddingEngine:
             return normalize_vector(embedding)
         except Exception:
             return None
-
-    @property
-    def dimension(self) -> int:
-        return self.model.get_sentence_embedding_dimension()

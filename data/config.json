@@ -6,5 +6,40 @@
     },
     "thresholds": {
         "shortlist": 0.80
+    },
+    "active_penalty_profile": "balanced",
+    "penalty_profiles": {
+        "strict": {
+            "must_have_penalty_max": 0.20,
+            "experience_penalty_per_year": 0.03,
+            "experience_penalty_max": 0.12,
+            "semantic_penalty_threshold": 0.22,
+            "semantic_penalty_value": 0.06,
+            "total_penalty_max": 0.24
+        },
+        "balanced": {
+            "must_have_penalty_max": 0.16,
+            "experience_penalty_per_year": 0.02,
+            "experience_penalty_max": 0.10,
+            "semantic_penalty_threshold": 0.18,
+            "semantic_penalty_value": 0.05,
+            "total_penalty_max": 0.20
+        },
+        "lenient": {
+            "must_have_penalty_max": 0.12,
+            "experience_penalty_per_year": 0.015,
+            "experience_penalty_max": 0.07,
+            "semantic_penalty_threshold": 0.14,
+            "semantic_penalty_value": 0.03,
+            "total_penalty_max": 0.14
+        }
+    },
+    "penalties": {
+        "must_have_penalty_max": 0.16,
+        "experience_penalty_per_year": 0.02,
+        "experience_penalty_max": 0.10,
+        "semantic_penalty_threshold": 0.18,
+        "semantic_penalty_value": 0.05,
+        "total_penalty_max": 0.20
     }
 }

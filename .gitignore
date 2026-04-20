@@ -9,3 +9,4 @@ __pycache__/
 data/extractions/
 data/history.json
 data/resumes/
+data/config.json

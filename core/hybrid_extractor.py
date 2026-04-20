@@ -1,5 +1,4 @@
 import json
-import streamlit as st
 from groq import Groq
 from core.config import GROQ_API_KEY, LLM_MODEL
 
@@ -7,7 +6,7 @@ def llm_extraction_fallback(text: str) -> dict:
     """
     Uses Llama-3 to extract structured data from resume text when heuristics fail.
     """
-    api_key = GROQ_API_KEY or st.secrets.get("GROQ_API_KEY")
+    api_key = GROQ_API_KEY
     if not api_key:
         return {}
 

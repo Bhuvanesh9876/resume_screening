@@ -41,7 +41,7 @@ def generate_email_draft(
         1. Professional and exciting tone.
         2. Mention specific strengths identified.
         3. Keep it under 150 words.
-        4. Include placeholders for [Time Slot] and [Recruiter Name].
+        4. Include placeholders for [Time Slot]. Sign off as 'The Hiring Team'.
         
         Output only the email content.
         """
@@ -58,7 +58,7 @@ def generate_email_draft(
         2. Briefly mention that we prioritized candidates with specific skill alignment.
         3. Do NOT move to interview.
         4. Keep it under 120 words.
-        5. Include placeholders for [Recruiter Name].
+        5. Sign off as 'The Hiring Team'.
         
         Output only the email content without any subject line or preamble.
         """

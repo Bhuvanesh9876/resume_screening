@@ -7,8 +7,20 @@ and provides a confidence metric.
 """
 
 from typing import List, Dict, Set, Optional, Any
-import numpy as np
-from core.config import SEMANTIC_WEIGHT, SKILL_WEIGHT, EXPERIENCE_WEIGHT
+from core.config import (
+    SEMANTIC_WEIGHT,
+    SKILL_WEIGHT,
+    EXPERIENCE_WEIGHT,
+    MUST_HAVE_PENALTY_MAX,
+    EXPERIENCE_PENALTY_PER_YEAR,
+    EXPERIENCE_PENALTY_MAX,
+    SEMANTIC_PENALTY_THRESHOLD,
+    SEMANTIC_PENALTY_VALUE,
+    TOTAL_PENALTY_MAX,
+)
+
+# Default qualification weight — can be overridden via custom_weights
+QUALIFICATION_WEIGHT = 0.15
 
 def _normalize_set(items: Optional[List[str]]) -> Set[str]:
     """Normalize a list of strings into a set of lowercase strings."""
@@ -59,72 +71,6 @@ def _compute_confidence(resume_text_len: int, skills_found: int,
 
     return _clamp(confidence)
 
-def compute_semantic_score(resume_embedding: Any, job_embedding: Any) -> float:
-    """
-    Calculate cosine similarity between resume and job embeddings.
-    """
-    if resume_embedding is None or job_embedding is None:
-        return 0.0
-
-    try:
-        resume_vec = np.array(resume_embedding, dtype=np.float32)
-        job_vec = np.array(job_embedding, dtype=np.float32)
-
-        if resume_vec.size == 0 or job_vec.size == 0:
-            return 0.0
-
-        if resume_vec.shape != job_vec.shape:
-            return 0.0
-
-        resume_norm = np.linalg.norm(resume_vec)
-        job_norm = np.linalg.norm(job_vec)
-
-        if resume_norm == 0 or job_norm == 0:
-            return 0.0
-
-        resume_vec = resume_vec / resume_norm
-        job_vec = job_vec / job_norm
-
-        similarity = float(np.dot(resume_vec, job_vec))
-
-        # --- MODERN ATS ADVANCEMENT: Power-Law Calibration ---
-        # Instead of forcing a hard 0.0 cutoff, we use a smooth power curve.
-        # This naturally dampens the "baseline" ~0.3 similarity of unrelated text 
-        # down to ~0.04 (4%), while preserving higher genuine similarities smoothly,
-        # without mathematically breaking the cosine relationship.
-        scaled_similarity = (similarity ** 2.5) if similarity > 0 else 0.0
-
-        return _clamp(scaled_similarity, 0.0, 1.0)
-
-    except (ValueError, TypeError):
-        return 0.0
-
-def compute_skill_score(resume_skills: List[str], required_skills: List[str]) -> Dict[str, Any]:
-    """
-    Compute a simple skill match score (Jaccard-like index).
-    Note: 'compute_scores' uses a weighted approach; this is a simpler utility.
-    """
-    resume_lower = _normalize_set(resume_skills)
-    required_lower = _normalize_set(required_skills)
-
-    if not required_lower:
-        return {
-            "skill_score": 1.0 if resume_lower else 0.5,
-            "matched_skills": list(resume_lower),
-            "missing_skills": []
-        }
-
-    matched_lower = required_lower & resume_lower
-    missing_lower = required_lower - matched_lower
-
-    skill_score = len(matched_lower) / len(required_lower)
-
-    return {
-        "skill_score": _clamp(skill_score),
-        "matched_skills": sorted(list(matched_lower)),
-        "missing_skills": sorted(list(missing_lower))
-    }
-
 def compute_experience_score(candidate_experience: float,
                              required_experience: float) -> float:
     """
@@ -137,8 +83,15 @@ def compute_experience_score(candidate_experience: float,
     required_exp = max(0.0, float(required_experience) if required_experience else 0.0)
 
     if required_exp <= 0:
-        # If no exp required, give 1.0 if has any, else 0.8 (higher than 0.5 to reduce identical scores)
-        return 1.0 if candidate_exp > 0 else 0.8
+        # When experience is not mandatory, keep this as a soft-fit metric
+        # instead of hard 100% to avoid over-inflating candidate cards.
+        if candidate_exp <= 0:
+            return 0.65
+        if candidate_exp < 1:
+            return 0.75
+        if candidate_exp < 2:
+            return 0.85
+        return 0.9
 
     if candidate_exp >= required_exp:
         # Cap at 1.0, no bonus for extra experience
@@ -147,18 +100,95 @@ def compute_experience_score(candidate_experience: float,
     # Linear ratio for candidates below requirement
     return _clamp(candidate_exp / required_exp)
 
+def _compute_additional_penalty(missing_must_count: int,
+                                total_must_count: int,
+                                candidate_experience: float,
+                                required_experience: float,
+                                semantic_score: float) -> Dict[str, float]:
+    """
+    Compute explicit modern penalties without modifying the core weighted formula.
+    This penalty layer is applied after base score + alignment factor.
+    """
+    missing_must_count = max(0, int(missing_must_count or 0))
+    total_must_count = max(0, int(total_must_count or 0))
+    candidate_experience = max(0.0, float(candidate_experience or 0.0))
+    required_experience = max(0.0, float(required_experience or 0.0))
+    semantic_score = _clamp(float(semantic_score or 0.0))
+
+    # Role-size-aware must-have penalty.
+    # Max 16% only when all must-have skills are missing.
+    missing_must_ratio = (missing_must_count / total_must_count) if total_must_count > 0 else 0.0
+    must_have_penalty = min(
+        _clamp(float(MUST_HAVE_PENALTY_MAX), 0.0, 1.0),
+        _clamp(float(MUST_HAVE_PENALTY_MAX), 0.0, 1.0) * missing_must_ratio
+    )
+
+    # 2% penalty per missing experience year when experience is required.
+    experience_gap = max(0.0, required_experience - candidate_experience)
+    experience_gap_penalty = (
+        min(
+            _clamp(float(EXPERIENCE_PENALTY_MAX), 0.0, 1.0),
+            experience_gap * _clamp(float(EXPERIENCE_PENALTY_PER_YEAR), 0.0, 1.0)
+        )
+        if required_experience > 0 else 0.0
+    )
+
+    # Mild penalty when semantic relevance is very weak.
+    semantic_penalty = (
+        _clamp(float(SEMANTIC_PENALTY_VALUE), 0.0, 1.0)
+        if semantic_score < _clamp(float(SEMANTIC_PENALTY_THRESHOLD), 0.0, 1.0)
+        else 0.0
+    )
+
+    raw_total = must_have_penalty + experience_gap_penalty + semantic_penalty
+    total_penalty = min(_clamp(float(TOTAL_PENALTY_MAX), 0.0, 1.0), raw_total)
+
+    return {
+        "must_have_penalty": must_have_penalty,
+        "experience_gap_penalty": experience_gap_penalty,
+        "semantic_penalty": semantic_penalty,
+        "total_penalty": total_penalty,
+    }
+
 def compute_scores(semantic_score: float, resume_skills: List[str],
                    resume_experience: float, job_data: Dict[str, Any],
                    resume_text_len: int = 0,
+                   qualification_match: Optional[Dict] = None,
                    custom_weights: Optional[Dict[str, float]] = None) -> Dict[str, Any]:
     """
     Aggregates all scores into a final weighted score.
-    Considers semantic similarity, weighted skill matching, and experience.
+    Considers semantic similarity, weighted skill matching, experience, and qualification.
     """
     # Use custom weights if provided, otherwise fallback to defaults
-    s_weight = custom_weights.get("semantic", SEMANTIC_WEIGHT) if custom_weights else SEMANTIC_WEIGHT
-    sk_weight = custom_weights.get("skill", SKILL_WEIGHT) if custom_weights else SKILL_WEIGHT
-    e_weight = custom_weights.get("experience", EXPERIENCE_WEIGHT) if custom_weights else EXPERIENCE_WEIGHT
+    s_weight  = custom_weights.get("semantic",       SEMANTIC_WEIGHT)       if custom_weights else SEMANTIC_WEIGHT
+    sk_weight = custom_weights.get("skill",          SKILL_WEIGHT)          if custom_weights else SKILL_WEIGHT
+    e_weight  = custom_weights.get("experience",     EXPERIENCE_WEIGHT)     if custom_weights else EXPERIENCE_WEIGHT
+    q_weight  = custom_weights.get("qualification",  QUALIFICATION_WEIGHT)  if custom_weights else QUALIFICATION_WEIGHT
+
+    # Guard against malformed custom weights.
+    s_weight = max(0.0, float(s_weight))
+    sk_weight = max(0.0, float(sk_weight))
+    e_weight = max(0.0, float(e_weight))
+    q_weight = max(0.0, float(q_weight))
+
+    # Normalise weights to sum to 1.0 (safety net)
+    total_w = s_weight + sk_weight + e_weight + q_weight
+    if total_w > 0:
+        s_weight /= total_w
+        sk_weight /= total_w
+        e_weight /= total_w
+        q_weight /= total_w
+    else:
+        # Fallback to stable defaults if custom weights collapse to zero.
+        s_weight = SEMANTIC_WEIGHT
+        sk_weight = SKILL_WEIGHT
+        e_weight = EXPERIENCE_WEIGHT
+        q_weight = QUALIFICATION_WEIGHT
+        total_w = s_weight + sk_weight + e_weight + q_weight
+        s_weight /= total_w
+        sk_weight /= total_w
+        e_weight /= total_w
+        q_weight /= total_w
 
     semantic_score = _clamp(float(semantic_score) if semantic_score is not None else 0.0)
 
@@ -168,6 +198,8 @@ def compute_scores(semantic_score: float, resume_skills: List[str],
 
     must_lower = _normalize_set(must_original)
     good_lower = _normalize_set(good_original)
+    # Avoid double-counting if the same skill appears in both must-have and good-to-have.
+    good_lower -= must_lower
     resume_lower = _normalize_set(resume_skills)
 
     matched_must_lower = must_lower & resume_lower
@@ -191,12 +223,19 @@ def compute_scores(semantic_score: float, resume_skills: List[str],
 
     experience_score = compute_experience_score(resume_experience, req_exp)
 
-    # --- MODERN ATS ADVANCEMENT: Contextual Experience & Skill Density ---
-    # Instead of hacky point subtractions or hard "0" limits, modern ATS contextualize 
-    # experience relative to the candidate's skills. 10 years of experience is worth 
-    # much less if the candidate lacks every core skill for the job.
-    # We weight the raw experience score by their skill score, retaining a 20% floor for general tenure.
-    contextual_experience = experience_score * (0.2 + (0.8 * skill_score))
+    # Contextualize tenure with actual skill alignment so experience fit reflects role relevance.
+    contextual_experience = experience_score * (0.35 + (0.65 * skill_score))
+
+    # --- QUALIFICATION SCORE ---
+    # 1.0 if matched or not required, 0.5 partial, 0.0 hard mismatch
+    if qualification_match is None:
+        qual_score = 1.0  # Not required — no penalty
+    elif qualification_match.get("matched"):
+        qual_score = 1.0
+    else:
+        # Partial credit based on detail string (e.g. year mismatch vs degree mismatch)
+        detail = qualification_match.get("details", "").lower()
+        qual_score = 0.4 if "year" in detail else 0.1
 
     # We apply a final unified "Alignment Factor" rather than an arbitrary "penalty".
     # This softly scales down candidates heavily lacking primary skills.
@@ -204,37 +243,58 @@ def compute_scores(semantic_score: float, resume_skills: List[str],
     alignment_factor = 1.0 - (0.35 * missing_ratio)  # Max 35% reduction for missing 100% MUST HAVE skills
 
     base_score = (
-        s_weight * semantic_score +
+        s_weight  * semantic_score +
         sk_weight * skill_score +
-        e_weight * contextual_experience
+        e_weight  * contextual_experience +
+        q_weight  * qual_score
     )
 
     # Final logic mathematically unifies without breaking standard scaling
-    final_score = _clamp(base_score * alignment_factor)
-    
+    aligned_score = _clamp(base_score * alignment_factor)
+
+    # Explicit penalty layer (added on top, keeps base scoring formula unchanged).
+    penalty_parts = _compute_additional_penalty(
+        missing_must_count=len(missing_must_lower),
+        total_must_count=len(must_lower),
+        candidate_experience=resume_experience,
+        required_experience=req_exp,
+        semantic_score=semantic_score,
+    )
+    additional_penalty = penalty_parts["total_penalty"]
+    final_score = _clamp(aligned_score - additional_penalty)
+
     # For UI breakdown compatibility
-    penalty = base_score - final_score
+    alignment_penalty = max(0.0, base_score - aligned_score)
+    penalty = alignment_penalty + additional_penalty
     irrelevancy_multiplier = alignment_factor
 
     confidence = _compute_confidence(
         resume_text_len=resume_text_len,
         skills_found=len(resume_skills) if resume_skills else 0,
-        has_experience=resume_experience is not None and resume_experience >= 0
+        has_experience=resume_experience is not None and float(resume_experience) > 0
     )
 
     return {
-        "semantic_score": round(semantic_score, 3),
-        "skill_score": round(skill_score, 3),
-        "experience_score": round(experience_score, 3),
-        "final_score": round(final_score, 3),
-        "matched_skills": matched_skills,
-        "missing_skills": missing_skills,
-        "confidence": round(confidence, 2),
+        "semantic_score":    round(semantic_score, 3),
+        "skill_score":       round(skill_score, 3),
+        "experience_score":  round(contextual_experience, 3),
+        "experience_score_raw": round(experience_score, 3),
+        "qualification_score": round(qual_score, 3),
+        "final_score":       round(final_score, 3),
+        "matched_skills":    matched_skills,
+        "missing_skills":    missing_skills,
+        "confidence":        round(confidence, 2),
         "score_breakdown": {
-            "semantic_contribution": round(s_weight * semantic_score, 3),
-            "skill_contribution": round(sk_weight * skill_score, 3),
-            "experience_contribution": round(e_weight * experience_score, 3),
-            "penalty_applied": round(penalty, 3),
-            "irrelevancy_multiplier": round(irrelevancy_multiplier, 2)
+            "semantic_contribution":       round(s_weight  * semantic_score, 3),
+            "skill_contribution":          round(sk_weight * skill_score, 3),
+            "experience_contribution":     round(e_weight  * contextual_experience, 3),
+            "qualification_contribution":  round(q_weight  * qual_score, 3),
+            "penalty_applied":             round(penalty, 3),
+            "alignment_penalty":           round(alignment_penalty, 3),
+            "must_have_penalty":           round(penalty_parts["must_have_penalty"], 3),
+            "experience_gap_penalty":      round(penalty_parts["experience_gap_penalty"], 3),
+            "semantic_penalty":            round(penalty_parts["semantic_penalty"], 3),
+            "additional_penalty":          round(additional_penalty, 3),
+            "irrelevancy_multiplier":      round(irrelevancy_multiplier, 2)
         }
     }

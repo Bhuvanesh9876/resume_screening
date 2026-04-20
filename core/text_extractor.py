@@ -71,43 +71,84 @@ def _extract_with_pdfminer(file: Any) -> str:
         return ""
 
 def _extract_from_docx(file: Any) -> str:
-    """Extract text from DOCX files using python-docx.
+    """Extract text from DOCX files using python-docx with zipfile XML fallback.
 
-    Reads both paragraphs AND tables because many resumes use table
-    layouts for education, experience, and contact sections.
+    Strategy:
+    1. Standard python-docx (paragraphs + tables).
+    2. Raw XML extraction via zipfile — handles corrupted/non-standard DOCX.
+    3. Returns detailed error on total failure (for server-side logging).
     """
+    import logging
+    logger = logging.getLogger(__name__)
+
+    # Read bytes once so we can retry with different strategies
     try:
-        from docx import Document
         if hasattr(file, "read"):
             file.seek(0)
-            doc = Document(file)
+            raw_bytes = file.read()
+            file.seek(0)
         else:
-            doc = Document(file)
+            with open(file, "rb") as f:
+                raw_bytes = f.read()
+    except Exception as e:
+        logger.warning(f"DOCX: failed to read file bytes: {e}")
+        return ""
 
+    # ---- Strategy 1: python-docx (paragraphs + tables) ----
+    try:
+        from docx import Document
+        doc = Document(io.BytesIO(raw_bytes))
         parts: list[str] = []
 
-        # 1. Paragraphs (normal body text)
         for p in doc.paragraphs:
             if p.text.strip():
                 parts.append(p.text.strip())
 
-        # 2. Tables (common in formatted resumes — education, skills, etc.)
         for table in doc.tables:
             for row in table.rows:
                 cells = []
                 seen: set[str] = set()
                 for cell in row.cells:
                     ct = cell.text.strip()
-                    # Deduplicate merged cells that report the same text
                     if ct and ct not in seen:
                         seen.add(ct)
                         cells.append(ct)
                 if cells:
                     parts.append("  ".join(cells))
 
-        return "\n".join(parts)
-    except Exception:
-        return ""
+        if parts:
+            return "\n".join(parts)
+        logger.info("DOCX strategy 1 returned empty; trying zipfile fallback.")
+    except Exception as e:
+        logger.warning(f"DOCX strategy 1 (python-docx) failed: {e}")
+
+    # ---- Strategy 2: zipfile raw XML extraction (for corrupted DOCX) ----
+    try:
+        import zipfile
+        import xml.etree.ElementTree as ET
+
+        parts = []
+        with zipfile.ZipFile(io.BytesIO(raw_bytes)) as z:
+            # word/document.xml holds the main body
+            xml_names = [n for n in z.namelist() if n.startswith("word/") and n.endswith(".xml")]
+            for xml_name in xml_names:
+                with z.open(xml_name) as xf:
+                    tree = ET.parse(xf)
+                    root = tree.getroot()
+                    for elem in root.iter("{http://schemas.openxmlformats.org/wordprocessingml/2006/main}t"):
+                        text = elem.text
+                        if text and text.strip():
+                            parts.append(text.strip())
+
+        if parts:
+            logger.info("DOCX strategy 2 (zipfile XML) succeeded.")
+            return "\n".join(parts)
+        logger.warning("DOCX strategy 2 (zipfile XML) returned empty text.")
+    except Exception as e:
+        logger.warning(f"DOCX strategy 2 (zipfile XML) failed: {e}")
+
+    return ""
+
 
 def _extract_from_txt(file: Any) -> str:
     """Extract text from TXT files with encoding detection."""

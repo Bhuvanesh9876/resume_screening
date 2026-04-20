@@ -133,30 +133,116 @@ def extract_name(text: str) -> str:
     return ""
 
 def extract_linkedin(text: str) -> str:
-    """Extract LinkedIn profile URL."""
-    pattern = r'((?:https?://)?(?:www\.)?linkedin\.com/in/[A-Za-z0-9_-]+/?)'
-    match = re.search(pattern, text, re.IGNORECASE)
-    return match.group(1) if match else ""
+    """Extract LinkedIn profile URL from common resume formats."""
+    for url in _extract_urls(text):
+        u = url.lower()
+        if "linkedin.com/in/" in u or "linkedin.com/pub/" in u:
+            return url
+    return ""
 
 def extract_github(text: str) -> str:
-    """Extract GitHub profile URL."""
-    pattern = r'((?:https?://)?(?:www\.)?github\.com/[A-Za-z0-9_-]+/?)'
-    match = re.search(pattern, text, re.IGNORECASE)
-    return match.group(1) if match else ""
+    """Extract GitHub profile URL from common resume formats."""
+    for url in _extract_urls(text):
+        u = url.lower()
+        if "github.com/" not in u:
+            continue
+
+        # Ignore common non-profile GitHub paths.
+        if any(seg in u for seg in ["/topics", "/orgs", "/features", "/marketplace", "/search"]):
+            continue
+        return url
+    return ""
 
 def extract_portfolio(text: str) -> str:
-    """Extract personal website or portfolio links (Behance, Dribbble, etc.)."""
-    patterns = [
-        r'((?:https?://)?(?:www\.)?behance\.net/[A-Za-z0-9_-]+/?)',
-        r'((?:https?://)?(?:www\.)?dribbble\.com/[A-Za-z0-9_-]+/?)',
-        r'((?:https?://)?(?:www\.)?medium\.com/@[A-Za-z0-9_-]+/?)',
-        r'(https?://(?:www\.)?(?!(?:linkedin|github|behance|dribbble|medium|gmail|google|outlook|yahoo|facebook|twitter|instagram))[A-Za-z0-9.-]+\.[a-z]{2,}(?:/[A-Za-z0-9._%+-]*)*)'
-    ]
-    for pattern in patterns:
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            return match.group(1)
+    """Extract personal website/portfolio link while excluding social/email hosts."""
+    blocked_hosts = {
+        "linkedin.com", "www.linkedin.com", "github.com", "www.github.com",
+        "gmail.com", "google.com", "outlook.com", "yahoo.com",
+        "facebook.com", "twitter.com", "x.com", "instagram.com",
+    }
+
+    preferred_hosts = {
+        "behance.net", "www.behance.net", "dribbble.com", "www.dribbble.com",
+        "medium.com", "www.medium.com", "notion.site", "www.notion.site",
+        "wordpress.com", "www.wordpress.com", "wixsite.com", "www.wixsite.com",
+    }
+
+    urls = _extract_urls(text)
+
+    for url in urls:
+        host = _get_host(url)
+        if host in preferred_hosts:
+            return url
+
+    for url in urls:
+        host = _get_host(url)
+        if host in blocked_hosts:
+            continue
+        if host.endswith(".pdf"):
+            continue
+        return url
+
     return ""
+
+
+def _normalize_url(raw_url: str) -> str:
+    """Normalize URL by trimming punctuation and ensuring scheme exists."""
+    url = raw_url.strip().strip("'\"`()[]{}<>")
+    url = re.sub(r"[.,;:!?]+$", "", url)
+    if not re.match(r"^https?://", url, re.IGNORECASE):
+        url = "https://" + url
+    return url
+
+
+def _get_host(url: str) -> str:
+    """Return normalized host from URL."""
+    host_match = re.search(r"^https?://([^/]+)", url, re.IGNORECASE)
+    return host_match.group(1).lower() if host_match else ""
+
+
+def _extract_urls(text: str):
+    """Extract likely URLs from noisy resume text in a tolerant way."""
+    if not text:
+        return []
+
+    # Handle common spacing artifacts from PDF extraction.
+    compact = re.sub(r"\s+", " ", text)
+    compact = compact.replace("http ://", "http://").replace("https ://", "https://")
+    compact = compact.replace("www .", "www.").replace(" .com", ".com")
+
+    url_pattern = re.compile(
+        r"(" \
+        r"(?:https?://[^\s<>()]+)" \
+        r"|(?:www\.[^\s<>()]+)" \
+        r"|(?:[A-Za-z0-9.-]+\.[A-Za-z]{2,}(?:/[^\s<>()]*)?)" \
+        r")",
+        re.IGNORECASE,
+    )
+
+    urls = []
+    seen = set()
+    for m in url_pattern.finditer(compact):
+        start, end = m.span(1)
+        prev_char = compact[start - 1] if start > 0 else " "
+        next_char = compact[end] if end < len(compact) else " "
+
+        # Avoid extracting parts of email addresses like "john.doe" from "john.doe@gmail.com".
+        if prev_char == "@" or next_char == "@":
+            continue
+
+        candidate = _normalize_url(m.group(1))
+        lc = candidate.lower()
+
+        # Skip plain emails and obvious non-links.
+        if re.search(r"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", candidate):
+            continue
+        if lc in seen:
+            continue
+
+        seen.add(lc)
+        urls.append(candidate)
+
+    return urls
 
 def extract_contact_info(text: str) -> Dict[str, str]:
     """
