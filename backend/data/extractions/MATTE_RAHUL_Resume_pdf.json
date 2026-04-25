@@ -1,0 +1,80 @@
+{
+    "timestamp": "2026-03-25 21:40:01.129382",
+    "candidate_name": "Matte Rahul",
+    "filename": "MATTE_RAHUL_Resume.pdf",
+    "email": "matterahul27@gmail.com",
+    "phone": "+91 7207086526",
+    "skills": [
+        "Data Science",
+        "R",
+        "Java",
+        "Javascript",
+        "Python",
+        "Machine Learning",
+        "Deep Learning",
+        "C"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelor's Degree (Inferred)"
+        ],
+        "fields": [
+            "Computer Science",
+            "AI",
+            "Machine Learning",
+            "HR",
+            "Architecture"
+        ],
+        "institutions": [
+            "Bapatla Engineering College"
+        ],
+        "highest_degree": "Bachelor's Degree (Inferred)",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor's Degree (Inferred) in Computer Science",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelor's Degree (Inferred) in Computer Science",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.813,
+        "skill_score": 0.333,
+        "experience_score": 0.368,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.38,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.354,
+            "skill_contribution": 0.087,
+            "experience_contribution": 0.064,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.255,
+            "alignment_penalty": 0.148,
+            "must_have_penalty": 0.107,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.107,
+            "irrelevancy_multiplier": 0.77
+        }
+    },
+    "raw_text_preview": "Matte Rahul\n# matterahul27@gmail.com \u2014 \u0083 +91-7207086526 \u2014 \u00a7 Rahul-Matte\nSummary\nMotivated Computer Science student with strong fundamentals in programming and a keen interest in AI and software development. Hands-on experience through academic projects and internships, focused on building practical\nreal-world solutions. Eager to learn, adapt, and contribute effectively in a professional environment.\nExperience\nAIML Intern \u2013 InternPe\nMay 2025 \u2013 June 2025\n\u2022 Completed a 2-month internship in AI & ML, gaining hands-on experience in developing machine learning models\nand handling real-time data processing.\nPython Intern \u2013 Vault of Codes\nMay 2024 \u2013 June 2024\n\u2022 Assisted in developing and optimizing Python-based applications to improve automation and efficiency.\n\u2022 Collaborated on backend logic, testing, and version control using Git.\n\u2022 Gained hands-on experience in debugging and implementing object-oriented programming concepts.\nProjects\nAI-Powered Farmer-to-Market Advisory System\n\u2022 Developed "
+}

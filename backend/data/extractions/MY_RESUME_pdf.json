@@ -1,0 +1,92 @@
+{
+    "timestamp": "2026-03-25 21:40:01.404551",
+    "candidate_name": "Yakkaladevi Bhuvanesh",
+    "filename": "MY RESUME.pdf",
+    "email": "yakkaladevibhuvanesh@gmail.com",
+    "phone": "+91 9491962208",
+    "skills": [
+        "Javascript",
+        "Node.Js",
+        "React",
+        "Aws",
+        "R",
+        "Html",
+        "Express.Js",
+        "Spring",
+        "C",
+        "Mongodb",
+        "Go",
+        "Flask",
+        "Data Science",
+        "Api Development",
+        "Oracle",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Deep Learning"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelor of Technology"
+        ],
+        "fields": [
+            "Computer Science",
+            "AI",
+            "Machine Learning",
+            "Cybersecurity",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineeering College (AIML), BAPATLA",
+            "Sri Chaitanya Jr. College, Vijayawada.",
+            "Sri Chaitanya School, Vijayawada."
+        ],
+        "highest_degree": "Bachelor of Technology",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor of Technology in Computer Science",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "Bachelor of Technology in Computer Science",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.811,
+        "skill_score": 1.0,
+        "experience_score": 0.65,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.857,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.353,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.113,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "YAKKALADEVI BHUVANESH \n| Phone: \nEmail :\nLinkedin : \n|My Portfolio:\n|Github : \nyakkaladevibhuvanesh@gmail.com \n+919491962208\nwww.linkedin.com/in/yakkaladevi-bhuvanesh\nhttps://tinyurl.com/bhuvan \ngithub.com/Bhuvanesh9876\nPROJECTS \nEDUCATION \nINTERNSHIPS \nCAREER OBJECTIVE \nI'm a Computer Science student with hands-onexperience in full-stack web development and a solid grasp of\nprogramming and data structures. I'm always eager to learn and working on real-world projects\u2014especially in web\ndevelopment, AI, and cybersecurity. \nTECHNICAL SKILLS \nACHIEVEMENTS & CERTIFICATIONS \nBapatla Engineeering College (AIML), BAPATLA\nBachelor of Technology CGPA: 9.20(Upto VI sem)\nSri Chaitanya Jr. College, Vijayawada.\nIPE Percentage: 73.7%\nSri Chaitanya School, Vijayawada.\nSSC BSEAP Percentage: 96% \nOracle Foundations Associate \u2013 Oracleuniversity (2025)\nAI Fundamentals \u2013 IBM (2024)\nGenerative AI \u2013 Techgyan Technologies (2025)\nPower BI \u2013 Spypro Security Solutions pvt.Ltd (2025)\nMongoDB \u2013 SpringBoard (2024)\n"
+}

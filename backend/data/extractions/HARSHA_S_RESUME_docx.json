@@ -1,0 +1,88 @@
+{
+    "timestamp": "2026-03-05 08:41:39.730629",
+    "candidate_name": "Projects",
+    "filename": "HARSHA'S RESUME.docx",
+    "email": "harshavardhannadendla9@gmail.com",
+    "phone": "+91 8008708670",
+    "skills": [
+        "Time Management",
+        "Testing",
+        "Erp",
+        "C++",
+        "Data Engineering",
+        "Kotlin",
+        "Go",
+        "Sso",
+        "Terraform",
+        "Node.Js",
+        "Aws",
+        "Javascript",
+        "Salesforce",
+        "Communication",
+        "Google Cloud",
+        "Analytical Skills",
+        "Problem Solving",
+        "Python",
+        "Machine Learning",
+        "Typescript",
+        "C",
+        "Mongodb",
+        "React",
+        "Oracle",
+        "R"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.TECH"
+        ],
+        "fields": [
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+        ],
+        "institutions": [
+            "B.TECH  Bapatla Engineering College  CGPA :9.17/10.0",
+            "INTERMEDIATE(MPC)  Vignana Bharathi junior College  GPA: 9.45/ 10.00",
+            "SSC  St.Anns English Medium High School  Major GPA: 8.1 / 10.00"
+        ],
+        "highest_degree": "B.TECH",
+        "highest_level": "bachelors",
+        "qualification_text": "B.TECH in AI",
+        "year_of_passing": 2025
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.TECH in AI",
+        "candidate_year": 2025,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.814,
+        "skill_score": 0.333,
+        "experience_score": 0.8,
+        "final_score": 0.501,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "CSS"
+        ],
+        "confidence": 1.0,
+        "score_breakdown": {
+            "semantic_contribution": 0.407,
+            "skill_contribution": 0.1,
+            "experience_contribution": 0.16,
+            "penalty_applied": 0.167
+        }
+    },
+    "raw_text_preview": "AI & ML Intern \u2013 InternPe\tJul- 2025\nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing machine learning models and handling real-time data processing.\nPYTHON Developer Intern \u2013 VaultOfCodes\tJul- 2024\nWorked on developing and optimizing Python applications while strengthening problem-solving and programming skills.\nPROJECTS\n---------------------------------------------------------------------------------------------------------------------------------------------\nPromptEase: An AI Middleware Platform for Enhanced Language Model Interactions\n(AUG 2025)\nThe current landscape of AI language model interactions presents significant challenges for     users seeking to leverage multiple AI platforms effectively. Existing systems require users to manage separate accounts, API keys, and interfaces across different providers (OpenAI,   Google, Anthropic, Meta), each with distinct parameter systems and interaction paradigms.\nMovie Recommendation System (Collaborativ"
+}

@@ -1,0 +1,93 @@
+{
+    "timestamp": "2026-03-25 21:39:59.647349",
+    "candidate_name": "Yakkaladevi Bhuvanesh",
+    "filename": "BHUVANESH_RESUME.pdf",
+    "email": "yakkaladevibhuvanesh@gmail.com",
+    "phone": "+91 9491962208",
+    "skills": [
+        "Data Analysis",
+        "Javascript",
+        "React",
+        "Aws",
+        "R",
+        "Matplotlib",
+        "Html",
+        "C",
+        "Mongodb",
+        "Go",
+        "Scikit-Learn",
+        "Keras",
+        "Tensorflow",
+        "Flask",
+        "Oracle",
+        "Sqlite",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Deep Learning"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelors of Technology",
+            "undergraduate"
+        ],
+        "fields": [
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "\u2022 Sri Chaitanya Junior College                                                                                                                                                          2020 - 2022",
+            "\u2022 Sri Chaitanya Techno School                                                                                                                                       2019  - 2020",
+            "\u2022 Oracle certified Foundations Associate - Oracle university"
+        ],
+        "highest_degree": "Bachelors of Technology",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelors of Technology in AI",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelors of Technology in AI",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.806,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.603,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.35,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.14,
+            "alignment_penalty": 0.087,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "Yakkaladevi Bhuvanesh \n Yakkaladevi Bhuvanesh | \n Bhuvanesh98 | \n yakkaladevibhuvanesh@gmail.com | \n +91- 9491962208 \n \nOBJECTIVE \n \nMotivated AI & ML undergraduate with strong analytical ability and hands-on experience in Python, Java, SQL, application \ndevelopment. Skilled in solving complex problems, building user-centric solutions, and working effectively in collaborative \nenvironments \nEXPERIENCE \n \n\u2022 InternPe \nAI ML Intern \n\u25cb Completed 2-month internship on AIML, gaining hands-on experience in developing machine learning models and \nhandling real-time data processing. \n\u2022 VaultOfCodes \nPython Developer Intern \n\u25cb Worked on developing and optimizing Python applications while strengthening problem-solving and \nprogramming skills. \nEDUCATION \n \n\u2022 Bapatla Engineering College                                                                                                                                                                  2022  - 2026 \nBachelors of Technology - AIML \nBapatla"
+}

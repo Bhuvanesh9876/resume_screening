@@ -10,7 +10,6 @@ try:
     url = os.environ.get("SUPABASE_URL", "")
     key = os.environ.get("SUPABASE_ANON_KEY", "")
 
-    # Removed Streamlit fallback; keys must be in env vars.
 
     if url and key:
         supabase = create_client(url, key)

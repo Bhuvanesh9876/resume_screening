@@ -1,0 +1,82 @@
+{
+    "timestamp": "2026-03-25 21:56:00.664302",
+    "candidate_name": "Gopi Chand Pasam",
+    "filename": "Gopi_Resume_resume.pdf",
+    "email": "gopipasam93@gmail.com",
+    "phone": "+91 7702803362",
+    "skills": [
+        "C",
+        "Rust",
+        "Scala",
+        "Deep Learning",
+        "Data Analysis",
+        "Python",
+        "R",
+        "Machine Learning",
+        "Go"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.Tech"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Bapatla",
+            "Sri Saraswathi Junior College, Ongole",
+            "Hanumantharo High School, Gangavaram"
+        ],
+        "highest_degree": "B.Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B.Tech in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.Tech in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.791,
+        "skill_score": 0.333,
+        "experience_score": 0.368,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.373,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.344,
+            "skill_contribution": 0.087,
+            "experience_contribution": 0.064,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.253,
+            "alignment_penalty": 0.146,
+            "must_have_penalty": 0.107,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.107,
+            "irrelevancy_multiplier": 0.77
+        }
+    },
+    "raw_text_preview": "GOPI CHAND PASAM\nSN Padu, Andhra Pradesh\n\u0083 7702803362\n# gopipasam93@gmail.com\n\u00ef Gopi Linkedin\n\u00a7 gopi463\nSummary\nCurrently pursuing my B.Tech in Artificial Intelligence and Machine Learning (expected 2026) with a good foundation\nin Python. Proficient in core machine learning concepts and Generative AI concepts, collaborative problem solving,\nand effective communication. Interested in contributing technical expertise to real-world projects.\nEducation\nBapatla Engineering College, Bapatla\nB.Tech (Pursuing)\nExpected 2026\nCGPA: 8.0\nSri Saraswathi Junior College, Ongole\nIntermediate\n2020\u20132022\nMarks: 872\nHanumantharo High School, Gangavaram\nSSC\n2019\u20132020\nMarks: 580\nWork Experience\nVaultofCodes\nRemote\nPython Development Intern\n05/2024\nSkilldizer\nRemote\nMechine Learning Intern\n05/2025\nTechnical Skills\nLanguages: Python\nTechnologies : Generative AI,Machine Learning\nTools: Excel,Colab,VS-Code\nProjects\nPersonal Project: To-Do List Application\n2024\nDeveloped a To-Do list application using Python.\nPe"
+}

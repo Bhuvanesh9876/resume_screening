@@ -1,0 +1,94 @@
+{
+    "timestamp": "2026-03-25 21:40:02.385743",
+    "candidate_name": "Anumula Sri Lakshmi",
+    "filename": "Resume (5).pdf",
+    "email": "srilakshmianumulaaiml@gmail.com",
+    "phone": "+91 7382038719",
+    "skills": [
+        "Data Analysis",
+        "Javascript",
+        "Node.Js",
+        "Pytorch",
+        "R",
+        "Matplotlib",
+        "Html",
+        "Numpy",
+        "C",
+        "Go",
+        "Angular",
+        "Scikit-Learn",
+        "Predictive Modeling",
+        "Keras",
+        "Tensorflow",
+        "Api Development",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Deep Learning",
+        "Pandas"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "LLM",
+            "B.Tech",
+            "Bachelor of Technology"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Andhra Pradesh",
+            "\u2022 Artificial Intelligence Certification \u2013 Rinex Technologies (E-Cell, IIT Bhubaneswar)"
+        ],
+        "highest_degree": "LLM",
+        "highest_level": "masters",
+        "qualification_text": "LLM in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "LLM in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.785,
+        "skill_score": 1.0,
+        "experience_score": 0.65,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.846,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.342,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.113,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "ANUMULA SRI LAKSHMI\nBapatla, Andhra Pradesh\nsrilakshmianumulaaiml@gmail.com \u2014 7382038719 \u2014 github.com/AnuSree2468 \u2014 LinkedIn\nObjective\nFinal-year B.Tech student in Artificial Intelligence and Machine Learning with strong hands-on experience in machine\nlearning, computer vision, and LLM prompt engineering. Seeking an entry-level AI role where I can design, evaluate,\nand deploy reliable real-world AI systems.\nEducation\nBachelor of Technology (B.Tech) \u2013 Artificial Intelligence and Machine Learning\nBapatla Engineering College, Andhra Pradesh\n2022 \u2013 2026\nRelevant Coursework: Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, Neural\nNetworks, Data Structures & Algorithms\nTechnical Skills\nProgramming: Python, Java, C, SQL\nMachine Learning & AI: TensorFlow, Keras, Scikit-learn, PyTorch, NumPy, Pandas, Matplotlib\nComputer Vision: OpenCV, Albumentations, Image Annotation (LabelMe)\nPrompt Engineering & LLMs: Zero-shot prompting, Few-shot prompting, Chain-of-Thought (Co"
+}

@@ -1,0 +1,91 @@
+{
+    "timestamp": "2026-03-25 21:56:00.722781",
+    "candidate_name": "Yakkaladevi Bhuvanesh",
+    "filename": "Yakkaladevi Bhuvanesh.pdf",
+    "email": "yakkaladevibhuvanesh@gmail.com",
+    "phone": "+91 9491962208",
+    "skills": [
+        "R",
+        "Scikit-Learn",
+        "Go",
+        "Html",
+        "Java",
+        "Flask",
+        "Aws",
+        "Deep Learning",
+        "Data Analysis",
+        "Keras",
+        "Python",
+        "Statistical Analysis",
+        "C",
+        "Scala",
+        "Api Development",
+        "Machine Learning",
+        "Oracle",
+        "Javascript",
+        "Tensorflow"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelors of Technology"
+        ],
+        "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College",
+            "Sri Chaitanya Junior College",
+            "Sri Chaitanya Techno School"
+        ],
+        "highest_degree": "Bachelors of Technology",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelors of Technology in Software Engineering",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelors of Technology in Software Engineering",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.8,
+        "skill_score": 1.0,
+        "experience_score": 0.65,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.852,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.348,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.113,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "Yakkaladevi Bhuvanesh\n+91- 9491962208 | yakkaladevibhuvanesh@gmail.com | Yakkaladevi Bhuvanesh | Bhuvanesh98\nOBJECTIVE\nMachine Learning Engineer intern with hands-on experience applying Python and TensorFlow to optimize applications and build \nreal-time ML models. Skilled in Transformers, scikit-learn, and data pipeline development, with demonstrated ability to enhance \nperformance and reliability. Seeking to advance AI-driven personalization and scalable ML systems.\nEXPERIENCE\nInternPe\nPresent\nAI ML Intern\n\u2022 Applied engineering principles and machine learning frameworks like TensorFlow and scikit-learn to optimize Python applications, \nimproving reliability and efficiency while leveraging data analytics best practices to solve complex programming challenges\nVaultOfCodes\nPython Developer Intern\n\u2022 Developed machine learning models with a focus on statistical modeling, data quality, and real-time processing performance, ensuring \nhigh availability for data-driven features\nEDUCATION\nBapat"
+}

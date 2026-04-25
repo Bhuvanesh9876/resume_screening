@@ -1,0 +1,87 @@
+{
+    "timestamp": "2026-03-25 21:39:59.616877",
+    "candidate_name": "Sriram Balaji",
+    "filename": "Balaji_resume.docx",
+    "email": "srirambalaji609@gmail.com",
+    "phone": "+91 8522856078",
+    "skills": [
+        "Go",
+        "R",
+        "Api Development",
+        "Mysql",
+        "Matplotlib",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Html",
+        "Numpy",
+        "Pandas",
+        "C",
+        "Tensorflow",
+        "Javascript"
+    ],
+    "experience_years": 0.2,
+    "education": {
+        "degrees": [
+            "B. Tech"
+        ],
+        "fields": [
+            "IT",
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Bapatla, A.P \t\t\t\t\t\t\tCGPA 7.0",
+            "S.V.K.P Junior College, Sattenapalli, A.P \t\t\t\t\t\t               Percentage - 67%",
+            "Secondary School Certificate (SSC)\t\t\t\t\t\t          June 2019 - May 2020"
+        ],
+        "highest_degree": "B. Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B. Tech in IT",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "B. Tech in IT",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.795,
+        "skill_score": 1.0,
+        "experience_score": 0.75,
+        "experience_score_raw": 0.75,
+        "qualification_score": 1.0,
+        "final_score": 0.867,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 1.0,
+        "score_breakdown": {
+            "semantic_contribution": 0.345,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.13,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "SRIRAM BALAJI\n+91 85228 56078 |  srirambalaji609@gmail.com |  LinkedIn |  GitHub\nOBJECTIVE\nCurrently pursuing a B. Tech in Artificial Intelligence and Machine Learning (expected 2026) with a solid foundation in Python. Proficient in core machine learning concepts, collaborative problem-solving, and effective communication. Eager to contribute technical expertise to real-world projects.\nEDUCATION\nB. Tech (Artificial Intelligence & Machine Learning)\t\t\t\t          July 2022 \u2013 May 2026\nBapatla Engineering College, Bapatla, A.P \t\t\t\t\t\t\tCGPA 7.0\nIntermediate (MPC)\t\t\t\t\t\t\t\t        June 2020\u2013 May 2022\nS.V.K.P Junior College, Sattenapalli, A.P \t\t\t\t\t\t               Percentage - 67%\nSecondary School Certificate (SSC)\t\t\t\t\t\t          June 2019 - May 2020\nSri Saraswathi Sisumandhir, Sattenapalli, A.P\t\t\t\t\t\t\tCGPA 8.77\nSKILLS\nProgramming Languages: Python3, Basics of Java.\nWeb Development: HTML, CSS, Basics of Java Script.\nDatabases: MySQL.\nAI/ML Tools: LangChain, HuggingFace\nFrameworks& Libraries: Numpy,"
+}

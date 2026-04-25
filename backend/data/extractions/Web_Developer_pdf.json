@@ -1,0 +1,95 @@
+{
+    "timestamp": "2026-03-25 21:56:00.908130",
+    "candidate_name": "Anumula Srinadh",
+    "filename": "Web_Developer.pdf",
+    "email": "anumulasrinadh17@gmail.com",
+    "phone": "+91 9381653522",
+    "skills": [
+        "R",
+        "Scikit-Learn",
+        "Predictive Modeling",
+        "Go",
+        "React",
+        "Html",
+        "Postgresql",
+        "Java",
+        "Python",
+        "Sql Server",
+        "Numpy",
+        "Pandas",
+        "Pytorch",
+        "C",
+        "Devops",
+        "Api Development",
+        "Machine Learning",
+        "Fastapi",
+        "Javascript",
+        "Tensorflow"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "LLM",
+            "B.Tech",
+            "Bachelor of Technology"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Architecture",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Bapatla",
+            "Narayana Junior College, Ongole",
+            "Alpha High School, Cumbum"
+        ],
+        "highest_degree": "LLM",
+        "highest_level": "masters",
+        "qualification_text": "LLM in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "LLM in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.784,
+        "skill_score": 1.0,
+        "experience_score": 0.65,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.845,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.341,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.113,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "Anumula Srinadh\nWeb Developer | Bapatla, Andhra Pradesh\nanumulasrinadh17@gmail.com | +91-9381653522 | LinkedIn | GitHub\nProfessional Summary\nFinal year B.Tech student (AI & ML) with hands-on experience building full-stack web applications using React.js and\nFastAPI. Experienced in RESTful API development, JWT authentication, SQL databases, and cloud deployment. Seeking\na Web Developer role to apply strong front-end and back-end development skills in a collaborative environment.\nTechnical Skills\nWeb Technologies: React.js, HTML5, CSS3, JavaScript, RESTful APIs, FastAPI, Dynamic Routing\nDatabases (DBMS): SQL, Database Design, Query Optimization, PostgreSQL\nProgramming Languages: Python, JavaScript, C, SQL\nAuthentication & Security: JWT (JSON Web Tokens), Bcrypt Hashing, CORS Configuration\nCloud & DevOps: Git, GitHub, Vercel, Render, Cloud Deployment\nAI/ML Libraries: TensorFlow, PyTorch, Scikit-learn, OpenCV, LangChain, Pandas, NumPy\nProjects\nFinTrack \u2013 Full Stack Financial Dashboard | Re"
+}

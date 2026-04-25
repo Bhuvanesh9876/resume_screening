@@ -1,0 +1,89 @@
+{
+    "timestamp": "2026-03-25 21:40:00.241697",
+    "candidate_name": "Marepalli Harya Vardhan",
+    "filename": "ec7d1f98-fa1f-43e8-a95a-1bf79d890cae.pdf",
+    "email": "marepalliharyavardhan@gmail.com",
+    "phone": "+91 9030193596",
+    "skills": [
+        "Mongodb",
+        "Go",
+        "R",
+        "Express.Js",
+        "Sqlite",
+        "Java",
+        "Javascript",
+        "Node.Js",
+        "Python",
+        "Ci/Cd",
+        "Html",
+        "Machine Learning",
+        "C",
+        "React",
+        "Devops",
+        "Aws"
+    ],
+    "experience_years": 0.2,
+    "education": {
+        "degrees": [
+            "B.Tech"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "B.Tech \u2013 Artificial Intelligence & Machine Learning | Bapatla Engineering College (ANU) (2022\u201326) \u2013 85%",
+            "Intermediate (MPC) | Sri Chaitanya College \u2013 93%",
+            "SSC | Viswabharati School \u2013 100%"
+        ],
+        "highest_degree": "B.Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B.Tech in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.Tech in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.772,
+        "skill_score": 0.667,
+        "experience_score": 0.588,
+        "experience_score_raw": 0.75,
+        "qualification_score": 1.0,
+        "final_score": 0.602,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 1.0,
+        "score_breakdown": {
+            "semantic_contribution": 0.336,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.102,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.14,
+            "alignment_penalty": 0.087,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "MAREPALLI HARYA VARDHAN \nEmail: marepalliharyavardhan@gmail.com \nPhone: +91 9030193596 \nLinkedIn: linkedin.com/in/haryamarepalli \nGitHub: github.com/Haryavardhan \nLocation: Bapatla, Andhra Pradesh | Age: 21 \n \nPROFESSIONAL SUMMARY \nFinal-year B.Tech student in Artificial Intelligence and Machine Learning with hands-on experience in \nGenerative AI and full-stack development. Built RAG-based AI chatbots and Agentic AI workflows. Strong \nfoundation in Python, Java, React, Node.js, databases, and cloud fundamentals. \nEDUCATION \nB.Tech \u2013 Artificial Intelligence & Machine Learning | Bapatla Engineering College (ANU) (2022\u201326) \u2013 85% \nIntermediate (MPC) | Sri Chaitanya College \u2013 93% \nSSC | Viswabharati School \u2013 100% \nTECHNICAL SKILLS \nPython, Java, HTML, CSS, JavaScript, React.js, Node.js, Express.js, MongoDB, SQLite, LangChain, \nLangGraph, OpenCV, Git, AWS Basics \nINTERNSHIP \nAWS & DevOps Intern \u2013 Pragmatiq (Aug 2023 \u2013 Oct 2023): Learned AWS services, cloud deployment \nbasics, and CI/CD conce"
+}

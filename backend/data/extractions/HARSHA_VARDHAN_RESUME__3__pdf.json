@@ -1,0 +1,97 @@
+{
+    "timestamp": "2026-03-25 21:56:01.379638",
+    "candidate_name": "Nadendla Harsha Vardhan",
+    "filename": "HARSHA_VARDHAN_RESUME (3).pdf",
+    "email": "harshavardhannadendla9@gmail.com",
+    "phone": "+91 8008708670",
+    "skills": [
+        "Mongodb",
+        "R",
+        "Mysql",
+        "Scikit-Learn",
+        "Node.Js",
+        "Go",
+        "Express.Js",
+        "React",
+        "Html",
+        "Java",
+        "Deep Learning",
+        "Data Analysis",
+        "Matplotlib",
+        "Keras",
+        "Python",
+        "Numpy",
+        "Pandas",
+        "C",
+        "Sqlite",
+        "Machine Learning",
+        "Php",
+        "Oracle",
+        "Javascript",
+        "Tensorflow"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelor\u2019s Degree"
+        ],
+        "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bachelor\u2019s Degree at Bapatla Engineering college",
+            "Vignana Bharathi Junior College Board of Intermediate Education",
+            "St.Ann\u2019s School ICSE"
+        ],
+        "highest_degree": "Bachelor\u2019s Degree",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor\u2019s Degree in Software Engineering",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelor\u2019s Degree in Software Engineering",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.809,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.605,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.352,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.14,
+            "alignment_penalty": 0.087,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "NADENDLA HARSHA VARDHAN\n\u00a7 nadendlaharsha | \u00ef Nadendla Harsha Vardhan | # harshavardhannadendla9@gmail.com\n| H +91-8008708670\nWork Experience\nAI ML Intern, InternPe June 2025 \u2013 July 2025\nCompleted 2-month online internship on AI & ML, gaining hands-on experience in developing machine\nlearning models and handling real-time data processing.\nPython Developer Intern, VaultOfCodes July 2024 \u2013 August 2024\nWorked on developing and optimizing Python applications while strengthening problem-solving and programming skills.\nProjects\nAI Recruitment Partner (Python, Streamlit, Llama 3, Whisper, Ollama)\nBuilt a web-based recruitment tool that cut candidate screening time by 50% for 100+ applicants. Used\nLlama 3 and Whisper for skill extraction, tailored questions, and real-time voice response evaluation.\nProvided resume feedback, keyword alignment, and AI-driven enhancements with local NLP models.\nFake Image Detection (Python, Streamlit, TensorFlow, Matplotlib, OpenCV, Scikit-learn, SQLite)\nDesigned "
+}

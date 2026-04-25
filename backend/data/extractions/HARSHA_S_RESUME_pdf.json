@@ -1,0 +1,88 @@
+{
+    "timestamp": "2026-03-05 08:41:40.651016",
+    "candidate_name": "Nadendla Harsha Vardhan",
+    "filename": "HARSHA'S RESUME.pdf",
+    "email": "harshavardhannadendla9@gmail.com",
+    "phone": "+91 8008708670",
+    "skills": [
+        "Time Management",
+        "Testing",
+        "Erp",
+        "C++",
+        "Data Engineering",
+        "Kotlin",
+        "Go",
+        "Sso",
+        "Terraform",
+        "Node.Js",
+        "Aws",
+        "Javascript",
+        "Salesforce",
+        "Communication",
+        "Google Cloud",
+        "Analytical Skills",
+        "Problem Solving",
+        "Python",
+        "Machine Learning",
+        "Typescript",
+        "C",
+        "Mongodb",
+        "React",
+        "Oracle",
+        "R"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.TECH"
+        ],
+        "fields": [
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College",
+            "Vignana Bharathi junior College",
+            "St.Anns English Medium High School"
+        ],
+        "highest_degree": "B.TECH",
+        "highest_level": "bachelors",
+        "qualification_text": "B.TECH in AI",
+        "year_of_passing": 2025
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.TECH in AI",
+        "candidate_year": 2025,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.786,
+        "skill_score": 0.333,
+        "experience_score": 0.8,
+        "final_score": 0.486,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "CSS"
+        ],
+        "confidence": 1.0,
+        "score_breakdown": {
+            "semantic_contribution": 0.393,
+            "skill_contribution": 0.1,
+            "experience_contribution": 0.16,
+            "penalty_applied": 0.167
+        }
+    },
+    "raw_text_preview": "NADENDLA HARSHA VARDHAN \n \nharshavardhannadendla9@gmail.com \n           +91 8008708670   \nEDUCATION \nB.TECH \nBapatla Engineering College \nCGPA :9.17/10.0 \nINTERMEDIATE(MPC) \nVignana Bharathi junior College \nGPA: 9.45/ 10.00 \nSSC \nSt.Anns English Medium High School \nMajor GPA: 8.1 / 10.00 \nTECHNICAL SKILLS \n\u2022 python \n\u2022 MongoDB \n\u2022 React js \n\u2022 C++ \n\u2022 R-studio \n\u2022 Node js \n\u2022 typescript \n\u2022 kotlin \nINDUSTRY \nEXPERIENCE \nAI & ML Intern \u2013 InternPe \nJul- 2025 \nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing \nmachine learning models and handling real-time data processing. \n    \nPYTHON Developer Intern \u2013 VaultOfCodes \nJul- 2024 \nWorked on developing and optimizing Python applications while strengthening problemsolving and programming skills. \n  \nPROJECTS \n--------------------------------------------------------------------------------------------------------------------------------------------- \n PromptEase: An AI Middleware Platform for Enhanced Language Model I"
+}

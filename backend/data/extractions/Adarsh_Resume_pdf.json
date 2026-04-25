@@ -1,0 +1,95 @@
+{
+    "timestamp": "2026-03-25 21:39:59.721022",
+    "candidate_name": "Adarsh Tavva",
+    "filename": "Adarsh_Resume.pdf",
+    "email": "2200032477cseh@gmail.com",
+    "phone": "+91 6301045494",
+    "skills": [
+        "Data Analysis",
+        "Gcp",
+        "Javascript",
+        "Node.Js",
+        "React",
+        "Aws",
+        "Scala",
+        "R",
+        "Html",
+        "Express.Js",
+        "Spring",
+        "C",
+        "Mongodb",
+        "Go",
+        "Spring Boot",
+        "Mysql",
+        "Data Science",
+        "Api Development",
+        "Rust",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Azure"
+    ],
+    "experience_years": 4.9,
+    "education": {
+        "degrees": [
+            "Bachelor of Technology",
+            "B.Tech"
+        ],
+        "fields": [
+            "Computer Science",
+            "Software Engineering",
+            "Data Science",
+            "AI",
+            "Education"
+        ],
+        "institutions": [
+            "KL University, Vijayawada, India"
+        ],
+        "highest_degree": "Bachelor of Technology",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor of Technology in Computer Science",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "Bachelor of Technology in Computer Science",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.786,
+        "skill_score": 1.0,
+        "experience_score": 0.9,
+        "experience_score_raw": 0.9,
+        "qualification_score": 1.0,
+        "final_score": 0.89,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 1.0,
+        "score_breakdown": {
+            "semantic_contribution": 0.342,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.157,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "ADARSH TAVVA\n\u0083 +91 6301045494\n# 2200032477cseh@gmail.com\n\u00ef linkedin-adarsh-tavva\n\u00a7 github-Adarsh-0411\n+ Vijayawada, India\nCAREER SUMMARY\n\u2022 An aspiring Software Engineer with strong foundations in data structures and algorithms. Interested in building scalable, userfocused solutions and innovative projects. Enjoy collaborating in competitive environments to create meaningful technology.\nEDUCATION\n\u2022 Bachelor of Technology (B.Tech), Computer Science and Engineering\n2022 \u2013 2026\nSpecialization in Data Science and Big Data Analytics\nCGPA: 8.99\nKL University, Vijayawada, India\nINTERNSHIP EXPERIENCE\n\u2022 Software Development Intern \u2013 Prodigy InfoTech\nJul 2024 \u2013 Aug 2024\n\u25e6Designed and implemented 3+ full-stack web solutions using React.js, Node.js, and REST APIs, improving UI responsiveness\nby 25%.\n\u25e6Developed interactive projects such as a Tic-Tac-Toe game, a Weather Forecast App, and a Portfolio Website, demonstrating full-stack integration and clean design practices.\n\u25e6Collaborated in an agile 4-"
+}

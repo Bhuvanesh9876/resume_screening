@@ -15,8 +15,8 @@ from functools import wraps
 from flask import Flask, request, jsonify, send_file, g
 from flask_cors import CORS
 
-# Ensure project root is on path
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+# Ensure project backend root is on path
+sys.path.insert(0, os.path.dirname(__file__))
 
 from supabase_client import supabase
 from core.config import SHORTLIST_THRESHOLD, SEMANTIC_WEIGHT, SKILL_WEIGHT, EXPERIENCE_WEIGHT
@@ -283,7 +283,7 @@ def save_job_config():
 # ---- Resume Processing ----
 def _process_single_resume(resume_name, resume_bytes, embedder, jd_embedding,
                             all_potential_skills, job_data):
-    """Process a single resume end-to-end (same logic as Streamlit version)."""
+    """Process a single resume end-to-end."""
 
     class _BytesFile:
         def __init__(self, data, name):

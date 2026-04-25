@@ -2,7 +2,7 @@ import sys
 import os
 import json
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'backend')))
 
 from core.qualification_extractor import extract_qualifications, match_qualification
 

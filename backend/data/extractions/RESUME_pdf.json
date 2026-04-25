@@ -1,0 +1,95 @@
+{
+    "timestamp": "2026-03-25 21:40:02.431371",
+    "candidate_name": "Yakkaladevi Bhuvanesh",
+    "filename": "RESUME.pdf",
+    "email": "yakkaladevibhuvanesh@gmail.com",
+    "phone": "+91 9491962208",
+    "skills": [
+        "Data Analysis",
+        "Javascript",
+        "React",
+        "Aws",
+        "R",
+        "Matplotlib",
+        "Html",
+        "Express.Js",
+        "C",
+        "Mongodb",
+        "Go",
+        "Scikit-Learn",
+        "Mysql",
+        "Keras",
+        "Tensorflow",
+        "Flask",
+        "Oracle",
+        "Sqlite",
+        "Java",
+        "Machine Learning",
+        "Python",
+        "Deep Learning"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelor\u2019s Degree"
+        ],
+        "fields": [
+            "Software Engineering",
+            "AI",
+            "Machine Learning",
+            "Education"
+        ],
+        "institutions": [
+            "Bachelor\u2019s Degree at Bapatla Engineering college",
+            "Sri Chaitanya Junior College Board of Intermediate Education",
+            "Sri Chaitanya Techno School Board of Secondary Education"
+        ],
+        "highest_degree": "Bachelor\u2019s Degree",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor\u2019s Degree in Software Engineering",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelor\u2019s Degree in Software Engineering",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.805,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.603,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.35,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.14,
+            "alignment_penalty": 0.087,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "YAKKALADEVI BHUVANESH\n\u00a7 Bhuvanesh98 | \u00ef Yakkaladevi Bhuvanesh | # yakkaladevibhuvanesh@gmail.com\n| H +91-9491962208\nWork Experience\nAI ML Intern , InternPe\nJune 2025 \u2013 July 2025\nCompleted 2-month internship on AI & ML, gaining hands-on experience in developing machine learning\nmodels and handling real-time data processing.\nPYTHON Developer Intern , VaultOfCodes\nJuly 2024 \u2013 August 2024\nWorked on developing and optimizing Python applications while strengthening problem-solving and programming skills.\nProjects\nAI Recruitment Partner (Python, Streamlit, Llama 3, Whisper, Ollama)\nBuilt a web-based recruitment tool that cut candidate screening time by 50% for 100+ applicants. Used\nLlama 3 and Whisper for skill extraction, tailored questions, and real-time voice response evaluation.\nProvided resume feedback, keyword alignment, and AI-driven enhancements with local NLP models.\nFake Image Detection (Python, Streamlit, TensorFlow, Matplotlib, OpenCV, Scikit-learn, SQLite)\nDesigned a fake image d"
+}

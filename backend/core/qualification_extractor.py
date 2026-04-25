@@ -365,15 +365,15 @@ DEGREE_LEVELS = {
 
 # Degree normalization mapping
 DEGREE_ALIASES = {
-    "BTECH": ["BACHELOR OF TECHNOLOGY", "B.TECH", "B TECH", "B. TECHNOLOGY"],
-    "MTECH": ["MASTER OF TECHNOLOGY", "M.TECH", "M TECH", "M. TECHNOLOGY"],
-    "MCA": ["MASTER OF COMPUTER APPLICATIONS", "M.C.A", "M CA"],
-    "MBA": ["MASTER OF BUSINESS ADMINISTRATION", "M.B.A", "M BA"],
-    "BCA": ["BACHELOR OF COMPUTER APPLICATIONS", "B.C.A", "B CA"],
-    "BSC": ["BACHELOR OF SCIENCE", "B.SC", "B SC", "B.S"],
-    "MSC": ["MASTER OF SCIENCE", "M.SC", "M SC", "M.S"],
-    "BE": ["BACHELOR OF ENGINEERING", "B.E", "B ENG", "B.ENG"],
-    "ME": ["MASTER OF ENGINEERING", "M.E", "M ENG", "M.ENG"],
+    "BTECH": ["BACHELOR OF TECHNOLOGY", "BACHELORS OF TECHNOLOGY", "B.TECH", "B TECH", "B. TECHNOLOGY"],
+    "MTECH": ["MASTER OF TECHNOLOGY", "MASTERS OF TECHNOLOGY", "M.TECH", "M TECH", "M. TECHNOLOGY"],
+    "MCA": ["MASTER OF COMPUTER APPLICATIONS", "MASTERS OF COMPUTER APPLICATIONS", "M.C.A", "M CA"],
+    "MBA": ["MASTER OF BUSINESS ADMINISTRATION", "MASTERS OF BUSINESS ADMINISTRATION", "M.B.A", "M BA"],
+    "BCA": ["BACHELOR OF COMPUTER APPLICATIONS", "BACHELORS OF COMPUTER APPLICATIONS", "B.C.A", "B CA"],
+    "BSC": ["BACHELOR OF SCIENCE", "BACHELORS OF SCIENCE", "B.SC", "B SC", "B.S"],
+    "MSC": ["MASTER OF SCIENCE", "MASTERS OF SCIENCE", "M.SC", "M SC", "M.S"],
+    "BE": ["BACHELOR OF ENGINEERING", "BACHELORS OF ENGINEERING", "B.E", "B ENG", "B.ENG"],
+    "ME": ["MASTER OF ENGINEERING", "MASTERS OF ENGINEERING", "M.E", "M ENG", "M.ENG"],
 }
 
 def normalize_degree(degree_name: str) -> str:
@@ -524,126 +524,250 @@ def match_qualification(candidate_quals: Dict[str, Any],
     Supports multiple degree requirements, levels, synonyms, and specific graduation years.
     Returns the best match found among the required qualifications.
     """
-    # Normalize input to a list
-    req_qual_list = []
-    if isinstance(required_qualifications, str):
-        if not required_qualifications or required_qualifications == "None":
-            req_qual_list = []
+    def _normalize_required_list(value: Any) -> List[str]:
+        if value is None:
+            return []
+        if isinstance(value, str):
+            values = [value]
+        elif isinstance(value, list):
+            values = value
         else:
-            req_qual_list = [required_qualifications]
-    elif isinstance(required_qualifications, list):
-        req_qual_list = [q for q in required_qualifications if q and q != "None"]
+            values = [str(value)]
 
-    if not req_qual_list or not candidate_quals:
-        if not req_qual_list or "None" in req_qual_list:
-            return {
-                "match_score": 1.0, 
-                "matched": True,
-                "year_match": True,
-                "details": "No specific qualification requirement"
-            }
-        else:
-            return {
-                "match_score": 0.0,
-                "matched": False,
-                "year_match": False,
-                "details": "Rejection: No educational degrees detected in resume"
-            }
+        cleaned: List[str] = []
+        for item in values:
+            text = str(item).strip()
+            if not text or text.lower() == "none":
+                continue
+            if text not in cleaned:
+                cleaned.append(text)
+        return cleaned
 
-    candidate_degrees = [normalize_degree(d) for d in candidate_quals.get("degrees", [])]
-    candidate_level = candidate_quals.get("highest_level")
+    def _normalize_candidate_degrees(values: Any) -> List[str]:
+        normalized: List[str] = []
+        if not isinstance(values, list):
+            return normalized
+        for item in values:
+            text = normalize_degree(str(item))
+            if text and text not in normalized:
+                normalized.append(text)
+        return normalized
 
-    # Level Hierarchy
-    level_order = ['doctorate', 'masters', 'bachelors', 'associate', 'diploma', 'certificate']
-    def get_level(degree_norm):
-        # Use robust inference first (handles MTECH/BTECH etc)
-        inferred = _degree_level_from_text(degree_norm)
+    def _candidate_context_text() -> str:
+        parts: List[str] = []
+        for key in ("qualification_text", "highest_degree"):
+            value = candidate_quals.get(key)
+            if value:
+                parts.append(str(value))
+        for key in ("degrees", "fields", "institutions"):
+            value = candidate_quals.get(key, [])
+            if isinstance(value, list):
+                parts.extend(str(item) for item in value if item)
+        return " ".join(parts).upper()
+
+    def _degree_level(value: str) -> Optional[str]:
+        inferred = _degree_level_from_text(value)
         if inferred:
             return inferred
-
         for level, keywords in DEGREE_LEVELS.items():
-            for kw in keywords:
-                if kw.upper() in str(degree_norm).upper():
+            for keyword in keywords:
+                if keyword.upper() in str(value).upper():
                     return level
         return None
 
+    def _degree_family(value: str) -> Optional[str]:
+        token = normalize_degree(value)
+        upper = str(token).upper()
+
+        if token in {"BTECH", "BE", "MTECH", "ME"}:
+            return "engineering_tech"
+        if token == "BCA" or "COMPUTER APPLICATION" in upper:
+            return "computer_applications"
+        if token in {"BSC", "MSC"}:
+            return "science"
+        if token in {"MBA", "MCOM", "BCOM"}:
+            return "business"
+        return None
+
+    def _candidate_families() -> set:
+        families = set()
+
+        for degree in candidate_degrees:
+            fam = _degree_family(degree)
+            if fam:
+                families.add(fam)
+
+        text = candidate_context
+        if any(h in text for h in ["BTECH", "B.TECH", "B TECH", "BE", "B.E", "B ENG", "B.ENG", "BACHELOR OF TECHNOLOGY", "BACHELOR OF ENGINEERING", "ENGINEERING"]):
+            families.add("engineering_tech")
+        if any(h in text for h in ["BCA", "B.C.A", "B CA", "BACHELOR OF COMPUTER APPLICATION", "BACHELORS OF COMPUTER APPLICATION", "COMPUTER APPLICATION"]):
+            families.add("computer_applications")
+        if any(h in text for h in ["BSC", "B.SC", "B SC", "BACHELOR OF SCIENCE", "MSC", "M.SC", "MASTER OF SCIENCE"]):
+            families.add("science")
+        if any(h in text for h in ["MBA", "M.B.A", "BBA", "B.B.A", "BCOM", "B.COM", "MCOM", "M.COM", "BUSINESS ADMINISTRATION", "COMMERCE"]):
+            families.add("business")
+
+        return families
+
+    req_qual_list = _normalize_required_list(required_qualifications)
+    if not req_qual_list:
+        return {
+            "match_score": 1.0,
+            "matched": True,
+            "year_match": True,
+            "details": "No specific qualification requirement",
+            "candidate_qualification": candidate_quals.get("qualification_text", "") if candidate_quals else "",
+            "candidate_year": candidate_quals.get("year_of_passing") if candidate_quals else None,
+            "required_qualification": "None",
+            "required_years": [],
+        }
+
+    if not candidate_quals:
+        return {
+            "match_score": 0.0,
+            "matched": False,
+            "year_match": False,
+            "details": "Rejection: No educational degrees detected in resume",
+            "candidate_qualification": "",
+            "candidate_year": None,
+            "required_qualification": req_qual_list[0],
+            "required_years": [],
+        }
+
+    candidate_degrees = _normalize_candidate_degrees(candidate_quals.get("degrees", []))
+    candidate_level = candidate_quals.get("highest_level")
+    if not candidate_level:
+        for degree in candidate_degrees:
+            candidate_level = _degree_level(degree)
+            if candidate_level:
+                break
+
+    candidate_context = _candidate_context_text()
+
+    level_order = ["doctorate", "masters", "bachelors", "associate", "diploma", "certificate"]
     best_match_score = 0.0
     best_matched = False
     best_details = f"Required qualifications {', '.join(req_qual_list)} not identified"
-    best_req_qual = req_qual_list[0] if req_qual_list else None
-    
-    # Iterate through all acceptable qualifications to find the best match
-    for req_qual in req_qual_list:
-        required_norm = normalize_degree(req_qual)
-        required_level = get_level(required_norm)
-        
-        current_score = 0.0
-        current_matched = False
-        current_details = ""
+    best_req_qual = req_qual_list[0]
 
-        # 1. Direct or Synonym Match (e.g. BTech == Bachelor of Technology)
+    def _evaluate_requirement(req_qual: str) -> Dict[str, Any]:
+        required_norm = normalize_degree(req_qual)
+        required_level = _degree_level(required_norm)
+
         if required_norm in candidate_degrees:
-            current_matched = True
-            current_score = 1.0
-            current_details = f"Verified {required_norm} qualification"
-        
-        # 2. Level Hierarchy Match (e.g. Master's covers Bachelor's)
-        elif required_level and candidate_level:
+            return {
+                "score": 1.0,
+                "matched": True,
+                "details": f"Verified {required_norm} qualification",
+            }
+
+        required_family = _degree_family(required_norm)
+        if required_family:
+            if required_family in _candidate_families():
+                if required_level and candidate_level:
+                    req_idx = level_order.index(required_level)
+                    cand_idx = level_order.index(candidate_level)
+                    if cand_idx > req_idx:
+                        return {
+                            "score": 0.3,
+                            "matched": False,
+                            "details": f"Rejection: Matched {required_norm} family but candidate level ({candidate_level.title()}) is lower than required ({required_level.title()})",
+                        }
+                return {
+                    "score": 0.95,
+                    "matched": True,
+                    "details": f"Matched {required_norm} degree family",
+                }
+            if required_level and candidate_level and candidate_level == required_level:
+                return {
+                    "score": 0.2,
+                    "matched": False,
+                    "details": f"Rejection: Required {required_norm} degree family not detected",
+                }
+
+        if "ANY BACHELOR" in required_norm:
+            if candidate_level == "bachelors":
+                return {
+                    "score": 1.0,
+                    "matched": True,
+                    "details": "Matched Bachelor's level requirement exactly",
+                }
+            if candidate_level in {"masters", "doctorate"}:
+                return {
+                    "score": 0.8,
+                    "matched": True,
+                    "details": "Overqualified: exceeds Bachelor's level requirement",
+                }
+            return {
+                "score": 0.3,
+                "matched": False,
+                "details": "Level below requirement: Bachelor's level not found",
+            }
+
+        if "ANY MASTER" in required_norm:
+            if candidate_level == "masters":
+                return {
+                    "score": 1.0,
+                    "matched": True,
+                    "details": "Matched Master's level requirement exactly",
+                }
+            if candidate_level == "doctorate":
+                return {
+                    "score": 0.8,
+                    "matched": True,
+                    "details": "Overqualified: exceeds Master's level requirement",
+                }
+            return {
+                "score": 0.3,
+                "matched": False,
+                "details": "Level below requirement: Master's level not found",
+            }
+
+        if required_level and candidate_level:
             req_idx = level_order.index(required_level)
             cand_idx = level_order.index(candidate_level)
-            
+
             if cand_idx == req_idx:
-                # They share a level (e.g., both Masters), but the specific degrees didn't match above.
-                # E.g. Candidate has MBA, Requirement is MTech. These are completely different!
-                current_matched = False
-                current_score = 0.4
-                current_details = f"Mismatched degree at same level: {candidate_level.title()} level found, but strict {required_norm} is missing"
-            elif cand_idx < req_idx:
-                # Overqualified: candidate has a higher degree than required (e.g. Master's vs Bachelor's)
-                # Apply a slight penalty to avoid bias toward overqualified candidates
-                current_matched = True
-                current_score = 0.8  
-                current_details = f"Overqualified: {candidate_level.title()} exceeds {required_level.title()} requirement"
-            else:
-                current_score = 0.3
-                current_details = f"Level below requirement: {candidate_level.title()} < {required_level.title()}"
-        
-        # Special "Any" degree cases
-        elif "ANY BACHELOR" in required_norm:
-            if candidate_level == 'bachelors':
-                current_matched = True
-                current_score = 1.0
-                current_details = "Matched Bachelor's level requirement exactly"
-            elif candidate_level in ['masters', 'doctorate']:
-                current_matched = True
-                current_score = 0.8
-                current_details = "Overqualified: exceeds Bachelor's level requirement"
-        elif "ANY MASTER" in required_norm:
-            if candidate_level == 'masters':
-                current_matched = True
-                current_score = 1.0
-                current_details = "Matched Master's level requirement exactly"
-            elif candidate_level == 'doctorate':
-                current_matched = True
-                current_score = 0.8
-                current_details = "Overqualified: exceeds Master's level requirement"
-                
-        # Update best match if this is better
-        if current_score > best_match_score or (current_score == best_match_score and current_matched):
+                return {
+                    "score": 0.4,
+                    "matched": False,
+                    "details": f"Mismatched degree at same level: {candidate_level.title()} level found, but strict {required_norm} is missing",
+                }
+            if cand_idx < req_idx:
+                return {
+                    "score": 0.8,
+                    "matched": True,
+                    "details": f"Overqualified: {candidate_level.title()} exceeds {required_level.title()} requirement",
+                }
+            return {
+                "score": 0.3,
+                "matched": False,
+                "details": f"Level below requirement: {candidate_level.title()} < {required_level.title()}",
+            }
+
+        return {
+            "score": 0.0,
+            "matched": False,
+            "details": f"Required {req_qual} not identified",
+        }
+
+    for req_qual in req_qual_list:
+        evaluation = _evaluate_requirement(req_qual)
+        current_score = evaluation["score"]
+        current_matched = evaluation["matched"]
+        current_details = evaluation["details"]
+
+        if current_score > best_match_score or (current_score == best_match_score and current_matched and not best_matched):
             best_match_score = current_score
             best_matched = current_matched
-            best_details = current_details or f"Required {req_qual} not identified"
+            best_details = current_details
             best_req_qual = req_qual
-            
-            # If we found a perfect match, no need to check others
             if best_match_score == 1.0 and best_matched:
                 break
 
-    # 3. Year of Passing Inclusion Logic
     year_match = True
     candidate_year = candidate_quals.get("year_of_passing")
-    
-    # Standardize required_years into a list
+
     allowed_years = []
     if isinstance(required_years, (int, float)):
         allowed_years = [int(required_years)]
@@ -655,23 +779,21 @@ def match_qualification(candidate_quals: Dict[str, Any],
             year_match = False
             best_match_score = 0.0
             best_matched = False
-            best_details = (f"Rejection: Graduation year {candidate_year} is not in "
-                       f"Allowed list ({', '.join(map(str, allowed_years))})")
+            best_details = (
+                f"Rejection: Graduation year {candidate_year} is not in Allowed list ({', '.join(map(str, allowed_years))})"
+            )
     elif allowed_years and not candidate_year:
-        # Could not detect year — strict mode requires the year to be present and match.
         year_match = False
         best_match_score = 0.0
         best_matched = False
-        best_details = ("Rejection: Graduation year not detected (Required: one of "
-                   + ", ".join(map(str, allowed_years)) + ")")
+        best_details = (
+            "Rejection: Graduation year not detected (Required: one of "
+            + ", ".join(map(str, allowed_years))
+            + ")"
+        )
 
-    # 4. Final Fallback if no degrees found at all
     if not best_matched and not candidate_quals.get("degrees"):
-        # Before giving up, check if highest_level was inferred from the text
-        if candidate_quals.get("highest_level"):
-            # We inferred a level even though no explicit degree string was captured
-            pass  # keep existing match_score / details
-        else:
+        if not candidate_quals.get("highest_level"):
             best_match_score = 0.0
             best_details = "Rejection: No educational degrees detected in resume"
 
@@ -683,5 +805,5 @@ def match_qualification(candidate_quals: Dict[str, Any],
         "candidate_qualification": candidate_quals.get("qualification_text", ""),
         "candidate_year": candidate_year,
         "required_qualification": best_req_qual or "None",
-        "required_years": allowed_years
+        "required_years": allowed_years,
     }

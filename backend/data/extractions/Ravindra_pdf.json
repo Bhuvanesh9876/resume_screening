@@ -1,0 +1,86 @@
+{
+    "timestamp": "2026-03-25 21:40:01.604502",
+    "candidate_name": "Bellam Ravindra",
+    "filename": "Ravindra.pdf",
+    "email": "bellamravindra9999@gmail.com",
+    "phone": "+91 9550243782",
+    "skills": [
+        "Go",
+        "Data Analysis",
+        "Scikit-Learn",
+        "Data Science",
+        "Scala",
+        "R",
+        "Matplotlib",
+        "Machine Learning",
+        "Python",
+        "Html",
+        "Numpy",
+        "C",
+        "Pandas"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "Bachelor of Computer Applications",
+            "BCA"
+        ],
+        "fields": [
+            "Data Science",
+            "AI",
+            "Machine Learning",
+            "English",
+            "Music"
+        ],
+        "institutions": [
+            "Bapatla Engineering College \u2014 CGPA: 8.4"
+        ],
+        "highest_degree": "Bachelor of Computer Applications",
+        "highest_level": "bachelors",
+        "qualification_text": "Bachelor of Computer Applications in Data Science",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Level met: Bachelors exactly matches Bachelors requirement",
+        "candidate_qualification": "Bachelor of Computer Applications in Data Science",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.809,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.604,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.352,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.14,
+            "alignment_penalty": 0.087,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "BELLAM RAVINDRA\nNaguluppalapadu, Prakasam District, Andhra Pradesh\nMobile: 9550243782\nEmail: bellamravindra9999@gmail.com\nLinkedIn: https://www.linkedin.com/in/bellam-ravindra-a2bbb1278\nOBJECTIVE\nTo obtain a Trainee Software Engineer role where I can apply my knowledge in Python, Data Structures, OOPS,\nMachine Learning, and Generative AI to develop efficient and scalable software solutions.\nSKILLS\n\u2022 Programming: Python, C\n\u2022 Core Concepts: Data Structures, Algorithms, OOPS\n\u2022 Database: SQL\n\u2022 Web: HTML, CSS\n\u2022 AI/ML: Machine Learning, Generative AI, Prompt Engineering\nTOOLS\n\u2022 NumPy, Pandas, Matplotlib, Scikit-learn\n\u2022 Jupyter Notebook, Google Colab\n\u2022 OpenAI APIs, Hugging Face, LangChain (Basics)\n\u2022 Git, VS Code, NetBeans\nEDUCATION\nBachelor of Computer Applications (BCA)\n2026\nBapatla Engineering College \u2014 CGPA: 8.4\nHigher Secondary (12th) \u2014 91%\n2022\nSecondary (10th) \u2014 90.1%\n2020\nPROJECTS\nWeb-Scraped Data Transformation and Sentiment Analysis\nDeveloped a Python pipeline for web scraping, prepr"
+}

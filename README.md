@@ -1,4 +1,4 @@
-﻿# AI Resume Screening System
+# AI Resume Screening System
 
 An AI-assisted resume screening platform with a Flask backend API and React frontend.
 
@@ -38,6 +38,7 @@ python -m venv .venv
 2. Install Python dependencies.
 
 ```bash
+cd backend
 pip install -r requirements.txt
 ```
 
@@ -60,7 +61,8 @@ Open two terminals from the project root.
 1. Start backend API:
 
 ```bash
-python api/server.py
+cd backend
+python main.py
 ```
 
 Backend runs at http://127.0.0.1:5000.
@@ -99,26 +101,22 @@ Tune weights and threshold in [core/config.py](core/config.py).
 
 ```text
 resume_screening/
-  api/
-    server.py
-  core/
-    config.py
-    embedding_engine.py
-    scoring.py
-    skill_extractor.py
-    experience_extractor.py
-    qualification_extractor.py
-    contact_extractor.py
-    hybrid_extractor.py
-    xai_engine_v3.py
-  utils/
-    history_store.py
-    export_utils.py
+  backend/
+    main.py
+    core/
+      config.py
+      embedding_engine.py
+      scoring.py
+      ...
+    utils/
+      history_store.py
+      ...
+    data/
+    requirements.txt
+    supabase_client.py
   frontend/
     src/
-  data/
-  requirements.txt
-  supabase_client.py
+  scratch/
 ```
 
 ## Developer Commands
@@ -140,7 +138,8 @@ npm run build
 Python syntax check:
 
 ```bash
-python -m compileall api core utils supabase_client.py
+cd backend
+python -m compileall .
 ```
 
 ## Troubleshooting

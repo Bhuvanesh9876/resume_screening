@@ -3,7 +3,8 @@ import os
 
 def load_config():
     """Load configuration from JSON file or environment."""
-    config_path = os.path.join("data", "config.json")
+    base_dir = os.path.dirname(os.path.dirname(__file__))
+    config_path = os.path.join(base_dir, "data", "config.json")
     try:
         if os.path.exists(config_path):
             with open(config_path, "r") as f:

@@ -4,6 +4,12 @@ __pycache__/
 *.pyc
 .streamlit/secrets.toml
 .env
+.env.*
+*.env
+*.pem
+*.key
+secrets.*
+credentials.*
 .pytest_cache/
 .ruff_cache/
 data/extractions/

@@ -1,5 +1,6 @@
 from datetime import datetime
 import time
+import os
 from supabase_client import supabase
 
 
@@ -44,10 +45,24 @@ def _execute_with_retry(operation, attempts=3, delay_seconds=0.6):
                 time.sleep(delay_seconds)
     raise last_error
 
+
+def _supabase_project_ref() -> str:
+    url = os.environ.get("SUPABASE_URL", "") or ""
+    try:
+        # Example: https://<project-ref>.supabase.co
+        host = url.split("//", 1)[1].split("/", 1)[0]
+        return host.split(".", 1)[0]
+    except Exception:
+        return "unknown"
+
 def save_history(job_data, threshold, shortlisted_candidates, all_results=None, user_id=None):
     """Save screening history to Supabase only."""
     if user_id is None or user_id == "guest" or supabase is None:
-        return {"saved": False, "reason": "invalid_user_or_supabase_unavailable"}
+        return {
+            "saved": False,
+            "reason": "invalid_user_or_supabase_unavailable",
+            "project_ref": _supabase_project_ref(),
+        }
 
     try:
         history_payload = {
@@ -86,7 +101,11 @@ def save_history(job_data, threshold, shortlisted_candidates, all_results=None, 
             )
 
         if not history_res.data:
-            return {"saved": False, "reason": "history_insert_empty_response"}
+            return {
+                "saved": False,
+                "reason": "history_insert_empty_response",
+                "project_ref": _supabase_project_ref(),
+            }
 
         history_id = history_res.data[0]["id"]
         saved_candidates = 0
@@ -134,11 +153,16 @@ def save_history(job_data, threshold, shortlisted_candidates, all_results=None, 
             "saved": True,
             "history_id": history_id,
             "saved_candidates": saved_candidates,
-            "failed_candidates": failed_candidates
+            "failed_candidates": failed_candidates,
+            "project_ref": _supabase_project_ref(),
         }
     except Exception as e:
         print(f"Error saving history to database: {e}")
-        return {"saved": False, "reason": str(e)}
+        return {
+            "saved": False,
+            "reason": str(e),
+            "project_ref": _supabase_project_ref(),
+        }
 
 
 def _sanitize_results_for_json(results):

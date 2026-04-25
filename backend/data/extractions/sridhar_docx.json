@@ -1,0 +1,79 @@
+{
+    "timestamp": "2026-03-25 21:56:00.630950",
+    "candidate_name": "Valeti Sridhar Babu",
+    "filename": "sridhar.docx",
+    "email": "valetisridhar@gmail.com",
+    "phone": "+91 7671962974",
+    "skills": [
+        "Aws",
+        "C",
+        "Python",
+        "R",
+        "Machine Learning",
+        "Java",
+        "Go"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.Tech"
+        ],
+        "fields": [
+            "AI",
+            "English",
+            "Education"
+        ],
+        "institutions": [
+            "Worked as a volunteer in cultural fest in my college",
+            "S.No  Course  College/School  Year of passing  Percentage/CGPA",
+            "AI&ML)  Bapatla Engineering college  2026  6.5(pursuing)"
+        ],
+        "highest_degree": "B.Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B.Tech in AI",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.Tech in AI",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.788,
+        "skill_score": 0.333,
+        "experience_score": 0.368,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.372,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.343,
+            "skill_contribution": 0.087,
+            "experience_contribution": 0.064,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.252,
+            "alignment_penalty": 0.146,
+            "must_have_penalty": 0.107,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.107,
+            "irrelevancy_multiplier": 0.77
+        }
+    },
+    "raw_text_preview": "VALETI SRIDHAR BABU\n1-71,\nPanchatyathi office\nSarvereddy palem\nOngole\nBapatla(Dt),                                                                           :valetisridhar@gmail.com\nPIN Code:523272                                                                     :+91 76719 62974\nOBJECTIVE\nI want a highly rewarding career where I can use my skills for professional and personal growth.\nEDUCATION\nTECHNICAL SKILLS\nJAVA PROGRAMMING in nptel\nEXPOSURES\nEmployed as an intern at Vault of codes in the domain of \u201cPython Programming\u201d from 5 may 2024 for five weeks.\nEXTRACURRICULAR ACTIVITIES\nWorked as a volunteer in cultural fest in my college\nSTRENGTHS\nPerform in stress\nconfidence\nPERSONAL INFORMATION\nName                      : Valeti Sridhar Babu\nDate of Birth          : 22 january 2004\nNationality    \t       :  Indian\nGender \t       : Male\nMarrital status        : unmarried\nLanguages Known : Telugu,English,Hindi\nPermanent Address : 1-71,\nPanchatyathi office\nSarvereddy palem\nOngole\nBapatla(D"
+}

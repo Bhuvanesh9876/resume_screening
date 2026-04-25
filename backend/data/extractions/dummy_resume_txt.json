@@ -1,0 +1,63 @@
+{
+    "timestamp": "2026-03-23 14:50:56.704336",
+    "candidate_name": "John Doe",
+    "filename": "dummy_resume.txt",
+    "email": "johndoe@example.com",
+    "phone": "",
+    "skills": [
+        "React",
+        "R",
+        "Java",
+        "Flask",
+        "Aws",
+        "Scala",
+        "C",
+        "Python"
+    ],
+    "experience_years": 6.2,
+    "education": {
+        "degrees": [
+            "BTech"
+        ],
+        "fields": [
+            "Computer Science",
+            "AI",
+            "Education"
+        ],
+        "institutions": [
+            "BTech in Computer Science, State University, 2020."
+        ],
+        "highest_degree": "BTech",
+        "highest_level": "bachelors",
+        "qualification_text": "BTech in Computer Science",
+        "year_of_passing": 2020
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "No specific qualification requirement"
+    },
+    "scores": {
+        "semantic_score": 0.866,
+        "skill_score": 1.0,
+        "experience_score": 1.0,
+        "qualification_score": 1.0,
+        "final_score": 0.942,
+        "matched_skills": [
+            "Python",
+            "React"
+        ],
+        "missing_skills": [],
+        "confidence": 0.9,
+        "score_breakdown": {
+            "semantic_contribution": 0.376,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.174,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "John Doe\njohndoe@example.com\n555-1234\n\nSummary\nSoftware Engineer with 5 years of experience in full-stack development.\n\nSkills\nPython, React, SQL, AWS, Java, REST APIs\n\nExperience\nPython Developer at TechCorp (2020 - Present)\n- Built a scalable AI resume screening system using Flask and React.\n- Integrated various large language models for natural language understanding.\n- Improved system efficiency by 40% through infrastructure optimizations.\n\nEducation\nBTech in Computer Science, State University, 2020."
+}

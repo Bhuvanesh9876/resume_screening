@@ -1,0 +1,90 @@
+{
+    "timestamp": "2026-03-25 21:39:59.816758",
+    "candidate_name": "Marepalli Harya Vardhan",
+    "filename": "2e6d9fa0-82ee-4b5f-bca0-24f8decdc1e7.pdf",
+    "email": "marepalliharyavardhan@gmail.com",
+    "phone": "+91 9030193596",
+    "skills": [
+        "Mongodb",
+        "Go",
+        "C++",
+        "R",
+        "Express.Js",
+        "Sqlite",
+        "Java",
+        "Javascript",
+        "Node.Js",
+        "Python",
+        "Html",
+        "Machine Learning",
+        "C",
+        "React",
+        "Devops",
+        "Aws"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.Tech",
+            "Be"
+        ],
+        "fields": [
+            "Machine Learning",
+            "English",
+            "Music",
+            "Education"
+        ],
+        "institutions": [
+            "Institute",
+            "Board/University",
+            "College"
+        ],
+        "highest_degree": "B.Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B.Tech in Machine Learning",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.Tech in Machine Learning",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.779,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.593,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.339,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.139,
+            "alignment_penalty": 0.085,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "MAREPALLI HARYA VARDHAN \n \nEmail: \nmarepalliharyavardhan@gmail.com  \nContact No: +91 9030193596 \n \nCAREER OBJECTIVE: \nTo contribute effectively and diligently to achieve both organizational and personal goals,leveraging \nmy skills and commitment to deliver high-quality results and drive success. \n \nACADEMIC PROFILE: \n \nCourse \nInstitute \nBoard/University\nBatch \nPercentage \nB.Tech \n...AIML \nBapatla Engineering \nCollege \n \nAcharay Nagarjuna \nunversity \n \n2022-2026 \n \n85% \n \nIntermediate \nMPC \nSri Chaitanya \nCollege \nBoard of \nIntermediate \nEducation(A. \nP) \n \n2020-22 \n93% \n \nSSC \n \nviswabharati \nSchool \nBoard of \nSecondary \nEducation(A. \nP) \n \n2016-20 \n100% \n \nTECHNICALSKILLS: \n \nFrontend: HTML, CSS, Bootstrap, JavaScript, React.js\nBackend: Python, Express, Node.js \nDatabases: SQLite\nOther skills: C++, Git, MongoDB \n \nCERTIFICATIONS: \n \n\u25cf Obtained Building Static Website Certification in NXTWAVE. \n\u25cf Obtained Python certification in NXT WAVE. \n\u25cf Obtained SQL certification in NXTWAVE. \n\u25cf P"
+}

@@ -1,0 +1,92 @@
+{
+    "timestamp": "2026-03-25 21:56:01.591833",
+    "candidate_name": "Shaik Shameem",
+    "filename": "Shameem.pdf",
+    "email": "shameemsk002@gmail.com",
+    "phone": "+91 9381861106",
+    "skills": [
+        "Aws",
+        "C",
+        "Scala",
+        "Deep Learning",
+        "Data Analysis",
+        "Keras",
+        "Python",
+        "Mongodb",
+        "R",
+        "Api Development",
+        "Html",
+        "Machine Learning",
+        "Java",
+        "Javascript",
+        "Tensorflow",
+        "Scikit-Learn",
+        "Go"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "LLM",
+            "B.Tech",
+            "undergraduate"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "Mathematics",
+            "Physics"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Andhra Pradesh \u2014 CGPA: 8.88/10",
+            "Dreamz Junior College \u2014 Percentage: 89.6%",
+            "Dreamz High School \u2014 Percentage: 95.8%"
+        ],
+        "highest_degree": "LLM",
+        "highest_level": "masters",
+        "qualification_text": "LLM in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "LLM in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.796,
+        "skill_score": 1.0,
+        "experience_score": 0.65,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.85,
+        "matched_skills": [
+            "Python",
+            "HTML",
+            "API Development"
+        ],
+        "missing_skills": [],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.346,
+            "skill_contribution": 0.261,
+            "experience_contribution": 0.113,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.0,
+            "alignment_penalty": 0.0,
+            "must_have_penalty": 0.0,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.0,
+            "irrelevancy_multiplier": 1.0
+        }
+    },
+    "raw_text_preview": "SHAIK SHAMEEM\n# shameemsk002@gmail.com\n\u0083 +91 9381861106\n\u00ef LinkedIn \u00a7 GitHub\nPROFESSIONAL SUMMARY\nResults-oriented Artificial Intelligence and Machine Learning undergraduate (GPA: 8.88) with strong expertise\nin Python, AI, Machine Learning, Deep Learning, Generative AI, and Pega. Demonstrated ability to analyze\ncomplex problems, take calculated risks, and deliver solutions under high-pressure environments. A proactive\nsocial activist and founder of a service-driven society, leading a committed team to support and uplift the needy\nthrough education and essential resources. Highly motivated to contribute technical excellence, adaptability, and\na strong work ethic to organizational success while building scalable, impactful solutions.\nSKILLS\n\u2022 Programming: Python, Java (Basics), R\n\u2022 AI/ML: Generative AI, Deep Learning, Machine Learning, NLP, Computer Vision, RAG Architectures\n\u2022 Web Technologies: HTML, CSS\n\u2022 Frameworks: TensorFlow, Keras, YOLOv8, Scikit-learn, OpenCV, HuggingFace\n\u2022 Tools: G"
+}

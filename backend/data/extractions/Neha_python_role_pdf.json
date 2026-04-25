@@ -1,0 +1,79 @@
+{
+    "timestamp": "2026-03-25 21:40:01.571401",
+    "candidate_name": "Neha Shaik",
+    "filename": "Neha_python_role.pdf",
+    "email": "nehashaik305@gmail.com",
+    "phone": "+91 9014656385",
+    "skills": [
+        "Go",
+        "Data Analysis",
+        "R",
+        "Machine Learning",
+        "Python",
+        "C"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "B.Tech"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Bapatla",
+            "St. Joseph English Medium School, Phirangipuram"
+        ],
+        "highest_degree": "B.Tech",
+        "highest_level": "bachelors",
+        "qualification_text": "B.Tech in Artificial Intelligence",
+        "year_of_passing": 2025
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "B.Tech in Artificial Intelligence",
+        "candidate_year": 2025,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.8,
+        "skill_score": 0.333,
+        "experience_score": 0.368,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.376,
+        "matched_skills": [
+            "Python"
+        ],
+        "missing_skills": [
+            "HTML",
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.348,
+            "skill_contribution": 0.087,
+            "experience_contribution": 0.064,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.254,
+            "alignment_penalty": 0.147,
+            "must_have_penalty": 0.107,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.107,
+            "irrelevancy_multiplier": 0.77
+        }
+    },
+    "raw_text_preview": "NEHA SHAIK\nGuntur, Andhra Pradesh\nnehashaik305@gmail.com \u2014 +91 9014656385 \u2014 LinkedIn\nSummary\nFinal-year B.Tech student specializing in Artificial Intelligence and Machine Learning with strong\nhands-on experience in Python, data preprocessing, and applied machine learning. Built real-world\nprojects in computer vision, NLP, and automation. Seeking Python / AI / ML internship or entrylevel roles.\nEducation\nBapatla Engineering College, Bapatla\nExpected 2025\nB.Tech in Artificial Intelligence & Machine Learning\nPercentage: 78\nArka Educational Institution, Guntur\n2020 \u2013 2022\nIntermediate\nPercentage: 85\nSt. Joseph English Medium School, Phirangipuram\n2019 \u2013 2020\nSSC\nPercentage: 90\nExperience\nVaultofCodes\nRemote\nPython Development Intern\nMay 2024\n\u2022 Developed Python-based applications and automation scripts.\n\u2022 Built a To-Do List application implementing CRUD operations.\nSkilldizer\nRemote\nMachine Learning Intern\nMay 2025\n\u2022 Worked on machine learning workflows including preprocessing and model eva"
+}

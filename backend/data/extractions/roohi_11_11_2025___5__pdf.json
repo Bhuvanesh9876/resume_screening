@@ -1,0 +1,90 @@
+{
+    "timestamp": "2026-03-25 21:40:02.752111",
+    "candidate_name": "Shaik Roohi Rehana Begum",
+    "filename": "roohi_11_11_2025_ (5).pdf",
+    "email": "roohi.2204@gmail.com",
+    "phone": "+91 8106432605",
+    "skills": [
+        "Mongodb",
+        "Go",
+        "Flask",
+        "Keras",
+        "Scikit-Learn",
+        "Scala",
+        "R",
+        "Java",
+        "Javascript",
+        "Python",
+        "Fastapi",
+        "Html",
+        "Machine Learning",
+        "C",
+        "Deep Learning",
+        "Tensorflow",
+        "Aws"
+    ],
+    "experience_years": 0.0,
+    "education": {
+        "degrees": [
+            "LLM",
+            "B.Tech"
+        ],
+        "fields": [
+            "Artificial Intelligence",
+            "AI",
+            "Machine Learning",
+            "English",
+            "Education"
+        ],
+        "institutions": [
+            "Bapatla Engineering College, Bapatla"
+        ],
+        "highest_degree": "LLM",
+        "highest_level": "masters",
+        "qualification_text": "LLM in Artificial Intelligence",
+        "year_of_passing": 2026
+    },
+    "qualification_match": {
+        "match_score": 1.0,
+        "matched": true,
+        "year_match": true,
+        "details": "Verified BTECH qualification",
+        "candidate_qualification": "LLM in Artificial Intelligence",
+        "candidate_year": 2026,
+        "required_qualification": "BTech",
+        "required_years": [
+            2025,
+            2026
+        ]
+    },
+    "scores": {
+        "semantic_score": 0.766,
+        "skill_score": 0.667,
+        "experience_score": 0.509,
+        "experience_score_raw": 0.65,
+        "qualification_score": 1.0,
+        "final_score": 0.588,
+        "matched_skills": [
+            "Python",
+            "HTML"
+        ],
+        "missing_skills": [
+            "API Development"
+        ],
+        "confidence": 0.85,
+        "score_breakdown": {
+            "semantic_contribution": 0.333,
+            "skill_contribution": 0.174,
+            "experience_contribution": 0.089,
+            "qualification_contribution": 0.13,
+            "penalty_applied": 0.138,
+            "alignment_penalty": 0.085,
+            "must_have_penalty": 0.053,
+            "experience_gap_penalty": 0.0,
+            "semantic_penalty": 0.0,
+            "additional_penalty": 0.053,
+            "irrelevancy_multiplier": 0.88
+        }
+    },
+    "raw_text_preview": "Shaik Roohi Rehana Begum\nBapatla, Andhra Pradesh\nEmail: roohi.2204@gmail.com \u2014 Phone: +91-8106432605\nLinkedIn: LinkedIn \u2014 GitHub: GitHub\nProfile Summary\nAI Engineer with hands-on experience in Generative AI, Deep Learning, NLP, and Computer Vision. Skilled in\nbuilding retrieval-augmented systems, LLM pipelines, preprocessing frameworks, and scalable AI applications\nusing Python, TensorFlow, Keras, FastAPI, and MongoDB. Strong proficiency in dataset processing, vector\nsearch, model refinement, and end to end deployment of AI systems.\nEducation\nB.Tech in Artificial Intelligence and Machine Learning\n2022\u20132026\nBapatla Engineering College, Bapatla\nCGPA: 9.5/10\nClass XII \u2013 Vikas Vidhya Vihar, Vinjamuru\n2020\u20132022\nPercentage: 96%\nClass X \u2013 Sri Netaji Vikas, Vinjamuru\n2020\nGPA: 10/10\nTechnical Skills\nProgramming: Python, C, JavaScript, HTML, CSS\nAI/ML: Generative AI, Deep Learning, NLP, Computer Vision, RAG Architectures\nFrameworks: TensorFlow, Keras, YOLOv8, Scikit-learn, OpenCV, HuggingFace\nT"
+}

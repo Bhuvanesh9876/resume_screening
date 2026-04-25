@@ -98,6 +98,22 @@ export default function Processing() {
 
   const removeFile = (idx) => setFiles(prev => prev.filter((_, i) => i !== idx));
 
+  const passedCandidates = result?.results || [];
+
+  const getEducationStatus = (candidate) => {
+    const qMatch = candidate?.qualification_match;
+    if (!qMatch) return 'Education requirement: Not evaluated';
+
+    if (qMatch.matched) {
+      const required = qMatch.required_qualification && qMatch.required_qualification !== 'None'
+        ? qMatch.required_qualification
+        : 'Configured requirement';
+      return `Education requirement met (${required})`;
+    }
+
+    return `Education requirement not met${qMatch.details ? `: ${qMatch.details}` : ''}`;
+  };
+
   const handleProcess = async () => {
     if (!files.length) { setError('Please upload at least one resume.'); return; }
     if (!jobData) { setError('No job configuration found. Please configure first.'); return; }
@@ -274,17 +290,35 @@ export default function Processing() {
 
           {result.history?.saved ? (
             <div className="alert alert-success">
-              <span>🗂️</span> Saved to history now (History ID: {result.history.history_id})
+              <span>🗂️</span>
+              Saved to history now (History ID: {result.history.history_id})
+              {result.history.project_ref ? ` | Project: ${result.history.project_ref}` : ''}
+              {typeof result.history.saved_candidates === 'number' ? ` | Candidate rows: ${result.history.saved_candidates}` : ''}
+              {typeof result.history.failed_candidates === 'number' ? ` | Candidate row failures: ${result.history.failed_candidates}` : ''}
             </div>
           ) : (
             <div className="alert alert-warning">
               <span>⚠️</span> Processed, but history save failed: {result.history?.reason || 'unknown reason'}
+              {result.history?.project_ref ? ` | Project: ${result.history.project_ref}` : ''}
             </div>
           )}
 
           {result.duplicates?.length > 0 && (
             <div className="alert alert-warning">
               <span>⚠️</span> Skipped {result.duplicates.length} duplicate(s): {result.duplicates.join(', ')}
+            </div>
+          )}
+
+          {passedCandidates.length > 0 && (
+            <div className="passed-section">
+              <h4>✅ Passed Candidates ({passedCandidates.length})</h4>
+              {passedCandidates.map((c, i) => (
+                <div key={`passed-${i}`} className="alert alert-success">
+                  <span>✅</span>
+                  <strong>{c.resume_name || c.resume_filename || `Candidate ${i + 1}`}</strong>
+                  {` — ${getEducationStatus(c)}`}
+                </div>
+              ))}
             </div>
           )}
 
